@@ -20,6 +20,14 @@
 
   var vaultCache = null;
   var vaultCategory = null;
+  var vaultSourceList = [];
+  var vaultViewState = {
+    sort: 'title-asc',
+    status: 'all',
+    download: 'all',
+    category: 'all',
+    query: ''
+  };
   var lastFocusEl = null;
 
   function qs(sel, root) {
@@ -392,10 +400,181 @@
     });
   }
 
+  function ensureVaultControls(showCategory) {
+    var mount = qs('#chart-mount');
+    if (!mount) return null;
+    var box = qs('#vault-controls');
+    if (!box) {
+      box = document.createElement('div');
+      box.id = 'vault-controls';
+      box.className = 'vault-controls';
+      mount.parentNode.insertBefore(box, mount);
+    }
+
+    box.innerHTML =
+      '<div class="vault-controls__row">' +
+        '<label class="vault-field">' +
+          '<span>検索</span>' +
+          '<input type="search" id="vault-query" placeholder="曲名 / 制作者 / タグ" value="' +
+            escapeHtml(vaultViewState.query) + '">' +
+        '</label>' +
+        '<label class="vault-field">' +
+          '<span>ソート</span>' +
+          '<select id="vault-sort">' +
+            '<option value="title-asc">曲名 昇順</option>' +
+            '<option value="title-desc">曲名 降順</option>' +
+            '<option value="const-desc">定数 高い順</option>' +
+            '<option value="const-asc">定数 低い順</option>' +
+            '<option value="status">状態</option>' +
+          '</select>' +
+        '</label>' +
+        '<label class="vault-field">' +
+          '<span>状態</span>' +
+          '<select id="vault-status">' +
+            '<option value="all">すべて</option>' +
+            '<option value="open">OPEN</option>' +
+            '<option value="archive">ARCHIVE</option>' +
+            '<option value="soon">準備中</option>' +
+          '</select>' +
+        '</label>' +
+        '<label class="vault-field">' +
+          '<span>配布</span>' +
+          '<select id="vault-download">' +
+            '<option value="all">すべて</option>' +
+            '<option value="file">ファイルDLあり</option>' +
+            '<option value="nofile">ファイルDLなし</option>' +
+            '<option value="youtube">YouTube誘導</option>' +
+            '<option value="denied">Access Denied</option>' +
+          '</select>' +
+        '</label>' +
+        (showCategory
+          ? '<label class="vault-field">' +
+              '<span>区分</span>' +
+              '<select id="vault-category">' +
+                '<option value="all">すべて</option>' +
+                '<option value="個人">個人</option>' +
+                '<option value="合作">合作</option>' +
+                '<option value="その他">その他</option>' +
+              '</select>' +
+            '</label>'
+          : '') +
+      '</div>' +
+      '<p class="vault-controls__hint" id="vault-result-hint"></p>';
+
+    qs('#vault-sort', box).value = vaultViewState.sort;
+    qs('#vault-status', box).value = vaultViewState.status;
+    qs('#vault-download', box).value = vaultViewState.download;
+    if (showCategory) qs('#vault-category', box).value = vaultViewState.category;
+
+    function syncFromUI() {
+      vaultViewState.sort = qs('#vault-sort', box).value;
+      vaultViewState.status = qs('#vault-status', box).value;
+      vaultViewState.download = qs('#vault-download', box).value;
+      vaultViewState.query = qs('#vault-query', box).value || '';
+      if (showCategory) {
+        var catSel = qs('#vault-category', box);
+        vaultViewState.category = catSel ? catSel.value : 'all';
+      }
+      applyVaultView();
+    }
+
+    ['change', 'input'].forEach(function (ev) {
+      box.addEventListener(ev, function (e) {
+        var t = e.target;
+        if (!t || !t.id) return;
+        if (
+          t.id === 'vault-sort' ||
+          t.id === 'vault-status' ||
+          t.id === 'vault-download' ||
+          t.id === 'vault-category' ||
+          t.id === 'vault-query'
+        ) {
+          syncFromUI();
+        }
+      });
+    });
+
+    return box;
+  }
+
+  function matchesDownloadFilter(chart, mode) {
+    if (mode === 'all') return true;
+    if (mode === 'file') return hasFileDownload(chart);
+    if (mode === 'nofile') return !hasFileDownload(chart);
+    if (mode === 'youtube') {
+      return !!(chart.distribution === 'youtube' || chart.watchUrl ||
+        ((chart.variants || []).some(function (v) { return !!v.watchUrl; })));
+    }
+    if (mode === 'denied') {
+      return !!(chart.accessDenied ||
+        ((chart.variants || []).some(function (v) { return !!v.accessDenied; })));
+    }
+    return true;
+  }
+
+  function sortCharts(list, mode) {
+    var arr = list.slice();
+    var statusRank = { open: 0, archive: 1, soon: 2 };
+    arr.sort(function (a, b) {
+      if (mode === 'title-asc' || mode === 'title-desc') {
+        var cmp = String(a.title || '').localeCompare(String(b.title || ''), 'ja');
+        return mode === 'title-desc' ? -cmp : cmp;
+      }
+      if (mode === 'const-asc' || mode === 'const-desc') {
+        var ca = maxConstant(a.difficulty);
+        var cb = maxConstant(b.difficulty);
+        if (ca == null && cb == null) return String(a.title || '').localeCompare(String(b.title || ''), 'ja');
+        if (ca == null) return 1;
+        if (cb == null) return -1;
+        return mode === 'const-desc' ? (cb - ca) : (ca - cb);
+      }
+      if (mode === 'status') {
+        var ra = statusRank[a.status || 'soon'];
+        var rb = statusRank[b.status || 'soon'];
+        if (ra !== rb) return ra - rb;
+        return String(a.title || '').localeCompare(String(b.title || ''), 'ja');
+      }
+      return 0;
+    });
+    return arr;
+  }
+
+  function applyVaultView() {
+    var mount = qs('#chart-mount');
+    if (!mount) return;
+    var q = String(vaultViewState.query || '').trim().toLowerCase();
+    var filtered = vaultSourceList.filter(function (c) {
+      if (vaultViewState.status !== 'all' && (c.status || 'soon') !== vaultViewState.status) return false;
+      if (!matchesDownloadFilter(c, vaultViewState.download)) return false;
+      if (
+        vaultCategory === 'all' &&
+        vaultViewState.category !== 'all' &&
+        c.listCategory !== vaultViewState.category
+      ) return false;
+      if (q) {
+        var hay = [
+          c.title, c.composer, c.charter, c.note, c.difficulty, c.keymode,
+          (c.tags || []).join(' '), c.listCategory
+        ].join(' ').toLowerCase();
+        if (hay.indexOf(q) === -1) return false;
+      }
+      return true;
+    });
+    var sorted = sortCharts(filtered, vaultViewState.sort);
+    renderChartList(mount, sorted);
+
+    var count = qs('#chart-count');
+    if (count) count.textContent = String(sorted.length);
+    var hint = qs('#vault-result-hint');
+    if (hint) {
+      hint.textContent = sorted.length + ' / ' + vaultSourceList.length + ' 件を表示';
+    }
+  }
+
   function renderChartList(container, charts) {
     if (!container) return;
     if (!charts || !charts.length) {
-      container.innerHTML = '<div class="empty-state">NO ENTRIES IN THIS CATEGORY YET</div>';
+      container.innerHTML = '<div class="empty-state">条件に一致する譜面がありません</div>';
       return;
     }
     var html = '<ul class="chart-list">';
@@ -444,7 +623,7 @@
     if (!mount) return;
     vaultCategory = category;
     mount.innerHTML = '<div class="empty-state">LOADING...</div>';
-    fetch('data/charts.json?v=20261029h', { cache: 'no-store' })
+    fetch('data/charts.json?v=20261029i', { cache: 'no-store' })
       .then(function (r) {
         if (!r.ok) throw new Error('failed');
         return r.json();
@@ -466,9 +645,16 @@
         } else {
           list = (data && data[category]) || [];
         }
-        renderChartList(mount, list);
-        var count = qs('#chart-count');
-        if (count) count.textContent = String(list.length);
+        vaultSourceList = list.slice();
+        vaultViewState = {
+          sort: 'title-asc',
+          status: 'all',
+          download: 'all',
+          category: 'all',
+          query: ''
+        };
+        ensureVaultControls(category === 'all');
+        applyVaultView();
       })
       .catch(function () {
         mount.innerHTML = '<div class="empty-state">FAILED TO LOAD CHART INDEX</div>';

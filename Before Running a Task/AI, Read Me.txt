@@ -196,3 +196,19 @@ Changed files:
 - index.html
 - notice.html
 ---
+
+---
+Date: 2026-10-29
+Task: 保管庫一覧にソート・絞り込み機能追加
+Changed files:
+- js/site.js
+- css/site.css
+- index.html
+- home.html
+- vault.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- vault-all.html
+- notice.html
+---
