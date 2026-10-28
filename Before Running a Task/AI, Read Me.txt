@@ -24,3 +24,11 @@ Changed files:
 - .github/workflows/pages.yml
 - js/site.js
 ---
+
+---
+Date: 2026-10-28
+Task: 扉絵・ホームの文言修正と不要項目削除
+Changed files:
+- index.html
+- home.html
+---
