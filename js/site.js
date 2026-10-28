@@ -346,7 +346,7 @@
     if (!mount) return;
     vaultCategory = category;
     mount.innerHTML = '<div class="empty-state">LOADING...</div>';
-    fetch('data/charts.json', { cache: 'no-store' })
+    fetch('data/charts.json?v=20261029a', { cache: 'no-store' })
       .then(function (r) {
         if (!r.ok) throw new Error('failed');
         return r.json();

@@ -55,3 +55,17 @@ Changed files:
 - css/site.css
 - chart.html
 ---
+
+---
+Date: 2026-10-29
+Task: 詳細DLボタンのキャッシュバスト（旧chart.htmlリンク対策）
+Changed files:
+- index.html
+- home.html
+- vault.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- notice.html
+- js/site.js
+---
