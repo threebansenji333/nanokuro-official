@@ -69,3 +69,19 @@ Changed files:
 - notice.html
 - js/site.js
 ---
+
+---
+Date: 2026-10-29
+Task: 通常譜面一覧の整理と難易度発光表示
+Changed files:
+- data/charts.json
+- js/site.js
+- css/site.css
+- index.html
+- home.html
+- vault.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- notice.html
+---

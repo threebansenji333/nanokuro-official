@@ -65,7 +65,32 @@
   function statusBadge(status) {
     if (status === 'open') return '<span class="badge open">OPEN</span>';
     if (status === 'archive') return '<span class="badge archive">ARCHIVE</span>';
-    return '<span class="badge soon">COMING SOON</span>';
+    return '<span class="badge soon">準備中</span>';
+  }
+
+  /** Extract max numeric constant from strings like "AT Lv.18.5" / "IN Lv.16 / AT Lv.16". */
+  function maxConstant(diffText) {
+    var text = String(diffText || '');
+    var re = /Lv\.?\s*(\d+(?:\.\d+)?)/gi;
+    var max = null;
+    var m;
+    while ((m = re.exec(text))) {
+      var n = parseFloat(m[1]);
+      if (!Number.isNaN(n) && (max == null || n > max)) max = n;
+    }
+    return max;
+  }
+
+  function difficultyBadge(diffText) {
+    var label = String(diffText || '').trim();
+    if (!label || label === '—') return '';
+    var n = maxConstant(label);
+    var glow = '';
+    if (n != null) {
+      if (n >= 18) glow = ' diff-glow-red';
+      else if (n >= 17) glow = ' diff-glow-purple';
+    }
+    return '<span class="badge diff-badge' + glow + '">' + escapeHtml(label) + '</span>';
   }
 
   function findChartById(data, id) {
@@ -313,7 +338,7 @@
     }
     var html = '<ul class="chart-list">';
     charts.forEach(function (c) {
-      var meta = [c.difficulty || '', c.keymode || 'Phigros', c.composer || '']
+      var meta = [c.keymode || 'Phigros', c.composer || '']
         .filter(Boolean)
         .join(' · ');
       var action;
@@ -321,6 +346,8 @@
         action = '<button type="button" class="btn" data-open-cushion="' + escapeHtml(c.id) + '">詳細 / DL</button>';
       } else if (c.download) {
         action = '<a class="btn" href="' + escapeHtml(c.download) + '" download>DOWNLOAD</a>';
+      } else if ((c.status || 'soon') === 'soon') {
+        action = '';
       } else {
         action = '<span class="btn" aria-disabled="true">準備中</span>';
       }
@@ -331,7 +358,10 @@
             '<p class="chart-item__meta">' + escapeHtml(meta) + (c.note ? ' · ' + escapeHtml(c.note) : '') + '</p>' +
           '</div>' +
           '<div class="chart-item__actions">' +
-            statusBadge(c.status || 'soon') +
+            '<div class="chart-item__marks">' +
+              statusBadge(c.status || 'soon') +
+              difficultyBadge(c.difficulty) +
+            '</div>' +
             action +
           '</div>' +
         '</li>';
@@ -346,7 +376,7 @@
     if (!mount) return;
     vaultCategory = category;
     mount.innerHTML = '<div class="empty-state">LOADING...</div>';
-    fetch('data/charts.json?v=20261029a', { cache: 'no-store' })
+    fetch('data/charts.json?v=20261029b', { cache: 'no-store' })
       .then(function (r) {
         if (!r.ok) throw new Error('failed');
         return r.json();

@@ -498,6 +498,37 @@ button { font: inherit; }
 .badge.open { color: #7dcea0; border-color: rgba(125,206,160,0.35); }
 .badge.soon { color: var(--gold); border-color: rgba(224,192,120,0.35); }
 .badge.archive { color: var(--ink-soft); }
+.badge.diff-badge {
+  color: #c8d8f0;
+  border-color: rgba(170, 200, 255, 0.28);
+  letter-spacing: 0.08em;
+}
+.badge.diff-glow-purple {
+  color: #e0d0ff;
+  border-color: rgba(180, 120, 255, 0.55);
+  background: rgba(120, 60, 200, 0.14);
+  box-shadow:
+    0 0 8px rgba(160, 100, 255, 0.35),
+    0 0 18px rgba(120, 70, 220, 0.22);
+  animation: diff-pulse-purple 2.8s ease-in-out infinite;
+}
+.badge.diff-glow-red {
+  color: #ffd0d0;
+  border-color: rgba(255, 90, 90, 0.6);
+  background: rgba(180, 30, 40, 0.16);
+  box-shadow:
+    0 0 8px rgba(255, 70, 70, 0.45),
+    0 0 20px rgba(220, 30, 40, 0.28);
+  animation: diff-pulse-red 2.2s ease-in-out infinite;
+}
+@keyframes diff-pulse-purple {
+  0%, 100% { box-shadow: 0 0 6px rgba(160, 100, 255, 0.28), 0 0 14px rgba(120, 70, 220, 0.16); }
+  50% { box-shadow: 0 0 10px rgba(180, 130, 255, 0.5), 0 0 22px rgba(140, 90, 255, 0.3); }
+}
+@keyframes diff-pulse-red {
+  0%, 100% { box-shadow: 0 0 6px rgba(255, 70, 70, 0.32), 0 0 14px rgba(220, 30, 40, 0.18); }
+  50% { box-shadow: 0 0 12px rgba(255, 90, 90, 0.6), 0 0 26px rgba(255, 40, 50, 0.36); }
+}
 
 .filters {
   display: flex;
@@ -554,6 +585,12 @@ button { font: inherit; }
   align-items: center;
   flex-wrap: wrap;
   justify-content: flex-end;
+}
+.chart-item__marks {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
 }
 .btn {
   display: inline-flex;
