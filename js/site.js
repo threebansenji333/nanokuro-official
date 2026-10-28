@@ -284,9 +284,24 @@
           (state.edition === e ? 'true' : 'false') + '">' + escapeHtml(e) + '</button>';
       }).join('');
 
-      var dlDisabled = !(v && v.file);
-      var dlHref = v && v.file ? v.file : '#';
-      var dlName = v && v.downloadName ? v.downloadName : (chart.title || 'chart') + '.zip';
+      var denied = !!(chart.accessDenied || (v && v.accessDenied));
+      var watchUrl = (v && v.watchUrl) || chart.watchUrl || '';
+      var primaryAction;
+      if (denied) {
+        primaryAction = '<span class="btn btn-denied" aria-disabled="true">Access Denied</span>';
+      } else if (watchUrl) {
+        primaryAction = '<a class="btn btn-primary" href="' + escapeHtml(watchUrl) +
+          '" target="_blank" rel="noopener noreferrer">WATCH ON YOUTUBE</a>';
+      } else if (v && v.file) {
+        var dlName = v.downloadName || ((chart.title || 'chart') + '.zip');
+        primaryAction = '<a class="btn btn-primary" href="' + escapeHtml(v.file) +
+          '" download="' + escapeHtml(dlName) + '">DOWNLOAD</a>';
+      } else {
+        primaryAction = '<span class="btn btn-primary" aria-disabled="true">DOWNLOAD 準備中</span>';
+      }
+
+      var showDiff = difficulties.length > 1 || (difficulties[0] && difficulties[0] !== '—');
+      var pickTitle = denied ? 'ACCESS' : (watchUrl ? 'WATCH' : 'DIFF / SHADER / EDITION');
 
       mount.innerHTML =
         '<section class="cushion-meta" aria-label="譜面情報">' +
@@ -296,7 +311,7 @@
             '<dt>譜面制作者</dt><dd>' + escapeHtml((v && v.charter) || chart.charter || 'Nanokuro') + '</dd>' +
             '<dt>難易度</dt><dd>' + escapeHtml(constLabel) + '</dd>' +
             '<dt>キーモード</dt><dd>' + escapeHtml(chart.keymode || 'Phigros') + '</dd>' +
-            '<dt>シェーダー</dt><dd>' + escapeHtml(v ? (v.shader ? 'あり' : 'なし') : '—') + '</dd>' +
+            '<dt>シェーダー</dt><dd>' + escapeHtml(v && typeof v.shader === 'boolean' ? (v.shader ? 'あり' : 'なし') : '—') + '</dd>' +
             (v && v.edition ? ('<dt>版</dt><dd>' + escapeHtml(v.edition) + '</dd>') : '') +
           '</dl>' +
           '<p class="cushion-hint">' +
@@ -305,8 +320,10 @@
           '</p>' +
         '</section>' +
         '<section class="cushion-pick" aria-label="差分選択">' +
-          '<h2>DIFF / SHADER / EDITION</h2>' +
-          '<div class="cushion-row"><div class="cushion-row__label">難易度差分</div><div class="cushion-options" id="diff-options">' + diffBtns + '</div></div>' +
+          '<h2>' + pickTitle + '</h2>' +
+          (showDiff
+            ? '<div class="cushion-row"><div class="cushion-row__label">難易度差分</div><div class="cushion-options" id="diff-options">' + diffBtns + '</div></div>'
+            : '') +
           (shaderOpts.length > 1
             ? '<div class="cushion-row"><div class="cushion-row__label">シェーダー</div><div class="cushion-options" id="shader-options">' + shaderBtns + '</div></div>'
             : '') +
@@ -315,9 +332,7 @@
             : '') +
           '<p class="cushion-summary">選択中: ' + escapeHtml(v ? (v.label || constLabel) : 'なし') + '</p>' +
           '<div class="cushion-actions">' +
-            (dlDisabled
-              ? '<span class="btn btn-primary" aria-disabled="true">DOWNLOAD 準備中</span>'
-              : '<a class="btn btn-primary" href="' + escapeHtml(dlHref) + '" download="' + escapeHtml(dlName) + '">DOWNLOAD</a>') +
+            primaryAction +
             '<button type="button" class="btn" data-cushion-close="1">閉じる</button>' +
             '<a class="btn" href="notice.html">注意事項</a>' +
           '</div>' +
@@ -412,7 +427,7 @@
     if (!mount) return;
     vaultCategory = category;
     mount.innerHTML = '<div class="empty-state">LOADING...</div>';
-    fetch('data/charts.json?v=20261029e', { cache: 'no-store' })
+    fetch('data/charts.json?v=20261029f', { cache: 'no-store' })
       .then(function (r) {
         if (!r.ok) throw new Error('failed');
         return r.json();

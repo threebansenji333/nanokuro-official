@@ -842,6 +842,18 @@ body.cushion-open {
   color: #fff;
   border-color: rgba(94, 231, 255, 0.7);
 }
+.btn-denied {
+  border-color: rgba(255, 80, 80, 0.55);
+  background: rgba(80, 12, 18, 0.55);
+  color: #ffb0b0;
+  font-family: var(--font-display);
+  letter-spacing: 0.18em;
+  min-width: 160px;
+  min-height: 40px;
+  opacity: 1;
+  pointer-events: none;
+  box-shadow: 0 0 12px rgba(255, 60, 60, 0.25);
+}
 
 @keyframes floatY {
   0%, 100% { transform: rotate(45deg) translateY(0); }
