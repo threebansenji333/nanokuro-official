@@ -46,14 +46,29 @@
       ]
     },
     {
+      "id": "glacial-brilliance",
       "title": "Glacial brilliance",
       "composer": "Nanokuro",
       "charter": "Nanokuro",
       "difficulty": "IN Lv.14.8",
       "keymode": "Phigros",
-      "status": "archive",
+      "status": "open",
       "note": "ソロ制作",
-      "tags": ["brilliance"]
+      "tags": ["brilliance"],
+      "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
+      "detailHint": "曲名・コンポーザー・譜面制作者・難易度定数などの詳細は、YouTubeチャンネル投稿動画の概要欄を参照してください。",
+      "variants": [
+        {
+          "id": "in-148",
+          "label": "IN Lv.14.8",
+          "difficulty": "IN",
+          "constant": "14.8",
+          "shader": true,
+          "charter": "Nanokuro",
+          "file": "charts/glacial-brilliance/Glacial-brilliance-IN-Lv14.8.zip",
+          "downloadName": "Glacial brilliance(IN Lv.14.8).zip"
+        }
+      ]
     },
     {
       "title": "Memories Sacrifice",
@@ -65,13 +80,41 @@
       "tags": ["power"]
     },
     {
+      "id": "meteoric-impact",
       "title": "Meteoric Impact",
       "composer": "Nanokuro",
       "charter": "Nanokuro",
       "difficulty": "AT Lv.18.5",
       "keymode": "Phigros",
-      "status": "archive",
-      "tags": ["power"]
+      "status": "open",
+      "note": "緩和前 / 緩和後の2版",
+      "tags": ["power"],
+      "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
+      "detailHint": "曲名・コンポーザー・譜面制作者・難易度定数などの詳細は、YouTubeチャンネル投稿動画の概要欄を参照してください。",
+      "variants": [
+        {
+          "id": "at-185-pre",
+          "label": "AT Lv.18.5（緩和前）",
+          "difficulty": "AT",
+          "constant": "18.5",
+          "shader": true,
+          "edition": "緩和前",
+          "charter": "Nanokuro",
+          "file": "charts/meteoric-impact/Meteoric-Impact-AT-Lv18.5.zip",
+          "downloadName": "Meteoric Impact(AT Lv.18.5).zip"
+        },
+        {
+          "id": "at-185-fixed",
+          "label": "AT Lv.18.5（緩和後）",
+          "difficulty": "AT",
+          "constant": "18.5",
+          "shader": true,
+          "edition": "緩和後",
+          "charter": "Nanokuro",
+          "file": "charts/meteoric-impact/Meteoric-Impact-AT-Lv18.5-Fixed.zip",
+          "downloadName": "Meteoric Impact(AT Lv.18.5)(Fixed).zip"
+        }
+      ]
     },
     {
       "title": "Clock Paradox",
@@ -110,14 +153,29 @@
       "tags": []
     },
     {
+      "id": "kakusei",
       "title": "覚醒",
       "composer": "Nanokuro",
       "charter": "Nanokuro",
       "difficulty": "IN Lv.14.2",
       "keymode": "Phigros",
-      "status": "archive",
+      "status": "open",
       "note": "1st Collections 収録系",
-      "tags": ["gimmick"]
+      "tags": ["gimmick"],
+      "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
+      "detailHint": "曲名・コンポーザー・譜面制作者・難易度定数などの詳細は、YouTubeチャンネル投稿動画の概要欄を参照してください。",
+      "variants": [
+        {
+          "id": "in-142",
+          "label": "IN Lv.14.2",
+          "difficulty": "IN",
+          "constant": "14.2",
+          "shader": true,
+          "charter": "Nanokuro",
+          "file": "charts/kakusei/Kakusei-IN-Lv14.2.zip",
+          "downloadName": "覚醒(IN Lv.14.2).zip"
+        }
+      ]
     }
   ],
   "collab": [

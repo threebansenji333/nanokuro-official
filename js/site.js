@@ -205,12 +205,21 @@
     var difficulties = unique(variants.map(function (v) { return v.difficulty; }).filter(Boolean));
     var state = {
       difficulty: difficulties[0] || null,
-      shader: null
+      shader: null,
+      edition: null
     };
 
     function variantsForDiff() {
       return variants.filter(function (v) {
         return !state.difficulty || v.difficulty === state.difficulty;
+      });
+    }
+
+    function filteredByShader(list) {
+      return list.filter(function (v) {
+        if (state.shader === 'on') return !!v.shader;
+        if (state.shader === 'off') return !v.shader;
+        return true;
       });
     }
 
@@ -220,29 +229,41 @@
       }));
     }
 
+    function editionOptions() {
+      return unique(
+        filteredByShader(variantsForDiff())
+          .map(function (v) { return v.edition; })
+          .filter(Boolean)
+      );
+    }
+
     function currentVariant() {
-      return variantsForDiff().filter(function (v) {
-        if (state.shader === 'on') return !!v.shader;
-        if (state.shader === 'off') return !v.shader;
+      return filteredByShader(variantsForDiff()).filter(function (v) {
+        if (state.edition && v.edition) return v.edition === state.edition;
+        if (state.edition && !v.edition) return false;
         return true;
       })[0] || null;
     }
 
-    function ensureShaderDefault() {
-      var opts = shaderOptions();
-      if (!opts.length) {
-        state.shader = null;
-        return;
+    function ensureDefaults() {
+      var sOpts = shaderOptions();
+      if (!sOpts.length) state.shader = null;
+      else if (sOpts.indexOf(state.shader) === -1) {
+        state.shader = sOpts.indexOf('on') !== -1 ? 'on' : sOpts[0];
       }
-      if (opts.indexOf(state.shader) === -1) {
-        state.shader = opts.indexOf('on') !== -1 ? 'on' : opts[0];
+
+      var eOpts = editionOptions();
+      if (!eOpts.length) state.edition = null;
+      else if (eOpts.indexOf(state.edition) === -1) {
+        state.edition = eOpts[0];
       }
     }
 
     function paint() {
-      ensureShaderDefault();
+      ensureDefaults();
       var v = currentVariant();
       var shaderOpts = shaderOptions();
+      var editionOpts = editionOptions();
       var constLabel = v
         ? formatConstantLabel(v.difficulty, v.constant)
         : (chart.difficulty || '—');
@@ -258,6 +279,11 @@
           (state.shader === s ? 'true' : 'false') + '">' + label + '</button>';
       }).join('');
 
+      var editionBtns = editionOpts.map(function (e) {
+        return '<button type="button" data-edition="' + escapeHtml(e) + '" aria-pressed="' +
+          (state.edition === e ? 'true' : 'false') + '">' + escapeHtml(e) + '</button>';
+      }).join('');
+
       var dlDisabled = !(v && v.file);
       var dlHref = v && v.file ? v.file : '#';
       var dlName = v && v.downloadName ? v.downloadName : (chart.title || 'chart') + '.zip';
@@ -271,6 +297,7 @@
             '<dt>難易度</dt><dd>' + escapeHtml(constLabel) + '</dd>' +
             '<dt>キーモード</dt><dd>' + escapeHtml(chart.keymode || 'Phigros') + '</dd>' +
             '<dt>シェーダー</dt><dd>' + escapeHtml(v ? (v.shader ? 'あり' : 'なし') : '—') + '</dd>' +
+            (v && v.edition ? ('<dt>版</dt><dd>' + escapeHtml(v.edition) + '</dd>') : '') +
           '</dl>' +
           '<p class="cushion-hint">' +
             escapeHtml(chart.detailHint || '定数や譜面制作者などの詳細は YouTube 概要欄を参照してください。') +
@@ -278,10 +305,13 @@
           '</p>' +
         '</section>' +
         '<section class="cushion-pick" aria-label="差分選択">' +
-          '<h2>DIFF / SHADER</h2>' +
+          '<h2>DIFF / SHADER / EDITION</h2>' +
           '<div class="cushion-row"><div class="cushion-row__label">難易度差分</div><div class="cushion-options" id="diff-options">' + diffBtns + '</div></div>' +
-          (shaderOpts.length
+          (shaderOpts.length > 1
             ? '<div class="cushion-row"><div class="cushion-row__label">シェーダー</div><div class="cushion-options" id="shader-options">' + shaderBtns + '</div></div>'
+            : '') +
+          (editionOpts.length
+            ? '<div class="cushion-row"><div class="cushion-row__label">版</div><div class="cushion-options" id="edition-options">' + editionBtns + '</div></div>'
             : '') +
           '<p class="cushion-summary">選択中: ' + escapeHtml(v ? (v.label || constLabel) : 'なし') + '</p>' +
           '<div class="cushion-actions">' +
@@ -302,6 +332,12 @@
       qsa('#shader-options button', mount).forEach(function (btn) {
         btn.addEventListener('click', function () {
           state.shader = btn.getAttribute('data-shader');
+          paint();
+        });
+      });
+      qsa('#edition-options button', mount).forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          state.edition = btn.getAttribute('data-edition');
           paint();
         });
       });
@@ -376,7 +412,7 @@
     if (!mount) return;
     vaultCategory = category;
     mount.innerHTML = '<div class="empty-state">LOADING...</div>';
-    fetch('data/charts.json?v=20261029d', { cache: 'no-store' })
+    fetch('data/charts.json?v=20261029e', { cache: 'no-store' })
       .then(function (r) {
         if (!r.ok) throw new Error('failed');
         return r.json();
