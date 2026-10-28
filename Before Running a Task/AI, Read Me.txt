@@ -1,0 +1,182 @@
+---
+Date: 2026-10-28
+Task: Nanokuro公式アーカイブサイト初版（扉絵・保管庫・注意事項）
+Changed files:
+- index.html
+- home.html
+- vault.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- notice.html
+- css/site.css
+- js/site.js
+- data/charts.json
+- package.json
+---
+
+---
+Date: 2026-10-28
+Task: 無料公開（GitHub Pages）とVercel設定
+Changed files:
+- .gitignore
+- vercel.json
+- .github/workflows/pages.yml
+- js/site.js
+---
+
+---
+Date: 2026-10-28
+Task: 扉絵・ホームの文言修正と不要項目削除
+Changed files:
+- index.html
+- home.html
+---
+
+---
+Date: 2026-10-28
+Task: 通常譜面クッションとCrystal brilliance差分補充
+Changed files:
+- vault-standard.html
+- chart.html
+- js/site.js
+- css/site.css
+- data/charts.json
+- charts/crystal-brilliance/Crystal-brilliance-AT-Lv16.zip
+- charts/crystal-brilliance/Crystal-brilliance-IN-Lv16.zip
+- charts/crystal-brilliance/Crystal-brilliance-IN-Lv16-NoShader.zip
+---
+
+---
+Date: 2026-10-29
+Task: クッションを同一ページ内モーダルに変更
+Changed files:
+- js/site.js
+- css/site.css
+- chart.html
+---
+
+---
+Date: 2026-10-29
+Task: 詳細DLボタンのキャッシュバスト（旧chart.htmlリンク対策）
+Changed files:
+- index.html
+- home.html
+- vault.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- notice.html
+- js/site.js
+---
+
+---
+Date: 2026-10-29
+Task: 通常譜面一覧の整理と難易度発光表示
+Changed files:
+- data/charts.json
+- js/site.js
+- css/site.css
+- index.html
+- home.html
+- vault.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- notice.html
+---
+
+---
+Date: 2026-10-29
+Task: 譜面定数表更新と合作譜面の追加・移動
+Changed files:
+- data/charts.json
+- js/site.js
+- index.html
+- home.html
+- vault.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- notice.html
+---
+
+---
+Date: 2026-10-29
+Task: 合作整理と「その他」枠への改名・KIZUNA追加
+Changed files:
+- data/charts.json
+- vault.html
+- vault-keymodes.html
+- home.html
+- js/site.js
+- index.html
+- vault-standard.html
+- vault-collab.html
+- notice.html
+---
+
+---
+Date: 2026-10-29
+Task: Glacial・覚醒・Meteoric緩和版zip補充
+Changed files:
+- data/charts.json
+- js/site.js
+- charts/glacial-brilliance/Glacial-brilliance-IN-Lv14.8.zip
+- charts/kakusei/Kakusei-IN-Lv14.2.zip
+- charts/meteoric-impact/Meteoric-Impact-AT-Lv18.5.zip
+- charts/meteoric-impact/Meteoric-Impact-AT-Lv18.5-Fixed.zip
+- index.html
+- home.html
+- vault.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- notice.html
+---
+
+---
+Date: 2026-10-29
+Task: Meteoric Impact緩和前をAT Lv.18.5版へ差し替え確認
+Changed files:
+- （なし）
+---
+
+---
+Date: 2026-10-29
+Task: 合作移動と譜面補充・AccessDenied/YouTube誘導
+Changed files:
+- data/charts.json
+- js/site.js
+- css/site.css
+- charts/memories-sacrifice/Memories-Sacrifice-AT-Lv16.0.pez
+- charts/execute/execute-AT-Lv17.4.pez
+- charts/relative-brilliance/Relative-brilliance-IN-Lv15.0.pez
+- charts/abyss-motion/ABYSS-MOTION-192.333-AT-Lv16.3.zip
+- charts/san-chokusou/SAN-chokusou-AT-Lv15.7.zip
+- charts/indoor-trackmaker/Indoor-trackmaker-IN-Lv14.0.zip
+- charts/clock-paradox/Clock-Paradox-AT-Lv15.0.zip
+- index.html
+- home.html
+- vault.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- notice.html
+---
+
+---
+Date: 2026-10-29
+Task: D-Birth定数・YouTube合作・INFINITE補充・詳細ボタン分岐
+Changed files:
+- data/charts.json
+- js/site.js
+- charts/infinite-hyperdrive/INFINITE-HYPERDRIVE-IN-Lv14.9.pez
+- index.html
+- home.html
+- vault.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- notice.html
+---

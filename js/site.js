@@ -93,6 +93,17 @@
     return '<span class="badge diff-badge' + glow + '">' + escapeHtml(label) + '</span>';
   }
 
+  /** True when at least one variant offers a real file download (not denied / watch-only). */
+  function hasFileDownload(chart) {
+    if (!chart || chart.accessDenied) return false;
+    var vs = chart.variants || [];
+    for (var i = 0; i < vs.length; i++) {
+      if (vs[i].accessDenied) continue;
+      if (vs[i].file) return true;
+    }
+    return false;
+  }
+
   function findChartById(data, id) {
     var cats = ['standard', 'collab', 'keymodes'];
     for (var i = 0; i < cats.length; i++) {
@@ -394,7 +405,8 @@
         .join(' · ');
       var action;
       if (c.id) {
-        action = '<button type="button" class="btn" data-open-cushion="' + escapeHtml(c.id) + '">詳細 / DL</button>';
+        var btnLabel = hasFileDownload(c) ? '詳細 / DL' : '詳細';
+        action = '<button type="button" class="btn" data-open-cushion="' + escapeHtml(c.id) + '">' + btnLabel + '</button>';
       } else if (c.download) {
         action = '<a class="btn" href="' + escapeHtml(c.download) + '" download>DOWNLOAD</a>';
       } else if ((c.status || 'soon') === 'soon') {
@@ -427,7 +439,7 @@
     if (!mount) return;
     vaultCategory = category;
     mount.innerHTML = '<div class="empty-state">LOADING...</div>';
-    fetch('data/charts.json?v=20261029f', { cache: 'no-store' })
+    fetch('data/charts.json?v=20261029g', { cache: 'no-store' })
       .then(function (r) {
         if (!r.ok) throw new Error('failed');
         return r.json();

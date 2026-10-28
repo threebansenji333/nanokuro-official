@@ -263,7 +263,7 @@
       "title": "D-Birth",
       "composer": "—",
       "charter": "Nanokuro / Wingbat",
-      "difficulty": "—",
+      "difficulty": "SP Lv.15.5",
       "keymode": "Phigros",
       "status": "open",
       "note": "合作譜面 / 配布なし（動画誘導）",
@@ -274,9 +274,10 @@
       "detailHint": "この譜面はファイル配布を行いません。視聴用リンクから動画へ移動してください。",
       "variants": [
         {
-          "id": "watch",
-          "label": "WATCH",
-          "difficulty": "—",
+          "id": "sp-155",
+          "label": "SP Lv.15.5",
+          "difficulty": "SP",
+          "constant": "15.5",
           "charter": "Nanokuro / Wingbat",
           "watchUrl": "https://www.youtube.com/watch?v=pHAmW4jm5qA"
         }
@@ -333,54 +334,136 @@
       ]
     },
     {
+      "id": "unraveling-stasis",
       "title": "Unraveling Stasis",
       "composer": "Nanokuro",
       "charter": "Nanokuro / 山田悠牙",
       "difficulty": "AT Lv.18.5",
       "keymode": "Phigros",
-      "status": "archive",
-      "note": "合作譜面",
-      "tags": ["collab", "complex"]
+      "status": "open",
+      "note": "合作譜面 / 配布なし（動画誘導）",
+      "tags": ["collab", "complex"],
+      "distribution": "youtube",
+      "watchUrl": "https://youtu.be/e8y70gU1b2I?si=akDJpWvENkYZceI_",
+      "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
+      "detailHint": "この譜面はファイル配布を行いません。視聴用リンクから動画へ移動してください。",
+      "variants": [
+        {
+          "id": "at-185",
+          "label": "AT Lv.18.5",
+          "difficulty": "AT",
+          "constant": "18.5",
+          "charter": "Nanokuro / 山田悠牙",
+          "watchUrl": "https://youtu.be/e8y70gU1b2I?si=akDJpWvENkYZceI_"
+        }
+      ]
     },
     {
+      "id": "xaleid-scopix",
       "title": "Xaleid◆scopiX",
       "composer": "Nanokuro",
       "charter": "Fevm1r / Nanokuro / wingbat",
       "difficulty": "AT Lv.18.2",
       "keymode": "Phigros",
-      "status": "archive",
-      "note": "合作譜面",
-      "tags": ["collab", "complex"]
+      "status": "open",
+      "note": "合作譜面 / 配布なし（動画誘導）",
+      "tags": ["collab", "complex"],
+      "distribution": "youtube",
+      "watchUrl": "https://youtu.be/kiOlMmtrIWk?si=CNMCSEGU0iv3RbFZ",
+      "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
+      "detailHint": "この譜面はファイル配布を行いません。視聴用リンクから動画へ移動してください。",
+      "variants": [
+        {
+          "id": "at-182",
+          "label": "AT Lv.18.2",
+          "difficulty": "AT",
+          "constant": "18.2",
+          "charter": "Fevm1r / Nanokuro / wingbat",
+          "watchUrl": "https://youtu.be/kiOlMmtrIWk?si=CNMCSEGU0iv3RbFZ"
+        }
+      ]
     },
     {
+      "id": "first-breath",
       "title": "First Breath",
       "composer": "—",
       "charter": "Detection of Protection",
       "difficulty": "AT Lv.17.5",
       "keymode": "Phigros",
-      "status": "archive",
-      "note": "合作譜面",
-      "tags": ["collab"]
+      "status": "open",
+      "note": "合作譜面 / 配布なし（動画誘導）",
+      "tags": ["collab"],
+      "distribution": "youtube",
+      "watchUrl": "https://youtu.be/YyLs_sB9PYI?si=5T0264Lf8SajAcIy",
+      "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
+      "detailHint": "この譜面はファイル配布を行いません。視聴用リンクから動画へ移動してください。",
+      "variants": [
+        {
+          "id": "at-175",
+          "label": "AT Lv.17.5",
+          "difficulty": "AT",
+          "constant": "17.5",
+          "charter": "Detection of Protection",
+          "watchUrl": "https://youtu.be/YyLs_sB9PYI?si=5T0264Lf8SajAcIy"
+        }
+      ]
     },
     {
+      "id": "battle-no-1",
       "title": "BATTLE NO.1",
       "composer": "—",
       "charter": "PFM Charting Team",
       "difficulty": "IN Lv.16.2 / AT Lv.16.9",
       "keymode": "Phigros",
-      "status": "archive",
-      "note": "合作譜面（IN / AT）",
-      "tags": ["collab"]
+      "status": "open",
+      "note": "合作譜面 / 配布なし（動画誘導）",
+      "tags": ["collab"],
+      "distribution": "youtube",
+      "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
+      "detailHint": "この譜面はファイル配布を行いません。難易度ごとに視聴用リンクへ移動してください。",
+      "variants": [
+        {
+          "id": "in-162",
+          "label": "IN Lv.16.2",
+          "difficulty": "IN",
+          "constant": "16.2",
+          "charter": "PFM Charting Team",
+          "watchUrl": "https://youtu.be/eGMiynpdZXY?si=ZdWSjvLGWs3x6u1T"
+        },
+        {
+          "id": "at-169",
+          "label": "AT Lv.16.9",
+          "difficulty": "AT",
+          "constant": "16.9",
+          "charter": "PFM Charting Team",
+          "watchUrl": "https://youtu.be/Wqtw-tHzAvY?si=rvjTGl-gQVeNdLNP"
+        }
+      ]
     },
     {
+      "id": "infinite-hyperdrive",
       "title": "INFINITE HYPERDRIVE",
       "composer": "—",
       "charter": "Chaos / Nanokuro",
       "difficulty": "IN Lv.14.9",
       "keymode": "Phigros",
-      "status": "archive",
+      "status": "open",
       "note": "合作譜面",
-      "tags": ["collab"]
+      "tags": ["collab"],
+      "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
+      "detailHint": "曲名・コンポーザー・譜面制作者・難易度定数などの詳細は、YouTubeチャンネル投稿動画の概要欄を参照してください。",
+      "variants": [
+        {
+          "id": "in-149",
+          "label": "IN Lv.14.9",
+          "difficulty": "IN",
+          "constant": "14.9",
+          "shader": true,
+          "charter": "Chaos / Nanokuro",
+          "file": "charts/infinite-hyperdrive/INFINITE-HYPERDRIVE-IN-Lv14.9.pez",
+          "downloadName": "INFINITE HYPERDRIVE(IN Lv.14.9).pez"
+        }
+      ]
     }
   ],
   "keymodes": [
