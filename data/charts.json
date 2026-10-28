@@ -1,13 +1,46 @@
 {
   "standard": [
     {
+      "id": "crystal-brilliance",
       "title": "Crystal brilliance",
-      "composer": "Nanokuro",
-      "difficulty": "IN / AT",
+      "composer": "Tak_mfk",
+      "charter": "Nanokuro",
+      "difficulty": "IN Lv.16 / AT Lv.16",
       "keymode": "Phigros",
-      "status": "archive",
-      "note": "ソロ制作",
-      "tags": ["brilliance"]
+      "status": "open",
+      "note": "差分3種（Shader有無あり）",
+      "tags": ["brilliance"],
+      "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
+      "detailHint": "曲名・コンポーザー・譜面制作者・難易度定数などの詳細は、YouTubeチャンネル投稿動画の概要欄を参照してください。",
+      "variants": [
+        {
+          "id": "at-16",
+          "label": "AT Lv.16",
+          "difficulty": "AT",
+          "constant": "16",
+          "shader": true,
+          "file": "charts/crystal-brilliance/Crystal-brilliance-AT-Lv16.zip",
+          "downloadName": "Crystal brilliance(AT Lv.16).zip"
+        },
+        {
+          "id": "in-16",
+          "label": "IN Lv.16",
+          "difficulty": "IN",
+          "constant": "16",
+          "shader": true,
+          "file": "charts/crystal-brilliance/Crystal-brilliance-IN-Lv16.zip",
+          "downloadName": "Crystal brilliance(IN Lv.16).zip"
+        },
+        {
+          "id": "in-16-noshader",
+          "label": "IN Lv.16 (No Shader)",
+          "difficulty": "IN",
+          "constant": "16",
+          "shader": false,
+          "file": "charts/crystal-brilliance/Crystal-brilliance-IN-Lv16-NoShader.zip",
+          "downloadName": "Crystal brilliance(IN Lv.16)(No Shader).zip"
+        }
+      ]
     },
     {
       "title": "Glacial brilliance",

@@ -32,3 +32,17 @@ Changed files:
 - index.html
 - home.html
 ---
+
+---
+Date: 2026-10-28
+Task: 通常譜面クッションとCrystal brilliance差分補充
+Changed files:
+- vault-standard.html
+- chart.html
+- js/site.js
+- css/site.css
+- data/charts.json
+- charts/crystal-brilliance/Crystal-brilliance-AT-Lv16.zip
+- charts/crystal-brilliance/Crystal-brilliance-IN-Lv16.zip
+- charts/crystal-brilliance/Crystal-brilliance-IN-Lv16-NoShader.zip
+---

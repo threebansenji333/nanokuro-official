@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chart — NANOKURO Vault</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Orbitron:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body class="has-chrome" data-page="chart-cushion">
+  <a class="skip-link" href="#main">コンテンツへ</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="index.html">
+        <span class="brand__mark">NANOKURO</span>
+        <span class="brand__sub">Official Archive</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="メニュー" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" aria-label="主要ナビ">
+        <a href="home.html" data-nav="home.html">Home</a>
+        <a href="vault.html" data-nav="vault.html">Vault</a>
+        <a href="notice.html" data-nav="notice.html">Notice</a>
+        <a href="index.html">Gate</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-main" id="main">
+    <div class="wrap">
+      <p style="margin:0 0 16px; font-size:12px;">
+        <a href="vault-standard.html" style="color:var(--ink-mute); letter-spacing:0.12em;">← 通常譜面一覧</a>
+        ·
+        <a href="notice.html" style="color:var(--cyan);">注意事項</a>
+      </p>
+      <header class="page-hero">
+        <p class="page-hero__eyebrow">DOWNLOAD CUSHION</p>
+        <h1 id="chart-title">—</h1>
+        <p>難易度差分・シェーダー有無を選んでからダウンロードしてください。詳細クレジットは概要欄も併せて確認できます。</p>
+      </header>
+      <div id="cushion-mount" class="cushion">
+        <div class="empty-state">LOADING...</div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p class="disclaimer">
+        本プロジェクトは非公式プレイヤープロジェクトであり、南京鸽游网络有限公司および《Phigros》公式と認可・協力・運営関係はありません。
+      </p>
+    </div>
+  </footer>
+  <script src="js/site.js"></script>
+</body>
+</html>
