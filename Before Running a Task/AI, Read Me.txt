@@ -100,3 +100,18 @@ Changed files:
 - vault-keymodes.html
 - notice.html
 ---
+
+---
+Date: 2026-10-29
+Task: 合作整理と「その他」枠への改名・KIZUNA追加
+Changed files:
+- data/charts.json
+- vault.html
+- vault-keymodes.html
+- home.html
+- js/site.js
+- index.html
+- vault-standard.html
+- vault-collab.html
+- notice.html
+---

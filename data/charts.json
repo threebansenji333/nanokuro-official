@@ -190,58 +190,18 @@
       "status": "archive",
       "note": "合作譜面",
       "tags": ["collab"]
-    },
-    {
-      "title": "Nanokuro Cup — Crystal brilliance",
-      "composer": "Nanokuro / Event",
-      "charter": "Nanokuro / Event",
-      "difficulty": "Event",
-      "keymode": "Phigros",
-      "status": "archive",
-      "note": "企画・合作イベント枠",
-      "tags": ["cup"]
-    },
-    {
-      "title": "Nanokuro Cup — (execute.)",
-      "composer": "Nanokuro / Event",
-      "charter": "Nanokuro / Event",
-      "difficulty": "Event",
-      "keymode": "Phigros",
-      "status": "archive",
-      "note": "企画・合作イベント枠",
-      "tags": ["cup"]
-    },
-    {
-      "title": "KIZUNA Resolution",
-      "composer": "Nanokuro + Collaborators",
-      "charter": "—",
-      "difficulty": "—",
-      "keymode": "Phigros",
-      "status": "soon",
-      "note": "合作カテゴリ",
-      "tags": ["collab"]
-    },
-    {
-      "title": "Labyrinth Of Kowloon (Fanmade)",
-      "composer": "Nanokuro",
-      "charter": "Nanokuro",
-      "difficulty": "—",
-      "keymode": "Phigros",
-      "status": "soon",
-      "note": "非公式ファンメイド。公式作品ではありません",
-      "tags": ["collab"]
     }
   ],
   "keymodes": [
     {
-      "title": "（4K / 6K 専用譜面）",
+      "title": "KIZUNA Resolution",
       "composer": "Nanokuro",
       "charter": "Nanokuro",
-      "difficulty": "—",
-      "keymode": "4K / 6K",
-      "status": "soon",
-      "note": "キーモード専用枠。収録準備中",
-      "tags": ["4k", "6k"]
+      "difficulty": "4K Lv.17.2",
+      "keymode": "4K",
+      "status": "archive",
+      "note": "その他 / 4K",
+      "tags": ["others", "4k"]
     }
   ]
 }
