@@ -46,3 +46,12 @@ Changed files:
 - charts/crystal-brilliance/Crystal-brilliance-IN-Lv16.zip
 - charts/crystal-brilliance/Crystal-brilliance-IN-Lv16-NoShader.zip
 ---
+
+---
+Date: 2026-10-29
+Task: クッションを同一ページ内モーダルに変更
+Changed files:
+- js/site.js
+- css/site.css
+- chart.html
+---

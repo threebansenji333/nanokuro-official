@@ -18,6 +18,10 @@
     youtubeChannelDefault: 'https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw'
   };
 
+  var vaultCache = null;
+  var vaultCategory = null;
+  var lastFocusEl = null;
+
   function qs(sel, root) {
     return (root || document).querySelector(sel);
   }
@@ -75,61 +79,6 @@
     return null;
   }
 
-  function renderChartList(container, charts) {
-    if (!container) return;
-    if (!charts || !charts.length) {
-      container.innerHTML = '<div class="empty-state">NO ENTRIES IN THIS CATEGORY YET</div>';
-      return;
-    }
-    var html = '<ul class="chart-list">';
-    charts.forEach(function (c) {
-      var meta = [c.difficulty || '', c.keymode || 'Phigros', c.composer || '']
-        .filter(Boolean)
-        .join(' · ');
-      var action;
-      if (c.id) {
-        action = '<a class="btn" href="chart.html?id=' + encodeURIComponent(c.id) + '">詳細 / DL</a>';
-      } else if (c.download) {
-        action = '<a class="btn" href="' + escapeHtml(c.download) + '" download>DOWNLOAD</a>';
-      } else {
-        action = '<span class="btn" aria-disabled="true">準備中</span>';
-      }
-      html +=
-        '<li class="chart-item" data-tags="' + (c.tags || []).join(' ') + '">' +
-          '<div>' +
-            '<h3 class="chart-item__title">' + escapeHtml(c.title) + '</h3>' +
-            '<p class="chart-item__meta">' + escapeHtml(meta) + (c.note ? ' · ' + escapeHtml(c.note) : '') + '</p>' +
-          '</div>' +
-          '<div class="chart-item__actions">' +
-            statusBadge(c.status || 'soon') +
-            action +
-          '</div>' +
-        '</li>';
-    });
-    html += '</ul>';
-    container.innerHTML = html;
-  }
-
-  function loadVault(category) {
-    var mount = qs('#chart-mount');
-    if (!mount) return;
-    mount.innerHTML = '<div class="empty-state">LOADING...</div>';
-    fetch('data/charts.json', { cache: 'no-store' })
-      .then(function (r) {
-        if (!r.ok) throw new Error('failed');
-        return r.json();
-      })
-      .then(function (data) {
-        var list = (data && data[category]) || [];
-        renderChartList(mount, list);
-        var count = qs('#chart-count');
-        if (count) count.textContent = String(list.length);
-      })
-      .catch(function () {
-        mount.innerHTML = '<div class="empty-state">FAILED TO LOAD CHART INDEX</div>';
-      });
-  }
-
   function unique(arr) {
     var out = [];
     arr.forEach(function (v) {
@@ -144,46 +93,89 @@
     return diff + ' Lv.' + constant;
   }
 
-  function initChartCushion() {
-    var mount = qs('#cushion-mount');
-    if (!mount || document.body.getAttribute('data-page') !== 'chart-cushion') return;
+  function ensureCushionHost() {
+    var host = qs('#cushion-host');
+    if (host) return host;
+    host = document.createElement('div');
+    host.id = 'cushion-host';
+    host.className = 'cushion-host';
+    host.hidden = true;
+    host.innerHTML =
+      '<div class="cushion-backdrop" data-cushion-close="1"></div>' +
+      '<div class="cushion-panel" role="dialog" aria-modal="true" aria-labelledby="cushion-title">' +
+        '<div class="cushion-panel__head">' +
+          '<div>' +
+            '<p class="cushion-panel__eyebrow">DOWNLOAD CUSHION</p>' +
+            '<h2 id="cushion-title">—</h2>' +
+          '</div>' +
+          '<button type="button" class="cushion-close" data-cushion-close="1" aria-label="閉じる">×</button>' +
+        '</div>' +
+        '<div id="cushion-mount" class="cushion"></div>' +
+      '</div>';
+    document.body.appendChild(host);
 
-    var params = new URLSearchParams(location.search);
-    var id = params.get('id');
-    if (!id) {
-      mount.innerHTML = '<div class="empty-state">CHART ID MISSING</div>';
-      return;
-    }
-
-    fetch('data/charts.json', { cache: 'no-store' })
-      .then(function (r) {
-        if (!r.ok) throw new Error('failed');
-        return r.json();
-      })
-      .then(function (data) {
-        var hit = findChartById(data, id);
-        if (!hit) {
-          mount.innerHTML = '<div class="empty-state">CHART NOT FOUND</div>';
-          return;
-        }
-        renderCushion(hit.chart, hit.category);
-      })
-      .catch(function () {
-        mount.innerHTML = '<div class="empty-state">FAILED TO LOAD CHART</div>';
-      });
+    host.addEventListener('click', function (e) {
+      var t = e.target;
+      if (t && t.getAttribute && t.getAttribute('data-cushion-close') === '1') {
+        closeCushion();
+      }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !host.hidden) closeCushion();
+    });
+    return host;
   }
 
-  function renderCushion(chart, category) {
-    var mount = qs('#cushion-mount');
-    var titleEl = qs('#chart-title');
-    if (titleEl) titleEl.textContent = chart.title || '—';
-    document.title = (chart.title || 'Chart') + ' — NANOKURO Vault';
+  function openCushion(chart) {
+    var host = ensureCushionHost();
+    lastFocusEl = document.activeElement;
+    qs('#cushion-title', host).textContent = chart.title || '—';
+    renderCushionBody(chart, qs('#cushion-mount', host));
+    host.hidden = false;
+    document.body.classList.add('cushion-open');
+    var closeBtn = qs('.cushion-close', host);
+    if (closeBtn) closeBtn.focus();
+  }
 
+  function closeCushion() {
+    var host = qs('#cushion-host');
+    if (!host) return;
+    host.hidden = true;
+    document.body.classList.remove('cushion-open');
+    if (lastFocusEl && typeof lastFocusEl.focus === 'function') {
+      try { lastFocusEl.focus(); } catch (e) {}
+    }
+  }
+
+  function renderCushionBody(chart, mount) {
+    if (!mount) return;
     var variants = chart.variants || [];
     var yt = chart.youtubeChannel || CONFIG.youtubeChannelDefault;
-    var backHref = category === 'collab'
-      ? 'vault-collab.html'
-      : (category === 'keymodes' ? 'vault-keymodes.html' : 'vault-standard.html');
+
+    if (!variants.length) {
+      mount.innerHTML =
+        '<section class="cushion-meta">' +
+          '<dl>' +
+            '<dt>曲名</dt><dd>' + escapeHtml(chart.title || '—') + '</dd>' +
+            '<dt>コンポーザー</dt><dd>' + escapeHtml(chart.composer || '—') + '</dd>' +
+            '<dt>譜面制作者</dt><dd>' + escapeHtml(chart.charter || 'Nanokuro') + '</dd>' +
+            '<dt>難易度</dt><dd>' + escapeHtml(chart.difficulty || '—') + '</dd>' +
+          '</dl>' +
+          '<p class="cushion-hint">' +
+            escapeHtml(chart.detailHint || '詳細は YouTube 概要欄を参照してください。') +
+            ' <a href="' + escapeHtml(yt) + '" target="_blank" rel="noopener noreferrer">YouTube チャンネルを開く</a>' +
+          '</p>' +
+        '</section>' +
+        '<section class="cushion-pick">' +
+          '<p class="cushion-summary">この譜面のダウンロードファイルはまだ接続されていません。</p>' +
+          '<div class="cushion-actions">' +
+            '<span class="btn btn-primary" aria-disabled="true">DOWNLOAD 準備中</span>' +
+            '<button type="button" class="btn" data-cushion-close="1">閉じる</button>' +
+            '<a class="btn" href="notice.html">注意事項</a>' +
+          '</div>' +
+        '</section>';
+      return;
+    }
 
     var difficulties = unique(variants.map(function (v) { return v.difficulty; }).filter(Boolean));
     var state = {
@@ -198,19 +190,17 @@
     }
 
     function shaderOptions() {
-      var opts = unique(variantsForDiff().map(function (v) {
+      return unique(variantsForDiff().map(function (v) {
         return v.shader ? 'on' : 'off';
       }));
-      return opts;
     }
 
     function currentVariant() {
-      var list = variantsForDiff().filter(function (v) {
+      return variantsForDiff().filter(function (v) {
         if (state.shader === 'on') return !!v.shader;
         if (state.shader === 'off') return !v.shader;
         return true;
-      });
-      return list[0] || null;
+      })[0] || null;
     }
 
     function ensureShaderDefault() {
@@ -234,8 +224,7 @@
 
       var diffBtns = difficulties.map(function (d) {
         return '<button type="button" data-diff="' + escapeHtml(d) + '" aria-pressed="' +
-          (state.difficulty === d ? 'true' : 'false') + '"' +
-          (difficulties.length ? '' : ' disabled') + '>' + escapeHtml(d) + '</button>';
+          (state.difficulty === d ? 'true' : 'false') + '">' + escapeHtml(d) + '</button>';
       }).join('');
 
       var shaderBtns = shaderOpts.map(function (s) {
@@ -254,11 +243,9 @@
             '<dt>曲名</dt><dd>' + escapeHtml(chart.title || '—') + '</dd>' +
             '<dt>コンポーザー</dt><dd>' + escapeHtml(chart.composer || '—') + '</dd>' +
             '<dt>譜面制作者</dt><dd>' + escapeHtml(chart.charter || 'Nanokuro') + '</dd>' +
-            '<dt>難易度</dt><dd id="meta-diff">' + escapeHtml(constLabel) + '</dd>' +
+            '<dt>難易度</dt><dd>' + escapeHtml(constLabel) + '</dd>' +
             '<dt>キーモード</dt><dd>' + escapeHtml(chart.keymode || 'Phigros') + '</dd>' +
-            '<dt>シェーダー</dt><dd id="meta-shader">' +
-              escapeHtml(v ? (v.shader ? 'あり' : 'なし') : '—') +
-            '</dd>' +
+            '<dt>シェーダー</dt><dd>' + escapeHtml(v ? (v.shader ? 'あり' : 'なし') : '—') + '</dd>' +
           '</dl>' +
           '<p class="cushion-hint">' +
             escapeHtml(chart.detailHint || '定数や譜面制作者などの詳細は YouTube 概要欄を参照してください。') +
@@ -267,22 +254,16 @@
         '</section>' +
         '<section class="cushion-pick" aria-label="差分選択">' +
           '<h2>DIFF / SHADER</h2>' +
-          (difficulties.length
-            ? '<div class="cushion-row"><div class="cushion-row__label">難易度差分</div><div class="cushion-options" id="diff-options">' + diffBtns + '</div></div>'
-            : '<p class="cushion-hint">難易度差分はまだ登録されていません。</p>') +
-          (shaderOpts.length > 1
+          '<div class="cushion-row"><div class="cushion-row__label">難易度差分</div><div class="cushion-options" id="diff-options">' + diffBtns + '</div></div>' +
+          (shaderOpts.length
             ? '<div class="cushion-row"><div class="cushion-row__label">シェーダー</div><div class="cushion-options" id="shader-options">' + shaderBtns + '</div></div>'
-            : (shaderOpts.length === 1
-              ? '<div class="cushion-row"><div class="cushion-row__label">シェーダー</div><div class="cushion-options">' + shaderBtns + '</div></div>'
-              : '')) +
-          '<p class="cushion-summary" id="cushion-summary">' +
-            '選択中: ' + escapeHtml(v ? (v.label || constLabel) : 'なし') +
-          '</p>' +
+            : '') +
+          '<p class="cushion-summary">選択中: ' + escapeHtml(v ? (v.label || constLabel) : 'なし') + '</p>' +
           '<div class="cushion-actions">' +
             (dlDisabled
               ? '<span class="btn btn-primary" aria-disabled="true">DOWNLOAD 準備中</span>'
-              : '<a class="btn btn-primary" id="dl-btn" href="' + escapeHtml(dlHref) + '" download="' + escapeHtml(dlName) + '">DOWNLOAD</a>') +
-            '<a class="btn" href="' + backHref + '">一覧に戻る</a>' +
+              : '<a class="btn btn-primary" href="' + escapeHtml(dlHref) + '" download="' + escapeHtml(dlName) + '">DOWNLOAD</a>') +
+            '<button type="button" class="btn" data-cushion-close="1">閉じる</button>' +
             '<a class="btn" href="notice.html">注意事項</a>' +
           '</div>' +
         '</section>';
@@ -301,31 +282,85 @@
       });
     }
 
-    if (!variants.length) {
-      mount.innerHTML =
-        '<section class="cushion-meta">' +
-          '<dl>' +
-            '<dt>曲名</dt><dd>' + escapeHtml(chart.title || '—') + '</dd>' +
-            '<dt>コンポーザー</dt><dd>' + escapeHtml(chart.composer || '—') + '</dd>' +
-            '<dt>譜面制作者</dt><dd>' + escapeHtml(chart.charter || 'Nanokuro') + '</dd>' +
-            '<dt>難易度</dt><dd>' + escapeHtml(chart.difficulty || '—') + '</dd>' +
-          '</dl>' +
-          '<p class="cushion-hint">' +
-            escapeHtml(chart.detailHint || '詳細は YouTube 概要欄を参照してください。') +
-            ' <a href="' + escapeHtml(yt) + '" target="_blank" rel="noopener noreferrer">YouTube チャンネルを開く</a>' +
-          '</p>' +
-        '</section>' +
-        '<section class="cushion-pick">' +
-          '<p class="cushion-summary">この譜面のダウンロードファイルはまだ接続されていません。</p>' +
-          '<div class="cushion-actions">' +
-            '<span class="btn btn-primary" aria-disabled="true">DOWNLOAD 準備中</span>' +
-            '<a class="btn" href="' + backHref + '">一覧に戻る</a>' +
-          '</div>' +
-        '</section>';
+    paint();
+  }
+
+  function bindChartListActions(container, charts) {
+    qsa('[data-open-cushion]', container).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var id = btn.getAttribute('data-open-cushion');
+        var chart = null;
+        for (var i = 0; i < charts.length; i++) {
+          if (charts[i].id === id) {
+            chart = charts[i];
+            break;
+          }
+        }
+        if (!chart && vaultCache) {
+          var hit = findChartById(vaultCache, id);
+          chart = hit && hit.chart;
+        }
+        if (chart) openCushion(chart);
+      });
+    });
+  }
+
+  function renderChartList(container, charts) {
+    if (!container) return;
+    if (!charts || !charts.length) {
+      container.innerHTML = '<div class="empty-state">NO ENTRIES IN THIS CATEGORY YET</div>';
       return;
     }
+    var html = '<ul class="chart-list">';
+    charts.forEach(function (c) {
+      var meta = [c.difficulty || '', c.keymode || 'Phigros', c.composer || '']
+        .filter(Boolean)
+        .join(' · ');
+      var action;
+      if (c.id) {
+        action = '<button type="button" class="btn" data-open-cushion="' + escapeHtml(c.id) + '">詳細 / DL</button>';
+      } else if (c.download) {
+        action = '<a class="btn" href="' + escapeHtml(c.download) + '" download>DOWNLOAD</a>';
+      } else {
+        action = '<span class="btn" aria-disabled="true">準備中</span>';
+      }
+      html +=
+        '<li class="chart-item" data-tags="' + (c.tags || []).join(' ') + '">' +
+          '<div>' +
+            '<h3 class="chart-item__title">' + escapeHtml(c.title) + '</h3>' +
+            '<p class="chart-item__meta">' + escapeHtml(meta) + (c.note ? ' · ' + escapeHtml(c.note) : '') + '</p>' +
+          '</div>' +
+          '<div class="chart-item__actions">' +
+            statusBadge(c.status || 'soon') +
+            action +
+          '</div>' +
+        '</li>';
+    });
+    html += '</ul>';
+    container.innerHTML = html;
+    bindChartListActions(container, charts);
+  }
 
-    paint();
+  function loadVault(category) {
+    var mount = qs('#chart-mount');
+    if (!mount) return;
+    vaultCategory = category;
+    mount.innerHTML = '<div class="empty-state">LOADING...</div>';
+    fetch('data/charts.json', { cache: 'no-store' })
+      .then(function (r) {
+        if (!r.ok) throw new Error('failed');
+        return r.json();
+      })
+      .then(function (data) {
+        vaultCache = data;
+        var list = (data && data[category]) || [];
+        renderChartList(mount, list);
+        var count = qs('#chart-count');
+        if (count) count.textContent = String(list.length);
+      })
+      .catch(function () {
+        mount.innerHTML = '<div class="empty-state">FAILED TO LOAD CHART INDEX</div>';
+      });
   }
 
   function boot() {
@@ -334,7 +369,6 @@
     wireSecondBanners();
     var cat = document.body.getAttribute('data-vault');
     if (cat) loadVault(cat);
-    initChartCushion();
   }
 
   if (document.readyState === 'loading') {
@@ -345,6 +379,8 @@
 
   window.NanokuroSite = {
     config: CONFIG,
-    loadVault: loadVault
+    loadVault: loadVault,
+    openCushion: openCushion,
+    closeCushion: closeCushion
   };
 })();
