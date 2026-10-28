@@ -4,39 +4,42 @@
       "id": "crystal-brilliance",
       "title": "Crystal brilliance",
       "composer": "Tak_mfk",
-      "charter": "Nanokuro",
-      "difficulty": "IN Lv.16 / AT Lv.16",
+      "charter": "IN: Nanokuro / AT: Nanokuro · Wingbat",
+      "difficulty": "IN Lv.16.0 / AT Lv.16.5",
       "keymode": "Phigros",
       "status": "open",
-      "note": "差分3種（Shader有無あり）",
+      "note": "ATは合作。差分3種（Shader有無あり）",
       "tags": ["brilliance"],
       "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
       "detailHint": "曲名・コンポーザー・譜面制作者・難易度定数などの詳細は、YouTubeチャンネル投稿動画の概要欄を参照してください。",
       "variants": [
         {
           "id": "at-16",
-          "label": "AT Lv.16",
+          "label": "AT Lv.16.5",
           "difficulty": "AT",
-          "constant": "16",
+          "constant": "16.5",
           "shader": true,
+          "charter": "Nanokuro / Wingbat",
           "file": "charts/crystal-brilliance/Crystal-brilliance-AT-Lv16.zip",
           "downloadName": "Crystal brilliance(AT Lv.16).zip"
         },
         {
           "id": "in-16",
-          "label": "IN Lv.16",
+          "label": "IN Lv.16.0",
           "difficulty": "IN",
-          "constant": "16",
+          "constant": "16.0",
           "shader": true,
+          "charter": "Nanokuro",
           "file": "charts/crystal-brilliance/Crystal-brilliance-IN-Lv16.zip",
           "downloadName": "Crystal brilliance(IN Lv.16).zip"
         },
         {
           "id": "in-16-noshader",
-          "label": "IN Lv.16 (No Shader)",
+          "label": "IN Lv.16.0 (No Shader)",
           "difficulty": "IN",
-          "constant": "16",
+          "constant": "16.0",
           "shader": false,
+          "charter": "Nanokuro",
           "file": "charts/crystal-brilliance/Crystal-brilliance-IN-Lv16-NoShader.zip",
           "downloadName": "Crystal brilliance(IN Lv.16)(No Shader).zip"
         }
@@ -45,32 +48,17 @@
     {
       "title": "Glacial brilliance",
       "composer": "Nanokuro",
-      "difficulty": "IN / AT",
+      "charter": "Nanokuro",
+      "difficulty": "IN Lv.14.8",
       "keymode": "Phigros",
       "status": "archive",
       "note": "ソロ制作",
       "tags": ["brilliance"]
-    },
-    {
-      "title": "Relative brilliance",
-      "composer": "Nanokuro",
-      "difficulty": "IN / AT",
-      "keymode": "Phigros",
-      "status": "archive",
-      "note": "ソロ制作",
-      "tags": ["brilliance"]
-    },
-    {
-      "title": "(execute.)",
-      "composer": "Nanokuro",
-      "difficulty": "AT",
-      "keymode": "Phigros",
-      "status": "archive",
-      "tags": ["power"]
     },
     {
       "title": "Memories Sacrifice",
       "composer": "Nanokuro",
+      "charter": "Nanokuro",
       "difficulty": "AT Lv.16.0",
       "keymode": "Phigros",
       "status": "archive",
@@ -88,7 +76,8 @@
     {
       "title": "Clock Paradox",
       "composer": "Nanokuro",
-      "difficulty": "AT",
+      "charter": "Nanokuro",
+      "difficulty": "AT Lv.15.0",
       "keymode": "Phigros",
       "status": "archive",
       "tags": []
@@ -96,6 +85,7 @@
     {
       "title": "ABYSS MOTION 192.333",
       "composer": "Nanokuro",
+      "charter": "Nanokuro",
       "difficulty": "AT Lv.16.3",
       "keymode": "Phigros",
       "status": "archive",
@@ -104,7 +94,8 @@
     {
       "title": "SAN値直葬",
       "composer": "Nanokuro",
-      "difficulty": "AT Lv.15",
+      "charter": "Nanokuro",
+      "difficulty": "AT Lv.15.7",
       "keymode": "Phigros",
       "status": "archive",
       "tags": []
@@ -112,33 +103,17 @@
     {
       "title": "インドア系ならトラックメイカー",
       "composer": "Nanokuro",
+      "charter": "Nanokuro",
       "difficulty": "IN Lv.14.0",
       "keymode": "Phigros",
       "status": "archive",
       "tags": []
     },
     {
-      "title": "Unraveling Stasis",
-      "composer": "Nanokuro",
-      "difficulty": "AT",
-      "keymode": "Phigros",
-      "status": "archive",
-      "note": "1st Collections 収録系",
-      "tags": ["complex"]
-    },
-    {
-      "title": "Xaleid◆scopiX",
-      "composer": "Nanokuro",
-      "difficulty": "AT",
-      "keymode": "Phigros",
-      "status": "archive",
-      "note": "1st Collections 収録系",
-      "tags": ["complex"]
-    },
-    {
       "title": "覚醒",
       "composer": "Nanokuro",
-      "difficulty": "—",
+      "charter": "Nanokuro",
+      "difficulty": "IN Lv.14.2",
       "keymode": "Phigros",
       "status": "archive",
       "note": "1st Collections 収録系",
@@ -147,8 +122,79 @@
   ],
   "collab": [
     {
+      "title": "Relative brilliance",
+      "composer": "Nanokuro",
+      "charter": "Nanokuro / fevm1r",
+      "difficulty": "IN Lv.15.0",
+      "keymode": "Phigros",
+      "status": "archive",
+      "note": "合作譜面",
+      "tags": ["collab", "brilliance"]
+    },
+    {
+      "title": "(execute.)",
+      "composer": "Nanokuro",
+      "charter": "Monokuro / Fevm1r",
+      "difficulty": "AT Lv.17.4",
+      "keymode": "Phigros",
+      "status": "archive",
+      "note": "合作譜面",
+      "tags": ["collab", "power"]
+    },
+    {
+      "title": "Unraveling Stasis",
+      "composer": "Nanokuro",
+      "charter": "Nanokuro / 山田悠牙",
+      "difficulty": "AT Lv.18.5",
+      "keymode": "Phigros",
+      "status": "archive",
+      "note": "合作譜面",
+      "tags": ["collab", "complex"]
+    },
+    {
+      "title": "Xaleid◆scopiX",
+      "composer": "Nanokuro",
+      "charter": "Fevm1r / Nanokuro / wingbat",
+      "difficulty": "AT Lv.18.2",
+      "keymode": "Phigros",
+      "status": "archive",
+      "note": "合作譜面",
+      "tags": ["collab", "complex"]
+    },
+    {
+      "title": "First Breath",
+      "composer": "—",
+      "charter": "Detection of Protection",
+      "difficulty": "AT Lv.17.5",
+      "keymode": "Phigros",
+      "status": "archive",
+      "note": "合作譜面",
+      "tags": ["collab"]
+    },
+    {
+      "title": "BATTLE NO.1",
+      "composer": "—",
+      "charter": "PFM Charting Team",
+      "difficulty": "IN Lv.16.2 / AT Lv.16.9",
+      "keymode": "Phigros",
+      "status": "archive",
+      "note": "合作譜面（IN / AT）",
+      "tags": ["collab"]
+    },
+    {
+      "title": "INFINITE HYPERDRIVE",
+      "composer": "—",
+      "charter": "Chaos / Nanokuro",
+      "difficulty": "IN Lv.14.9",
+      "keymode": "Phigros",
+      "status": "archive",
+      "note": "合作譜面",
+      "tags": ["collab"]
+    },
+    {
       "title": "Nanokuro Cup — Crystal brilliance",
       "composer": "Nanokuro / Event",
+      "charter": "Nanokuro / Event",
       "difficulty": "Event",
       "keymode": "Phigros",
       "status": "archive",
@@ -158,6 +204,7 @@
     {
       "title": "Nanokuro Cup — (execute.)",
       "composer": "Nanokuro / Event",
+      "charter": "Nanokuro / Event",
       "difficulty": "Event",
       "keymode": "Phigros",
       "status": "archive",
@@ -167,6 +214,7 @@
     {
       "title": "KIZUNA Resolution",
       "composer": "Nanokuro + Collaborators",
+      "charter": "—",
       "difficulty": "—",
       "keymode": "Phigros",
       "status": "soon",
@@ -176,6 +224,7 @@
     {
       "title": "Labyrinth Of Kowloon (Fanmade)",
       "composer": "Nanokuro",
+      "charter": "Nanokuro",
       "difficulty": "—",
       "keymode": "Phigros",
       "status": "soon",
@@ -187,6 +236,7 @@
     {
       "title": "（4K / 6K 専用譜面）",
       "composer": "Nanokuro",
+      "charter": "Nanokuro",
       "difficulty": "—",
       "keymode": "4K / 6K",
       "status": "soon",

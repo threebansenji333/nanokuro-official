@@ -85,3 +85,18 @@ Changed files:
 - vault-keymodes.html
 - notice.html
 ---
+
+---
+Date: 2026-10-29
+Task: 譜面定数表更新と合作譜面の追加・移動
+Changed files:
+- data/charts.json
+- js/site.js
+- index.html
+- home.html
+- vault.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- notice.html
+---

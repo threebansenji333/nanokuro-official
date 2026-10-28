@@ -267,7 +267,7 @@
           '<dl>' +
             '<dt>曲名</dt><dd>' + escapeHtml(chart.title || '—') + '</dd>' +
             '<dt>コンポーザー</dt><dd>' + escapeHtml(chart.composer || '—') + '</dd>' +
-            '<dt>譜面制作者</dt><dd>' + escapeHtml(chart.charter || 'Nanokuro') + '</dd>' +
+            '<dt>譜面制作者</dt><dd>' + escapeHtml((v && v.charter) || chart.charter || 'Nanokuro') + '</dd>' +
             '<dt>難易度</dt><dd>' + escapeHtml(constLabel) + '</dd>' +
             '<dt>キーモード</dt><dd>' + escapeHtml(chart.keymode || 'Phigros') + '</dd>' +
             '<dt>シェーダー</dt><dd>' + escapeHtml(v ? (v.shader ? 'あり' : 'なし') : '—') + '</dd>' +
@@ -338,7 +338,7 @@
     }
     var html = '<ul class="chart-list">';
     charts.forEach(function (c) {
-      var meta = [c.keymode || 'Phigros', c.composer || '']
+      var meta = [c.keymode || 'Phigros', c.composer || '', c.charter ? ('Chart: ' + c.charter) : '']
         .filter(Boolean)
         .join(' · ');
       var action;
@@ -376,7 +376,7 @@
     if (!mount) return;
     vaultCategory = category;
     mount.innerHTML = '<div class="empty-state">LOADING...</div>';
-    fetch('data/charts.json?v=20261029b', { cache: 'no-store' })
+    fetch('data/charts.json?v=20261029c', { cache: 'no-store' })
       .then(function (r) {
         if (!r.ok) throw new Error('failed');
         return r.json();
