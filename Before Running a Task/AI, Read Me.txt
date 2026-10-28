@@ -229,3 +229,19 @@ Changed files:
 - vault-all.html
 - notice.html
 ---
+
+---
+Date: 2026-10-29
+Task: 背景BGMが全ページで継続再生されるよう修正
+Changed files:
+- js/bgm.js
+- js/site.js
+- index.html
+- home.html
+- vault.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- vault-all.html
+- notice.html
+---

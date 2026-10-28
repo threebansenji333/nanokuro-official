@@ -29,6 +29,7 @@
     query: ''
   };
   var lastFocusEl = null;
+  var cushionEscBound = false;
 
   function qs(sel, root) {
     return (root || document).querySelector(sel);
@@ -164,9 +165,13 @@
         closeCushion();
       }
     });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && !host.hidden) closeCushion();
-    });
+    if (!cushionEscBound) {
+      cushionEscBound = true;
+      document.addEventListener('keydown', function (e) {
+        var h = qs('#cushion-host');
+        if (e.key === 'Escape' && h && !h.hidden) closeCushion();
+      });
+    }
     return host;
   }
 
@@ -679,6 +684,7 @@
     config: CONFIG,
     loadVault: loadVault,
     openCushion: openCushion,
-    closeCushion: closeCushion
+    closeCushion: closeCushion,
+    reboot: boot
   };
 })();
