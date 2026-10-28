@@ -212,3 +212,20 @@ Changed files:
 - vault-all.html
 - notice.html
 ---
+
+---
+Date: 2026-10-29
+Task: 全HTMLへ背景BGM導入（ページ跨ぎ連続再生）
+Changed files:
+- audio/naki-sekai-no-komoriuta.mp3
+- js/bgm.js
+- css/site.css
+- index.html
+- home.html
+- vault.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- vault-all.html
+- notice.html
+---

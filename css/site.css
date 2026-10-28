@@ -942,3 +942,35 @@ body.cushion-open {
   }
   .chart-item__actions { justify-content: flex-start; }
 }
+
+/* Cross-page background BGM toggle */
+.bgm-toggle {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 90;
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: rgba(8, 10, 18, 0.88);
+  color: var(--ink-soft);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease), background 0.2s var(--ease);
+}
+
+.bgm-toggle:hover,
+.bgm-toggle:focus-visible {
+  color: var(--cyan);
+  border-color: rgba(94, 231, 255, 0.45);
+  outline: none;
+}
+
+.bgm-toggle.is-muted {
+  color: var(--ink-mute);
+  opacity: 0.85;
+}
