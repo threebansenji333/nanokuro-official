@@ -134,3 +134,10 @@ Changed files:
 - vault-keymodes.html
 - notice.html
 ---
+
+---
+Date: 2026-10-29
+Task: Meteoric Impact緩和前をAT Lv.18.5版へ差し替え確認
+Changed files:
+- （なし）
+---
