@@ -418,7 +418,12 @@
         '<li class="chart-item" data-tags="' + (c.tags || []).join(' ') + '">' +
           '<div>' +
             '<h3 class="chart-item__title">' + escapeHtml(c.title) + '</h3>' +
-            '<p class="chart-item__meta">' + escapeHtml(meta) + (c.note ? ' · ' + escapeHtml(c.note) : '') + '</p>' +
+            '<p class="chart-item__meta">' +
+              (c.listCategory
+                ? '<span class="badge cat-badge">' + escapeHtml(c.listCategory) + '</span> '
+                : '') +
+              escapeHtml(meta) + (c.note ? ' · ' + escapeHtml(c.note) : '') +
+            '</p>' +
           '</div>' +
           '<div class="chart-item__actions">' +
             '<div class="chart-item__marks">' +
@@ -439,14 +444,28 @@
     if (!mount) return;
     vaultCategory = category;
     mount.innerHTML = '<div class="empty-state">LOADING...</div>';
-    fetch('data/charts.json?v=20261029g', { cache: 'no-store' })
+    fetch('data/charts.json?v=20261029h', { cache: 'no-store' })
       .then(function (r) {
         if (!r.ok) throw new Error('failed');
         return r.json();
       })
       .then(function (data) {
         vaultCache = data;
-        var list = (data && data[category]) || [];
+        var list;
+        if (category === 'all') {
+          list = []
+            .concat(((data && data.standard) || []).map(function (c) {
+              return Object.assign({}, c, { listCategory: '個人' });
+            }))
+            .concat(((data && data.collab) || []).map(function (c) {
+              return Object.assign({}, c, { listCategory: '合作' });
+            }))
+            .concat(((data && data.keymodes) || []).map(function (c) {
+              return Object.assign({}, c, { listCategory: 'その他' });
+            }));
+        } else {
+          list = (data && data[category]) || [];
+        }
         renderChartList(mount, list);
         var count = qs('#chart-count');
         if (count) count.textContent = String(list.length);

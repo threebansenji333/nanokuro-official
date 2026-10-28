@@ -180,3 +180,19 @@ Changed files:
 - vault-keymodes.html
 - notice.html
 ---
+
+---
+Date: 2026-10-29
+Task: 保管庫文言変更と譜面一覧ページ追加
+Changed files:
+- vault.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- vault-all.html
+- home.html
+- js/site.js
+- css/site.css
+- index.html
+- notice.html
+---

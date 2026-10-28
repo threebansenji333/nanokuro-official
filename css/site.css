@@ -503,6 +503,12 @@ button { font: inherit; }
   border-color: rgba(170, 200, 255, 0.28);
   letter-spacing: 0.08em;
 }
+.badge.cat-badge {
+  color: var(--cyan);
+  border-color: rgba(94, 231, 255, 0.35);
+  margin-right: 4px;
+  vertical-align: middle;
+}
 .badge.diff-glow-purple {
   color: #e0d0ff;
   border-color: rgba(180, 120, 255, 0.55);
