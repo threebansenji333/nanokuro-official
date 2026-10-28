@@ -245,3 +245,18 @@ Changed files:
 - vault-all.html
 - notice.html
 ---
+
+---
+Date: 2026-10-29
+Task: BGM ON/OFFで自動再生設定を切り替え可能に
+Changed files:
+- js/bgm.js
+- index.html
+- home.html
+- vault.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- vault-all.html
+- notice.html
+---

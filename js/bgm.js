@@ -2,9 +2,9 @@
   'use strict';
 
   var STORAGE_TIME = 'nk-bgm-t';
-  var STORAGE_WANT = 'nk-bgm-want';
   var STORAGE_UNLOCKED = 'nk-bgm-unlocked';
-  var STORAGE_MUTED = 'nk-bgm-muted';
+  /* BGM ON/OFF = 自動再生の永続設定 */
+  var STORAGE_AUTOPLAY = 'nk-bgm-autoplay';
   var FILE = 'naki-sekai-no-komoriuta.mp3';
   var VOLUME = 0.32;
 
@@ -23,6 +23,15 @@
     }
   }
 
+  function readAutoplay() {
+    var v = localStorage.getItem(STORAGE_AUTOPLAY);
+    if (v === '0') return false;
+    if (v === '1') return true;
+    /* 旧キー互換: muted だったら自動再生オフ */
+    if (localStorage.getItem('nk-bgm-muted') === '1') return false;
+    return true;
+  }
+
   var audio = new Audio();
   audio.src = resolveSrc();
   audio.loop = true;
@@ -31,10 +40,8 @@
   audio.setAttribute('playsinline', '');
   audio.setAttribute('aria-hidden', 'true');
 
-  var muted = localStorage.getItem(STORAGE_MUTED) === '1';
+  var autoplay = readAutoplay();
   var unlocked = sessionStorage.getItem(STORAGE_UNLOCKED) === '1';
-  /* User intent: keep playing across pages unless muted. Do NOT sync from audio.paused. */
-  var wantPlay = !muted && sessionStorage.getItem(STORAGE_WANT) !== '0';
   var button = null;
   var persistTimer = null;
   var started = false;
@@ -51,9 +58,8 @@
       if (!isNaN(audio.currentTime)) {
         sessionStorage.setItem(STORAGE_TIME, String(audio.currentTime));
       }
-      sessionStorage.setItem(STORAGE_WANT, wantPlay ? '1' : '0');
       if (unlocked) sessionStorage.setItem(STORAGE_UNLOCKED, '1');
-      localStorage.setItem(STORAGE_MUTED, muted ? '1' : '0');
+      localStorage.setItem(STORAGE_AUTOPLAY, autoplay ? '1' : '0');
     } catch (e) { /* ignore */ }
   }
 
@@ -65,20 +71,25 @@
     }, 200);
   }
 
-  function applyMute() {
-    audio.muted = muted;
-    if (button) {
-      button.setAttribute('aria-pressed', muted ? 'true' : 'false');
-      button.classList.toggle('is-muted', muted);
-      button.title = muted ? 'BGMをオン' : 'BGMをミュート';
-      button.setAttribute('aria-label', muted ? 'BGMをオンにする' : 'BGMをミュートする');
-      button.textContent = muted ? 'BGM OFF' : 'BGM ON';
-    }
+  function syncButton() {
+    if (!button) return;
+    var on = autoplay;
+    button.setAttribute('aria-pressed', on ? 'false' : 'true');
+    button.classList.toggle('is-muted', !on);
+    button.title = on
+      ? 'BGM自動再生オン（クリックでオフ）'
+      : 'BGM自動再生オフ（クリックでオン）';
+    button.setAttribute(
+      'aria-label',
+      on ? 'BGM自動再生をオフにする' : 'BGM自動再生をオンにする'
+    );
+    button.textContent = on ? 'BGM ON' : 'BGM OFF';
   }
 
   function tryPlay() {
-    if (!wantPlay || muted) {
-      applyMute();
+    syncButton();
+    if (!autoplay) {
+      if (!audio.paused) audio.pause();
       return;
     }
     var p = audio.play();
@@ -86,12 +97,10 @@
       p.then(function () {
         unlocked = true;
         sessionStorage.setItem(STORAGE_UNLOCKED, '1');
-        applyMute();
+        syncButton();
       }).catch(function () {
-        applyMute();
+        syncButton();
       });
-    } else {
-      applyMute();
     }
   }
 
@@ -120,26 +129,37 @@
     }
   }
 
+  function setAutoplay(on) {
+    autoplay = !!on;
+    localStorage.setItem(STORAGE_AUTOPLAY, autoplay ? '1' : '0');
+    /* 旧キー掃除 */
+    try { localStorage.removeItem('nk-bgm-muted'); } catch (e) { /* ignore */ }
+    syncButton();
+    if (autoplay) {
+      unlocked = true;
+      sessionStorage.setItem(STORAGE_UNLOCKED, '1');
+      tryPlay();
+    } else {
+      audio.pause();
+    }
+    persist();
+  }
+
   function unlockFromGesture() {
+    if (!autoplay) return;
     unlocked = true;
     sessionStorage.setItem(STORAGE_UNLOCKED, '1');
-    if (muted) {
-      applyMute();
-      return;
-    }
-    wantPlay = true;
-    sessionStorage.setItem(STORAGE_WANT, '1');
     tryPlay();
   }
 
   function onGesture() {
-    if (muted) return;
+    if (!autoplay) return;
     if (!unlocked || audio.paused) unlockFromGesture();
   }
 
   function createToggle() {
     if (button && button.isConnected) {
-      applyMute();
+      syncButton();
       return;
     }
     button = document.createElement('button');
@@ -148,24 +168,10 @@
     button.addEventListener('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
-      unlocked = true;
-      sessionStorage.setItem(STORAGE_UNLOCKED, '1');
-      muted = !muted;
-      localStorage.setItem(STORAGE_MUTED, muted ? '1' : '0');
-      applyMute();
-      if (muted) {
-        audio.pause();
-        wantPlay = false;
-        sessionStorage.setItem(STORAGE_WANT, '0');
-      } else {
-        wantPlay = true;
-        sessionStorage.setItem(STORAGE_WANT, '1');
-        tryPlay();
-      }
-      persist();
+      setAutoplay(!autoplay);
     });
     document.body.appendChild(button);
-    applyMute();
+    syncButton();
   }
 
   function isSoftNavCandidate(anchor) {
@@ -178,7 +184,6 @@
       var url = new URL(anchor.href, location.href);
       if (url.origin !== location.origin) return false;
       if (url.pathname === location.pathname && url.search === location.search) return false;
-      /* Same-directory HTML pages only (this site’s pages). */
       if (!/\.html?$/i.test(url.pathname) && !/\/$/.test(url.pathname)) return false;
       return true;
     } catch (e) {
@@ -217,7 +222,6 @@
           document.body.setAttribute(a.name, a.value);
         }
 
-        /* Keep Audio alive; wipe DOM and re-mount toggle after. */
         button = null;
         document.body.innerHTML = doc.body.innerHTML;
         createToggle();
@@ -234,7 +238,6 @@
         tryPlay();
       })
       .catch(function () {
-        /* Fallback: hard navigation */
         location.href = url;
       })
       .then(function () {
@@ -284,14 +287,9 @@
     audio: audio,
     persist: persist,
     softNavigate: softNavigate,
-    mute: function (v) {
-      muted = !!v;
-      wantPlay = !muted;
-      applyMute();
-      if (muted) audio.pause();
-      else tryPlay();
-      persist();
-    },
-    isMuted: function () { return muted; }
+    setAutoplay: setAutoplay,
+    isAutoplay: function () { return autoplay; },
+    mute: function (v) { setAutoplay(!v); },
+    isMuted: function () { return !autoplay; }
   };
 })();
