@@ -1,0 +1,16 @@
+---
+Date: 2026-10-28
+Task: Nanokuro公式アーカイブサイト初版（扉絵・保管庫・注意事項）
+Changed files:
+- index.html
+- home.html
+- vault.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- notice.html
+- css/site.css
+- js/site.js
+- data/charts.json
+- package.json
+---

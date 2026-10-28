@@ -1,0 +1,231 @@
+{
+  "standard": [
+    {
+      "title": "Crystal brilliance",
+      "composer": "Nanokuro",
+      "difficulty": "IN / AT",
+      "keymode": "Phigros",
+      "status": "archive",
+      "note": "ソロ制作",
+      "tags": ["brilliance"]
+    },
+    {
+      "title": "Glacial brilliance",
+      "composer": "Nanokuro",
+      "difficulty": "IN / AT",
+      "keymode": "Phigros",
+      "status": "archive",
+      "note": "ソロ制作",
+      "tags": ["brilliance"]
+    },
+    {
+      "title": "Relative brilliance",
+      "composer": "Nanokuro",
+      "difficulty": "IN / AT",
+      "keymode": "Phigros",
+      "status": "archive",
+      "note": "ソロ制作",
+      "tags": ["brilliance"]
+    },
+    {
+      "title": "(execute.)",
+      "composer": "Nanokuro",
+      "difficulty": "AT",
+      "keymode": "Phigros",
+      "status": "archive",
+      "tags": ["power"]
+    },
+    {
+      "title": "Memories Sacrifice",
+      "composer": "Nanokuro",
+      "difficulty": "AT 16.0",
+      "keymode": "Phigros",
+      "status": "archive",
+      "tags": ["power"]
+    },
+    {
+      "title": "Designant",
+      "composer": "Nanokuro",
+      "difficulty": "AT",
+      "keymode": "Phigros",
+      "status": "archive",
+      "note": "Shader / effect chart",
+      "tags": ["shader"]
+    },
+    {
+      "title": "ENDYMION",
+      "composer": "Nanokuro",
+      "difficulty": "AT",
+      "keymode": "Phigros",
+      "status": "archive",
+      "tags": []
+    },
+    {
+      "title": "Meteoric Impact",
+      "composer": "Nanokuro",
+      "difficulty": "AT Lv.18",
+      "keymode": "Phigros",
+      "status": "archive",
+      "tags": []
+    },
+    {
+      "title": "Shattered Sky After Rain",
+      "composer": "Nanokuro",
+      "difficulty": "IN / AT",
+      "keymode": "Phigros",
+      "status": "archive",
+      "tags": []
+    },
+    {
+      "title": "Clock Paradox",
+      "composer": "Nanokuro",
+      "difficulty": "AT",
+      "keymode": "Phigros",
+      "status": "archive",
+      "tags": []
+    },
+    {
+      "title": "ABYSS MOTION 192.333",
+      "composer": "Nanokuro",
+      "difficulty": "AT Lv.16.3",
+      "keymode": "Phigros",
+      "status": "archive",
+      "tags": []
+    },
+    {
+      "title": "SAN値直葬",
+      "composer": "Nanokuro",
+      "difficulty": "AT Lv.15",
+      "keymode": "Phigros",
+      "status": "archive",
+      "tags": []
+    },
+    {
+      "title": "インドア系ならトラックメイカー",
+      "composer": "Nanokuro",
+      "difficulty": "IN Lv.14.0",
+      "keymode": "Phigros",
+      "status": "archive",
+      "tags": []
+    },
+    {
+      "title": "Aegleseeker (Phira + PRPR Shader)",
+      "composer": "Nanokuro",
+      "difficulty": "AT",
+      "keymode": "Phigros",
+      "status": "archive",
+      "note": "非公式ファンメイド",
+      "tags": ["shader"]
+    },
+    {
+      "title": "Unity",
+      "composer": "Nanokuro",
+      "difficulty": "—",
+      "keymode": "Phigros",
+      "status": "archive",
+      "tags": []
+    },
+    {
+      "title": "Unraveling Stasis",
+      "composer": "Nanokuro",
+      "difficulty": "AT",
+      "keymode": "Phigros",
+      "status": "archive",
+      "note": "1st Collections 収録系",
+      "tags": ["complex"]
+    },
+    {
+      "title": "Xaleid◆scopiX",
+      "composer": "Nanokuro",
+      "difficulty": "AT",
+      "keymode": "Phigros",
+      "status": "archive",
+      "note": "1st Collections 収録系",
+      "tags": ["complex"]
+    },
+    {
+      "title": "No data",
+      "composer": "Nanokuro",
+      "difficulty": "AT",
+      "keymode": "Phigros",
+      "status": "archive",
+      "note": "1st Collections 収録系",
+      "tags": ["invader"]
+    },
+    {
+      "title": "覚醒",
+      "composer": "Nanokuro",
+      "difficulty": "—",
+      "keymode": "Phigros",
+      "status": "archive",
+      "note": "1st Collections 収録系",
+      "tags": ["gimmick"]
+    },
+    {
+      "title": "DNA",
+      "composer": "Nanokuro",
+      "difficulty": "—",
+      "keymode": "Phigros",
+      "status": "soon",
+      "tags": []
+    },
+    {
+      "title": "MARENOL",
+      "composer": "Nanokuro",
+      "difficulty": "—",
+      "keymode": "Phigros",
+      "status": "soon",
+      "note": "2nd Collections 関連",
+      "tags": ["2nd"]
+    }
+  ],
+  "collab": [
+    {
+      "title": "Nanokuro Cup — Crystal brilliance",
+      "composer": "Nanokuro / Event",
+      "difficulty": "Event",
+      "keymode": "Phigros",
+      "status": "archive",
+      "note": "企画・合作イベント枠",
+      "tags": ["cup"]
+    },
+    {
+      "title": "Nanokuro Cup — (execute.)",
+      "composer": "Nanokuro / Event",
+      "difficulty": "Event",
+      "keymode": "Phigros",
+      "status": "archive",
+      "note": "企画・合作イベント枠",
+      "tags": ["cup"]
+    },
+    {
+      "title": "KIZUNA Resolution",
+      "composer": "Nanokuro + Collaborators",
+      "difficulty": "—",
+      "keymode": "Phigros",
+      "status": "soon",
+      "note": "合作カテゴリ",
+      "tags": ["collab"]
+    },
+    {
+      "title": "Labyrinth Of Kowloon (Fanmade)",
+      "composer": "Nanokuro",
+      "difficulty": "—",
+      "keymode": "Phigros",
+      "status": "soon",
+      "note": "非公式ファンメイド。公式作品ではありません",
+      "tags": ["collab"]
+    }
+  ],
+  "keymodes": [
+    {
+      "title": "（4K / 6K 専用譜面）",
+      "composer": "Nanokuro",
+      "difficulty": "—",
+      "keymode": "4K / 6K",
+      "status": "soon",
+      "note": "キーモード専用枠。収録準備中",
+      "tags": ["4k", "6k"]
+    }
+  ]
+}
