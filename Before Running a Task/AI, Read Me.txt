@@ -303,3 +303,20 @@ Changed files:
 - assets/youtube-banner/nanokuro-text-03.png
 - assets/youtube-banner/nanokuro-text-04.png
 ---
+
+---
+Date: 2026-11-06
+Task: 2nd CollectionsリンクをVercelへ変更し遷移演出を接続
+Changed files:
+- js/site.js
+- js/bgm.js
+- css/site.css
+- index.html
+- home.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- notice.html
+---

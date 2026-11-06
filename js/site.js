@@ -3,17 +3,15 @@
 
   /**
    * 2nd Nanokuro Collections link:
-   * - Local: sibling folder
-   * - Online: set PRODUCTION_SECOND_URL below when that site is public
+   * - Local: sibling folder index (portal)
+   * - Online: Vercel production
    */
-  var PRODUCTION_SECOND_URL = '';
-  var LOCAL_SECOND_URL = '../2nd Nanokuro Collections/html/map.html';
+  var PRODUCTION_SECOND_URL = 'https://2nd-nanokuro-collections-qc5qz23dp-threebansenji333s-projects.vercel.app/';
+  var LOCAL_SECOND_URL = '../2nd Nanokuro Collections/html/index.html';
   var isRemoteHost = /^(localhost|127\.0\.0\.1)$/i.test(location.hostname) === false
     && location.protocol !== 'file:';
   var CONFIG = {
-    secondCollectionsUrl: (isRemoteHost && PRODUCTION_SECOND_URL)
-      ? PRODUCTION_SECOND_URL
-      : (isRemoteHost ? 'https://github.com/threebansenji333/2nd-Nanokuro-Collections' : LOCAL_SECOND_URL),
+    secondCollectionsUrl: isRemoteHost ? PRODUCTION_SECOND_URL : LOCAL_SECOND_URL,
     secondCollectionsLabel: '2nd Nanokuro Collections',
     youtubeChannelDefault: 'https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw'
   };
@@ -108,9 +106,71 @@
     try { main.focus({ preventScroll: true }); } catch (e) { main.focus(); }
   }
 
+  function preferReducedMotion() {
+    return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  }
+
+  function secondTransitUrl(base) {
+    try {
+      var url = new URL(base, location.href);
+      url.searchParams.set('from', 'nanokuro-official');
+      return url.href;
+    } catch (e) {
+      var join = String(base).indexOf('?') >= 0 ? '&' : '?';
+      return base + join + 'from=nanokuro-official';
+    }
+  }
+
+  function ensureTransitOverlay() {
+    var el = qs('#site-transit');
+    if (el) return el;
+    el = document.createElement('div');
+    el.id = 'site-transit';
+    el.className = 'site-transit';
+    el.hidden = true;
+    el.setAttribute('aria-hidden', 'true');
+    el.innerHTML =
+      '<div class="site-transit__veil"></div>' +
+      '<div class="site-transit__core" aria-hidden="true">' +
+        '<span class="site-transit__shard s1"></span>' +
+        '<span class="site-transit__shard s2"></span>' +
+        '<span class="site-transit__shard s3"></span>' +
+        '<p class="site-transit__label">OPENING 2ND NANOKURO COLLECTIONS</p>' +
+      '</div>';
+    document.body.appendChild(el);
+    return el;
+  }
+
+  function runSecondTransit(href) {
+    var target = secondTransitUrl(href);
+    if (preferReducedMotion()) {
+      location.href = target;
+      return;
+    }
+    var overlay = ensureTransitOverlay();
+    overlay.hidden = false;
+    requestAnimationFrame(function () {
+      overlay.classList.add('is-active');
+    });
+    window.setTimeout(function () {
+      location.href = target;
+    }, 920);
+  }
+
   function wireSecondBanners() {
     qsa('[data-second-link]').forEach(function (el) {
-      if (el.tagName === 'A') el.href = CONFIG.secondCollectionsUrl;
+      if (el.tagName !== 'A') return;
+      el.href = CONFIG.secondCollectionsUrl;
+      if (el.dataset.transitBound === '1') return;
+      el.dataset.transitBound = '1';
+      el.addEventListener('click', function (e) {
+        if (e.defaultPrevented) return;
+        if (e.button !== 0) return;
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        e.preventDefault();
+        e.stopPropagation();
+        runSecondTransit(el.href);
+      });
     });
   }
 

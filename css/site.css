@@ -1128,3 +1128,95 @@ body.cushion-open {
     bottom: 12px;
   }
 }
+
+/* Official → 2nd Collections transit */
+.site-transit {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+.site-transit[hidden] { display: none !important; }
+.site-transit__veil {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(8, 16, 28, 0.2), #020308 72%);
+  opacity: 0;
+  transition: opacity 0.7s var(--ease);
+}
+.site-transit__core {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  gap: 28px;
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.45s var(--ease), transform 0.7s var(--ease);
+}
+.site-transit.is-active {
+  pointer-events: auto;
+}
+.site-transit.is-active .site-transit__veil { opacity: 1; }
+.site-transit.is-active .site-transit__core {
+  opacity: 1;
+  transform: scale(1);
+}
+.site-transit__shard {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  transform: rotate(45deg);
+  opacity: 0.85;
+}
+.site-transit__shard.s1 {
+  left: calc(50% - 48px);
+  top: 8px;
+  background: var(--cobalt);
+  box-shadow: 0 0 18px rgba(61, 158, 139, 0.55);
+}
+.site-transit__shard.s2 {
+  left: calc(50% + 34px);
+  top: 8px;
+  background: var(--vermilion);
+  box-shadow: 0 0 18px rgba(209, 77, 50, 0.5);
+}
+.site-transit__shard.s3 {
+  left: calc(50% - 7px);
+  top: 42px;
+  background: linear-gradient(135deg, var(--vermilion), var(--cobalt));
+  box-shadow: 0 0 20px rgba(94, 231, 255, 0.35);
+}
+.site-transit.is-active .site-transit__shard.s1 {
+  animation: transitShard 0.9s var(--ease) both;
+}
+.site-transit.is-active .site-transit__shard.s2 {
+  animation: transitShard 0.9s var(--ease) 0.08s both;
+}
+.site-transit.is-active .site-transit__shard.s3 {
+  animation: transitShard 0.9s var(--ease) 0.16s both;
+}
+.site-transit__label {
+  margin: 72px 0 0;
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--cyan);
+  text-shadow: 0 0 18px rgba(94, 231, 255, 0.35);
+}
+@keyframes transitShard {
+  0% { transform: rotate(45deg) scale(0.4); opacity: 0; }
+  55% { transform: rotate(45deg) scale(1.25); opacity: 1; }
+  100% { transform: rotate(45deg) scale(1); opacity: 0.9; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-transit__veil,
+  .site-transit__core,
+  .site-transit__shard {
+    transition: none !important;
+    animation: none !important;
+  }
+}

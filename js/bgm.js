@@ -178,6 +178,7 @@
     if (!anchor || !anchor.getAttribute) return false;
     if (anchor.target && anchor.target !== '_self') return false;
     if (anchor.hasAttribute('download')) return false;
+    if (anchor.hasAttribute('data-second-link')) return false;
     var href = anchor.getAttribute('href');
     if (!href || href.charAt(0) === '#' || /^(mailto:|tel:|javascript:)/i.test(href)) return false;
     try {
