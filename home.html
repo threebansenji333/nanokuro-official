@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#05060c">
   <title>Home — NANOKURO Archive</title>
   <meta name="description" content="Nanokuro公式アーカイブのホーム。プロジェクトと譜面保管庫への導線。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Orbitron:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/site.css?v=20261029l">
+  <link rel="stylesheet" href="css/site.css?v=20261106a">
 </head>
 <body class="has-chrome">
   <a class="skip-link" href="#main">コンテンツへ</a>
@@ -19,10 +20,10 @@
         <span class="brand__mark">NANOKURO</span>
         <span class="brand__sub">Official Archive</span>
       </a>
-      <button class="nav-toggle" type="button" aria-label="メニュー" aria-expanded="false">
+      <button class="nav-toggle" type="button" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
-      <nav class="nav" aria-label="主要ナビ">
+      <nav class="nav" id="site-nav" aria-label="主要ナビ">
         <a href="home.html" data-nav="home.html">Home</a>
         <a href="vault.html" data-nav="vault.html">Vault</a>
         <a href="notice.html" data-nav="notice.html">Notice</a>
@@ -49,7 +50,7 @@
         <span class="project-banner__cta">OPEN TRANSIT MAP →</span>
       </a>
 
-      <div style="height: 28px;"></div>
+      <div class="stack-md" aria-hidden="true"></div>
 
       <h2 class="section-title">NAVIGATE</h2>
       <div class="grid-2">
@@ -65,7 +66,7 @@
         </a>
       </div>
 
-      <div style="height: 28px;"></div>
+      <div class="stack-md" aria-hidden="true"></div>
 
       <h2 class="section-title">OTHER ARCHIVES</h2>
       <div class="grid-2">
@@ -114,7 +115,7 @@
     </div>
   </footer>
 
-  <script src="js/bgm.js?v=20261029l"></script>
-  <script src="js/site.js?v=20261029l"></script>
+  <script src="js/bgm.js?v=20261106a"></script>
+  <script src="js/site.js?v=20261106a"></script>
 </body>
 </html>

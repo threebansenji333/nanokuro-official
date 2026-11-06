@@ -47,22 +47,65 @@
       .replace(/"/g, '&quot;');
   }
 
+  function setNavOpen(header, toggle, open) {
+    header.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+
   function initNav() {
     var header = qs('.site-header');
     var toggle = qs('.nav-toggle');
+    var nav = qs('.nav', header);
     if (!header || !toggle) return;
+
+    if (nav && !nav.id) nav.id = 'site-nav';
+    toggle.setAttribute('aria-controls', nav ? nav.id : 'site-nav');
+
     toggle.addEventListener('click', function () {
-      var open = header.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      setNavOpen(header, toggle, !header.classList.contains('is-open'));
     });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && header.classList.contains('is-open')) {
+        setNavOpen(header, toggle, false);
+        toggle.focus();
+      }
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!header.classList.contains('is-open')) return;
+      if (header.contains(e.target)) return;
+      setNavOpen(header, toggle, false);
+    });
+
+    qsa('.nav a', header).forEach(function (a) {
+      a.addEventListener('click', function () {
+        setNavOpen(header, toggle, false);
+      });
+    });
+
+    var onScroll = function () {
+      header.classList.toggle('is-scrolled', window.scrollY > 8);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
   }
 
   function markCurrentNav() {
     var path = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    if (path.indexOf('vault') === 0) path = 'vault.html';
     qsa('.nav a[data-nav]').forEach(function (a) {
       var target = (a.getAttribute('data-nav') || '').toLowerCase();
       if (target && path === target) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
     });
+  }
+
+  function focusMainLandmark() {
+    var main = qs('#main') || qs('#door-panel') || qs('main');
+    if (!main) return;
+    if (!main.hasAttribute('tabindex')) main.setAttribute('tabindex', '-1');
+    try { main.focus({ preventScroll: true }); } catch (e) { main.focus(); }
   }
 
   function wireSecondBanners() {
@@ -685,6 +728,9 @@
     loadVault: loadVault,
     openCushion: openCushion,
     closeCushion: closeCushion,
-    reboot: boot
+    reboot: function () {
+      boot();
+      focusMainLandmark();
+    }
   };
 })();

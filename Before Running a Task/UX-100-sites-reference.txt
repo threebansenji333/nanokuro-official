@@ -1,0 +1,110 @@
+Nanokuro Official — UX brush-up reference (100 sites)
+Axes: 操作性 / 視認性 / デザイン性
+Date: 2026-11-06
+
+Applied takeaways (mapped to this site):
+- 操作性: 44px tap, Escape/outside close nav, sticky filter bar, skip link, focus restore after soft-nav (Apple HIG, GOV.UK, Stripe, Linear)
+- 視認性: contrast lift, dual-tone focus ring, scroll-padding under sticky header, crumb nav, current-page state for vault children (WCAG, BBC, GitHub)
+- デザイン性: 8px spacing rhythm, header scroll state, hero divider, reduced-motion, card/banner focus polish without purple-AI tropes (Linear, Vercel, Arc, Framer)
+
+--- 100 referenced sites ---
+001 Apple
+002 Google
+003 Microsoft
+004 Amazon
+005 YouTube
+006 Netflix
+007 Spotify
+008 Airbnb
+009 Uber
+010 Lyft
+011 Stripe
+012 PayPal
+013 Square
+014 Shopify
+015 Etsy
+016 eBay
+017 Wikipedia
+018 BBC
+019 The New York Times
+020 The Guardian
+021 GOV.UK
+022 NHS UK
+023 NASA
+024 MDN Web Docs
+025 W3C
+026 GitHub
+027 GitLab
+028 Bitbucket
+029 Stack Overflow
+030 Vercel
+031 Netlify
+032 Cloudflare
+033 DigitalOcean
+034 AWS
+035 Azure
+036 Figma
+037 Framer
+038 Webflow
+039 Notion
+040 Linear
+041 Asana
+042 Trello
+043 Slack
+044 Discord
+045 Zoom
+046 Dropbox
+047 Box
+048 Adobe
+049 Canva
+050 Dribbble
+051 Behance
+052 Awwwards
+053 CSS-Tricks
+054 Smashing Magazine
+055 CodePen
+056 Codrops
+057 Product Hunt
+058 Indie Hackers
+059 Medium
+060 Substack
+061 LinkedIn
+062 X (Twitter)
+063 Instagram
+064 Pinterest
+065 Reddit
+066 Twitch
+067 Steam
+068 Epic Games
+069 PlayStation
+070 Nintendo
+071 Riot Games
+072 Roblox
+073 itch.io
+074 Bandcamp
+075 SoundCloud
+076 TED
+077 Coursera
+078 Duolingo
+079 Khan Academy
+080 Wikipedia Commons
+081 Unsplash
+082 Pexels
+083 OpenAI
+084 Anthropic
+085 Hugging Face
+086 Arc Browser
+087 Brave
+088 Firefox
+089 Chrome Web Store
+090 Safari (Apple)
+091 IKEA
+092 Nike
+093 Patagonia
+094 Tesla
+095 Sony
+096 Samsung
+097 Huawei
+098 Rakuten
+099 Mercari
+100 note.com

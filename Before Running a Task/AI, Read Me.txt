@@ -260,3 +260,46 @@ Changed files:
 - vault-all.html
 - notice.html
 ---
+
+---
+Date: 2026-10-29
+Task: YouTubeバナー用1:1背景候補を4つ生成
+Changed files:
+- assets/youtube-banner/01-vault-grid.jpg
+- assets/youtube-banner/02-nebula-shard.jpg
+- assets/youtube-banner/03-circuit-orbit.jpg
+- assets/youtube-banner/04-crystal-corridor.jpg
+---
+
+---
+Date: 2026-10-29
+Task: 03をメイン背景にしNanokuro文字ロゴα透過を4つ生成
+Changed files:
+- assets/youtube-banner/banner-bg-main.jpg
+- assets/youtube-banner/nanokuro-text-01.png
+- assets/youtube-banner/nanokuro-text-02.png
+- assets/youtube-banner/nanokuro-text-03.png
+- assets/youtube-banner/nanokuro-text-04.png
+---
+
+---
+Date: 2026-10-29
+Task: indexのOrbitronベースでNANOKURO文字ロゴ4つ再生成
+Changed files:
+- assets/youtube-banner/nanokuro-text-01.png
+- assets/youtube-banner/nanokuro-text-02.png
+- assets/youtube-banner/nanokuro-text-03.png
+- assets/youtube-banner/nanokuro-text-04.png
+- assets/youtube-banner/nanokuro-orbitron-base.png
+- assets/youtube-banner/_fonts/Orbitron-SemiBold.ttf
+---
+
+---
+Date: 2026-10-29
+Task: text-01ベースでメイン背景向け強加工NANOKUROを4つ再生成
+Changed files:
+- assets/youtube-banner/nanokuro-text-01.png
+- assets/youtube-banner/nanokuro-text-02.png
+- assets/youtube-banner/nanokuro-text-03.png
+- assets/youtube-banner/nanokuro-text-04.png
+---
