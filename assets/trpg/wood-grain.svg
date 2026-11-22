@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="160" viewBox="0 0 480 160">
+  <defs>
+    <filter id="figure" x="0" y="0" width="480" height="160" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".0042 .072" numOctaves="4" seed="7" stitchTiles="stitch"/>
+      <feColorMatrix values="0 0 0 0 .08  0 0 0 0 .045  0 0 0 0 .02  2.4 0 0 0 -1.12"/>
+    </filter>
+    <filter id="lines" x="0" y="0" width="480" height="160" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".006 .42" numOctaves="2" seed="3" stitchTiles="stitch"/>
+      <feColorMatrix values="0 0 0 0 .06  0 0 0 0 .035  0 0 0 0 .015  2.6 0 0 0 -1.5"/>
+    </filter>
+    <filter id="sheen" x="0" y="0" width="480" height="160" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".003 .05" numOctaves="3" seed="19" stitchTiles="stitch"/>
+      <feColorMatrix values="0 0 0 0 1  0 0 0 0 .78  0 0 0 0 .5  0 2.2 0 0 -1.22"/>
+    </filter>
+  </defs>
+  <rect width="480" height="160" filter="url(#figure)"/>
+  <rect width="480" height="160" filter="url(#lines)" opacity=".7"/>
+  <rect width="480" height="160" filter="url(#sheen)" opacity=".22"/>
+</svg>

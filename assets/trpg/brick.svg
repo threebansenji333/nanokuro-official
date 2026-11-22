@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="120" viewBox="0 0 240 120">
+  <defs>
+    <linearGradient id="bevel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe0c8" stop-opacity=".18"/>
+      <stop offset=".16" stop-color="#ffe0c8" stop-opacity=".03"/>
+      <stop offset=".72" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".36"/>
+    </linearGradient>
+    <filter id="mottle" x="0" y="0" width="240" height="120" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="3" seed="23" stitchTiles="stitch"/>
+      <feColorMatrix values="0 0 0 0 .05  0 0 0 0 .02  0 0 0 0 .01  1.8 0 0 0 -.74"/>
+    </filter>
+    <filter id="grit" x="0" y="0" width="240" height="120" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="8" stitchTiles="stitch" result="n"/>
+      <feColorMatrix in="n" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.2 0 0 0 -1.2" result="dark"/>
+      <feColorMatrix in="n" values="0 0 0 0 1  0 0 0 0 .86  0 0 0 0 .72  0 2.2 0 0 -1.38" result="light"/>
+      <feMerge><feMergeNode in="dark"/><feMergeNode in="light"/></feMerge>
+    </filter>
+    <g id="b">
+      <rect x="2" y="2" width="56" height="26" rx="1.5"/>
+      <rect x="62" y="2" width="56" height="26" rx="1.5"/>
+      <rect x="122" y="2" width="56" height="26" rx="1.5"/>
+      <rect x="182" y="2" width="56" height="26" rx="1.5"/>
+      <rect x="-28" y="32" width="56" height="26" rx="1.5"/>
+      <rect x="32" y="32" width="56" height="26" rx="1.5"/>
+      <rect x="92" y="32" width="56" height="26" rx="1.5"/>
+      <rect x="152" y="32" width="56" height="26" rx="1.5"/>
+      <rect x="212" y="32" width="56" height="26" rx="1.5"/>
+      <rect x="2" y="62" width="56" height="26" rx="1.5"/>
+      <rect x="62" y="62" width="56" height="26" rx="1.5"/>
+      <rect x="122" y="62" width="56" height="26" rx="1.5"/>
+      <rect x="182" y="62" width="56" height="26" rx="1.5"/>
+      <rect x="-28" y="92" width="56" height="26" rx="1.5"/>
+      <rect x="32" y="92" width="56" height="26" rx="1.5"/>
+      <rect x="92" y="92" width="56" height="26" rx="1.5"/>
+      <rect x="152" y="92" width="56" height="26" rx="1.5"/>
+      <rect x="212" y="92" width="56" height="26" rx="1.5"/>
+    </g>
+  </defs>
+  <rect width="240" height="120" fill="#2a221d"/>
+  <rect x="2" y="2" width="56" height="26" rx="1.5" fill="#6b3324"/>
+  <rect x="62" y="2" width="56" height="26" rx="1.5" fill="#7a3d2a"/>
+  <rect x="122" y="2" width="56" height="26" rx="1.5" fill="#5e2c20"/>
+  <rect x="182" y="2" width="56" height="26" rx="1.5" fill="#74392a"/>
+  <rect x="-28" y="32" width="56" height="26" rx="1.5" fill="#823f2c"/>
+  <rect x="32" y="32" width="56" height="26" rx="1.5" fill="#693224"/>
+  <rect x="92" y="32" width="56" height="26" rx="1.5" fill="#5a2a1e"/>
+  <rect x="152" y="32" width="56" height="26" rx="1.5" fill="#7d4130"/>
+  <rect x="212" y="32" width="56" height="26" rx="1.5" fill="#823f2c"/>
+  <rect x="2" y="62" width="56" height="26" rx="1.5" fill="#713828"/>
+  <rect x="62" y="62" width="56" height="26" rx="1.5" fill="#5f2d21"/>
+  <rect x="122" y="62" width="56" height="26" rx="1.5" fill="#864733"/>
+  <rect x="182" y="62" width="56" height="26" rx="1.5" fill="#6a3326"/>
+  <rect x="-28" y="92" width="56" height="26" rx="1.5" fill="#63301f"/>
+  <rect x="32" y="92" width="56" height="26" rx="1.5" fill="#7b3c2a"/>
+  <rect x="92" y="92" width="56" height="26" rx="1.5" fill="#6e3526"/>
+  <rect x="152" y="92" width="56" height="26" rx="1.5" fill="#5c2b1f"/>
+  <rect x="212" y="92" width="56" height="26" rx="1.5" fill="#63301f"/>
+  <use href="#b" fill="url(#bevel)"/>
+  <rect width="240" height="120" filter="url(#mottle)" opacity=".55"/>
+  <rect width="240" height="120" filter="url(#grit)" opacity=".5"/>
+</svg>

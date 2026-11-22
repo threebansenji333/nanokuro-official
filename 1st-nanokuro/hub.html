@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#03060a">
+  <title>1st Nanokuro Collections — NANOKURO Archive</title>
+  <meta name="description" content="1st Nanokuro Collections（Nanokuro Cup）アーカイブ。四 Category の縦スクロールハブ。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Orbitron:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/site.css?v=20261122h">
+  <link rel="stylesheet" href="../css/1st-cup.css?v=20261122g">
+</head>
+<body class="has-chrome page-1st fx-off">
+  <a class="skip-link" href="#main">コンテンツへ</a>
+
+  <svg class="cup-sprite" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="cup-grad-complex" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#ff4d6d"/>
+        <stop offset="1" stop-color="#43c9a9"/>
+      </linearGradient>
+
+      <symbol id="cup-sg-gimmick" viewBox="0 0 64 64">
+        <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round">
+          <rect x="19" y="19" width="26" height="26"/>
+          <path d="M32 9 55 32 32 55 9 32Z"/>
+        </g>
+        <circle cx="32" cy="32" r="7" fill="currentColor" fill-opacity="0.3" stroke="currentColor" stroke-width="2.5"/>
+        <path d="M4 39 60 25" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      </symbol>
+      <symbol id="cup-sg-power" viewBox="0 0 64 64">
+        <path d="M32 6 55 19v26L32 58 9 45V19Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M36 13 21 36h10l-3 15 15-23H33Z" fill="currentColor" fill-opacity="0.3" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="cup-sg-complex" viewBox="0 0 64 64">
+        <g fill="none" stroke-width="2.5" stroke-linejoin="round">
+          <path d="M32 8 53 44H11Z" stroke="#ff4d6d"/>
+          <path d="M32 56 11 20h42Z" stroke="#43c9a9"/>
+        </g>
+        <path d="M32 23 41 32 32 41 23 32Z" fill="currentColor"/>
+      </symbol>
+      <symbol id="cup-sg-invader" viewBox="0 0 64 64">
+        <path fill="currentColor" d="M18 16h4v4h-4zM42 16h4v4h-4zM22 20h4v4h-4zM38 20h4v4h-4zM18 24h28v4H18zM14 28h8v4h-8zM26 28h12v4H26zM42 28h8v4h-8zM10 32h44v4H10zM10 36h4v4h-4zM18 36h28v4H18zM50 36h4v4h-4zM10 40h4v4h-4zM18 40h4v4h-4zM42 40h4v4h-4zM50 40h4v4h-4zM22 44h8v4h-8zM34 44h8v4h-8z"/>
+      </symbol>
+
+      <symbol id="cup-ic-lock" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="5" y="11" width="14" height="10" rx="1.5"/>
+          <path d="M8 11V8a4 4 0 0 1 8 0v3"/>
+        </g>
+      </symbol>
+      <symbol id="cup-ic-unlock" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="5" y="11" width="14" height="10" rx="1.5"/>
+          <path d="M8 11V8a4 4 0 0 1 7.6-1.7"/>
+        </g>
+      </symbol>
+      <symbol id="cup-ic-sigma" viewBox="0 0 24 24">
+        <path d="M17 5H7l6 7-6 7h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="cup-ic-heart" viewBox="0 0 24 24">
+        <path d="M12 20s-7.5-4.6-7.5-10.2A4.2 4.2 0 0 1 12 7.4a4.2 4.2 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="cup-ic-arrow" viewBox="0 0 24 24">
+        <path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="cup-ic-down" viewBox="0 0 24 24">
+        <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="cup-ic-up" viewBox="0 0 24 24">
+        <path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="cup-ic-home" viewBox="0 0 24 24">
+        <path d="M4 11 12 4l8 7M6.5 9.5V20h11V9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="cup-ic-play" viewBox="0 0 24 24">
+        <path d="M8 5.5v13l10-6.5Z" fill="currentColor"/>
+      </symbol>
+      <symbol id="cup-ic-list" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h11M4 12h11M4 18h6"/>
+          <path d="M14 17.5l2.5 2.5 4.5-5"/>
+        </g>
+      </symbol>
+      <symbol id="cup-ic-auto-off" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="5" width="16" height="14" rx="2"/>
+          <path d="M9 15.5l3-7.5 3 7.5M10.2 13h3.6"/>
+          <path d="M3 3l18 18"/>
+        </g>
+      </symbol>
+      <symbol id="cup-ic-speed-off" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 17a8 8 0 0 1 16 0"/>
+          <path d="M12 17l3.5-4.5"/>
+          <path d="M3 3l18 18"/>
+        </g>
+      </symbol>
+      <symbol id="cup-ic-dl-off" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 4v10M7.5 9.5 12 14l4.5-4.5M5 19h14"/>
+          <path d="M3 3l18 18"/>
+        </g>
+      </symbol>
+      <symbol id="cup-ic-scan-off" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 8V4h4M16 4h4v4M20 16v4h-4M8 20H4v-4"/>
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M3 3l18 18"/>
+        </g>
+      </symbol>
+      <symbol id="cup-ic-eye" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </g>
+      </symbol>
+      <symbol id="cup-ic-crate" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3.5 7.5 12 3.5l8.5 4v9L12 20.5l-8.5-4Z"/>
+          <path d="M3.5 7.5 12 11.5l8.5-4M12 11.5v9"/>
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="../index.html">
+        <span class="brand__mark">NANOKURO</span>
+        <span class="brand__sub">Official Archive</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="site-nav" aria-label="主要">
+        <ul>
+          <li><a href="../home.html" data-nav="home.html">Home</a></li>
+          <li><a href="../vault.html" data-nav="vault.html">Vault</a></li>
+          <li><a href="../notice.html" data-nav="notice.html">Notice</a></li>
+          <li><a href="../index.html">Gate</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <nav class="cup-rail" aria-label="セクション">
+    <ul>
+      <li><a href="#boot" data-label="BOOT"><span class="visually-hidden">BOOT</span></a></li>
+      <li><a href="#protocol" data-label="PROTOCOL"><span class="visually-hidden">PROTOCOL</span></a></li>
+      <li><a class="tone-gimmick" href="#gimmick" data-label="GIMMICK"><span class="visually-hidden">Gimmick</span></a></li>
+      <li><a class="tone-power" href="#power" data-label="POWER"><span class="visually-hidden">Power</span></a></li>
+      <li><a class="tone-complex" href="#complex" data-label="COMPLEX"><span class="visually-hidden">Complex</span></a></li>
+      <li><a class="tone-invader" href="#invader" data-label="INVADER"><span class="visually-hidden">Invader</span></a></li>
+      <li><a class="tone-prize" href="#prize" data-label="PRIZE"><span class="visually-hidden">景品</span></a></li>
+    </ul>
+  </nav>
+
+  <main class="site-main cup-scroll" id="main" tabindex="-1">
+
+    <section class="cup-stage cup-boot" id="boot" aria-labelledby="boot-title">
+      <div class="cup-stage__inner cup-boot__grid">
+        <div class="cup-emblem" data-reveal aria-hidden="true">
+          <svg class="cup-emblem__svg" viewBox="0 0 320 320" focusable="false">
+            <path class="cup-emblem__corner" d="M8 30V8h22M290 8h22v22M312 290v22h-22M30 312H8v-22"/>
+            <circle class="cup-emblem__orbit" cx="160" cy="160" r="148"/>
+            <circle class="cup-emblem__orbit cup-emblem__orbit--in" cx="160" cy="160" r="112"/>
+
+            <g class="cup-emblem__arm tone-gimmick">
+              <path class="cup-emblem__trace" d="M110 124H96L56 84V56M124 110V96L84 56H56"/>
+              <circle class="cup-emblem__via" cx="96" cy="124" r="3"/>
+              <circle class="cup-emblem__via" cx="124" cy="96" r="3"/>
+              <circle class="cup-emblem__node" cx="56" cy="56" r="26" stroke="currentColor"/>
+              <use href="#cup-sg-gimmick" x="38" y="38" width="36" height="36"/>
+            </g>
+            <g class="cup-emblem__arm tone-power">
+              <path class="cup-emblem__trace" d="M210 124H224L264 84V56M196 110V96L236 56H264"/>
+              <circle class="cup-emblem__via" cx="224" cy="124" r="3"/>
+              <circle class="cup-emblem__via" cx="196" cy="96" r="3"/>
+              <circle class="cup-emblem__node" cx="264" cy="56" r="26" stroke="currentColor"/>
+              <use href="#cup-sg-power" x="246" y="38" width="36" height="36"/>
+            </g>
+            <g class="cup-emblem__arm tone-complex">
+              <path class="cup-emblem__trace" d="M110 196H96L56 236V264M124 210V224L84 264H56"/>
+              <circle class="cup-emblem__via" cx="96" cy="196" r="3"/>
+              <circle class="cup-emblem__via" cx="124" cy="224" r="3"/>
+              <circle class="cup-emblem__node" cx="56" cy="264" r="26" stroke="url(#cup-grad-complex)"/>
+              <use href="#cup-sg-complex" x="38" y="246" width="36" height="36"/>
+            </g>
+            <g class="cup-emblem__arm tone-invader">
+              <path class="cup-emblem__trace" d="M210 196H224L264 236V264M196 210V224L236 264H264"/>
+              <circle class="cup-emblem__via" cx="224" cy="196" r="3"/>
+              <circle class="cup-emblem__via" cx="196" cy="224" r="3"/>
+              <circle class="cup-emblem__node" cx="264" cy="264" r="26" stroke="currentColor"/>
+              <use href="#cup-sg-invader" x="246" y="246" width="36" height="36"/>
+            </g>
+
+            <path class="cup-emblem__pins" d="M100 142h10M100 160h10M100 178h10M210 142h10M210 160h10M210 178h10M142 100v10M160 100v10M178 100v10M142 210v10M160 210v10M178 210v10"/>
+            <rect class="cup-emblem__chip" x="110" y="110" width="100" height="100" rx="4"/>
+            <rect class="cup-emblem__chip-in" x="120" y="120" width="80" height="80"/>
+            <text class="cup-emblem__txt" x="160" y="170" text-anchor="middle">1st</text>
+            <text class="cup-emblem__sub" x="160" y="189" text-anchor="middle">NANOKURO CUP</text>
+          </svg>
+        </div>
+
+        <div class="cup-boot__copy" data-reveal>
+          <p class="cup-kicker">PHASE_1 // ARCHIVE</p>
+          <h1 id="boot-title" class="cup-boot__title">
+            <span class="cup-glitch is-live" data-text="1st Nanokuro Collections">1st Nanokuro Collections</span>
+          </h1>
+          <p class="cup-boot__aka"><span>aka</span> NANOKURO CUP</p>
+          <div class="cup-term" role="group" aria-label="起動ログ">
+            <p class="cup-term__line" style="--i: 0"><span class="cup-term__k">mount</span> /cup/phase1<span class="cup-term__lead" aria-hidden="true"></span><b class="cup-term__ok">OK</b></p>
+            <p class="cup-term__line" style="--i: 1"><span class="cup-term__k">chambers</span><span class="cup-term__blocks" aria-hidden="true"><i class="tone-gimmick"></i><i class="tone-power"></i><i class="tone-complex"></i><i class="tone-invader"></i></span><span class="cup-term__lead" aria-hidden="true"></span><b>4</b></p>
+            <p class="cup-term__line" style="--i: 2"><span class="cup-term__k">verify</span><span class="cup-term__lead" aria-hidden="true"></span><b class="cup-term__off">OFF</b><span class="cup-term__cursor" aria-hidden="true"></span></p>
+          </div>
+          <a class="cup-cue" href="#protocol">
+            <span>SCROLL</span><span class="visually-hidden"> — PROTOCOL へ</span>
+            <svg class="cup-ic" aria-hidden="true" focusable="false"><use href="#cup-ic-down" width="100%" height="100%"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cup-stage cup-protocol" id="protocol" aria-labelledby="protocol-title">
+      <div class="cup-stage__inner">
+        <p class="cup-kicker">SYS // RULES</p>
+        <h2 id="protocol-title" class="cup-h2">PROTOCOL <small>運用仕様</small></h2>
+
+        <div class="cup-proto">
+          <div class="cup-panel cup-proto__penalty" data-reveal>
+            <h3 class="cup-h3">PENALTY <span>失点</span></h3>
+            <ul class="cup-judges">
+              <li class="cup-judge cup-judge--good" style="--n: 1"><span class="cup-judge__name">Good</span><b class="cup-judge__val">−1</b><span class="cup-judge__pips" aria-hidden="true"></span></li>
+              <li class="cup-judge cup-judge--bad" style="--n: 3"><span class="cup-judge__name">Bad</span><b class="cup-judge__val">−3</b><span class="cup-judge__pips" aria-hidden="true"></span></li>
+              <li class="cup-judge cup-judge--miss" style="--n: 5"><span class="cup-judge__name">Miss</span><b class="cup-judge__val">−5</b><span class="cup-judge__pips" aria-hidden="true"></span></li>
+            </ul>
+          </div>
+
+          <div class="cup-panel cup-proto__rule" data-reveal>
+            <h3 class="cup-h3">CLEAR <span>突破</span></h3>
+            <div class="cup-formula" role="img" aria-label="全課題曲の失点合計がライフ以内なら突破">
+              <span class="cup-formula__term">
+                <svg class="cup-ic" focusable="false"><use href="#cup-ic-sigma" width="100%" height="100%"/></svg>
+                <small>失点合計</small>
+              </span>
+              <span class="cup-formula__op">≤</span>
+              <span class="cup-formula__term cup-formula__term--life">
+                <svg class="cup-ic" focusable="false"><use href="#cup-ic-heart" width="100%" height="100%"/></svg>
+                <small>LIFE</small>
+              </span>
+              <span class="cup-formula__op">
+                <svg class="cup-ic" focusable="false"><use href="#cup-ic-arrow" width="100%" height="100%"/></svg>
+              </span>
+              <span class="cup-formula__term cup-formula__term--clear">
+                <svg class="cup-ic" focusable="false"><use href="#cup-ic-unlock" width="100%" height="100%"/></svg>
+                <small>CLEAR</small>
+              </span>
+            </div>
+          </div>
+
+          <div class="cup-panel cup-proto__route" data-reveal>
+            <h3 class="cup-h3" id="route-title">UNLOCK <span>解禁ルート</span></h3>
+            <p class="visually-hidden" id="route-desc">Gimmick と Power は初期解禁。両方を突破すると Complex、Complex を突破すると Invader、Invader の先に景品枠。</p>
+            <div class="cup-route" role="group" aria-labelledby="route-title" aria-describedby="route-desc">
+              <a class="cup-node cup-node--g tone-gimmick" href="#gimmick">
+                <svg class="cup-node__sg" aria-hidden="true" focusable="false"><use href="#cup-sg-gimmick" width="100%" height="100%"/></svg>
+                <span class="cup-node__name">Gimmick</span>
+                <span class="cup-node__meta">LIFE 50</span>
+                <span class="cup-node__tag"><svg class="cup-ic" aria-hidden="true" focusable="false"><use href="#cup-ic-play" width="100%" height="100%"/></svg>START</span>
+              </a>
+              <a class="cup-node cup-node--p tone-power" href="#power">
+                <svg class="cup-node__sg" aria-hidden="true" focusable="false"><use href="#cup-sg-power" width="100%" height="100%"/></svg>
+                <span class="cup-node__name">Power</span>
+                <span class="cup-node__meta">LIFE 50</span>
+                <span class="cup-node__tag"><svg class="cup-ic" aria-hidden="true" focusable="false"><use href="#cup-ic-play" width="100%" height="100%"/></svg>START</span>
+              </a>
+              <span class="cup-route__merge" aria-hidden="true"></span>
+              <a class="cup-node cup-node--c tone-complex" href="#complex">
+                <svg class="cup-node__sg" aria-hidden="true" focusable="false"><use href="#cup-sg-complex" width="100%" height="100%"/></svg>
+                <span class="cup-node__name">Complex</span>
+                <span class="cup-node__meta">LIFE 100</span>
+              </a>
+              <span class="cup-route__link cup-route__link--ci" aria-hidden="true"></span>
+              <a class="cup-node cup-node--i tone-invader" href="#invader">
+                <svg class="cup-node__sg" aria-hidden="true" focusable="false"><use href="#cup-sg-invader" width="100%" height="100%"/></svg>
+                <span class="cup-node__name">Invader</span>
+                <span class="cup-node__meta">LIFE 75</span>
+              </a>
+              <span class="cup-route__link cup-route__link--iz" aria-hidden="true"></span>
+              <a class="cup-node cup-node--z tone-prize" href="#prize">
+                <svg class="cup-node__sg" aria-hidden="true" focusable="false"><use href="#cup-ic-crate" width="100%" height="100%"/></svg>
+                <span class="cup-node__name">D-Birth</span>
+                <span class="cup-node__meta">DISPLAY</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="cup-stage cup-chamber tone-gimmick" id="gimmick" aria-labelledby="gimmick-title" style="--life: 50">
+      <div class="cup-stage__inner cup-chamber__grid">
+        <div class="cup-mark" data-reveal>
+          <span class="cup-mark__idx" aria-hidden="true">01</span>
+          <svg class="cup-ring" viewBox="0 0 160 160" aria-hidden="true" focusable="false">
+            <circle class="cup-ring__ticks" cx="80" cy="80" r="75" stroke-dasharray="1.2 22.362" transform="rotate(-90 80 80)"/>
+            <circle class="cup-ring__track" cx="80" cy="80" r="64"/>
+            <circle class="cup-ring__fill" cx="80" cy="80" r="64" stroke="currentColor" stroke-dasharray="402.12 402.12" transform="rotate(-90 80 80)"/>
+            <use href="#cup-sg-gimmick" x="46" y="46" width="68" height="68"/>
+          </svg>
+          <p class="cup-mark__life"><span>LIFE</span> <b>50</b></p>
+        </div>
+        <div class="cup-chamber__body" data-reveal>
+          <p class="cup-kicker">CHAMBER 01</p>
+          <h2 id="gimmick-title" class="cup-chamber__title"><span class="cup-chamber__name">Gimmick</span><small>-Category</small></h2>
+          <ul class="cup-badges" aria-label="条件">
+            <li class="cup-badge cup-badge--open"><svg class="cup-ic" aria-hidden="true" focusable="false"><use href="#cup-ic-unlock" width="100%" height="100%"/></svg>初期解禁</li>
+            <li class="cup-badge cup-badge--rule"><svg class="cup-ic" aria-hidden="true" focusable="false"><use href="#cup-ic-sigma" width="100%" height="100%"/></svg><span aria-hidden="true">≤ 50</span><span class="visually-hidden">失点合計 50 以内で突破</span></li>
+          </ul>
+          <ol class="cup-plates" aria-label="課題曲">
+            <li class="cup-plate" role="button" tabindex="0" data-open-chart="kakusei" data-cup-chamber="gimmick" aria-label="覚醒のダウンロード画面を開く">
+              <span class="cup-plate__art has-jaket">
+                <img class="cup-plate__jaket" src="../assets/jaket/%E8%A6%9A%E9%86%92.png" alt="" width="320" height="180" decoding="async" loading="lazy">
+                <span class="cup-plate__no" aria-hidden="true">01</span>
+              </span>
+              <span class="cup-plate__name">覚醒</span>
+            </li>
+            <li class="cup-plate" role="button" tabindex="0" data-open-chart="glacial-brilliance" data-cup-chamber="gimmick" aria-label="Glacial brillianceのダウンロード画面を開く">
+              <span class="cup-plate__art has-jaket">
+                <img class="cup-plate__jaket" src="../assets/jaket/Glacial%20brilliance.png" alt="" width="320" height="180" decoding="async" loading="lazy">
+                <span class="cup-plate__no" aria-hidden="true">02</span>
+              </span>
+              <span class="cup-plate__name">Glacial brilliance</span>
+            </li>
+            <li class="cup-plate" role="button" tabindex="0" data-open-chart="crystal-brilliance" data-cup-chamber="gimmick" data-pref-diff="AT" aria-label="Crystal brilliance_ATのダウンロード画面を開く">
+              <span class="cup-plate__art has-jaket">
+                <img class="cup-plate__jaket" src="../assets/jaket/Crystal%20brilliance.jpg" alt="" width="320" height="180" decoding="async" loading="lazy">
+                <span class="cup-plate__no" aria-hidden="true">03</span>
+              </span>
+              <span class="cup-plate__name">Crystal brilliance_AT</span>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="cup-stage cup-chamber tone-power" id="power" aria-labelledby="power-title" style="--life: 50">
+      <div class="cup-stage__inner cup-chamber__grid">
+        <div class="cup-mark" data-reveal>
+          <span class="cup-mark__idx" aria-hidden="true">02</span>
+          <svg class="cup-ring" viewBox="0 0 160 160" aria-hidden="true" focusable="false">
+            <circle class="cup-ring__ticks" cx="80" cy="80" r="75" stroke-dasharray="1.2 22.362" transform="rotate(-90 80 80)"/>
+            <circle class="cup-ring__track" cx="80" cy="80" r="64"/>
+            <circle class="cup-ring__fill" cx="80" cy="80" r="64" stroke="currentColor" stroke-dasharray="402.12 402.12" transform="rotate(-90 80 80)"/>
+            <use href="#cup-sg-power" x="46" y="46" width="68" height="68"/>
+          </svg>
+          <p class="cup-mark__life"><span>LIFE</span> <b>50</b></p>
+        </div>
+        <div class="cup-chamber__body" data-reveal>
+          <p class="cup-kicker">CHAMBER 02</p>
+          <h2 id="power-title" class="cup-chamber__title"><span class="cup-chamber__name">Power</span><small>-Category</small></h2>
+          <ul class="cup-badges" aria-label="条件">
+            <li class="cup-badge cup-badge--open"><svg class="cup-ic" aria-hidden="true" focusable="false"><use href="#cup-ic-unlock" width="100%" height="100%"/></svg>初期解禁</li>
+            <li class="cup-badge cup-badge--rule"><svg class="cup-ic" aria-hidden="true" focusable="false"><use href="#cup-ic-sigma" width="100%" height="100%"/></svg><span aria-hidden="true">≤ 50</span><span class="visually-hidden">失点合計 50 以内で突破</span></li>
+          </ul>
+          <ol class="cup-plates" aria-label="課題曲">
+            <li class="cup-plate" role="button" tabindex="0" data-open-chart="relative-brilliance" data-cup-chamber="power" aria-label="Relative brillianceのダウンロード画面を開く">
+              <span class="cup-plate__art has-jaket">
+                <img class="cup-plate__jaket" src="../assets/jaket/Relative%20brilliance.jpg" alt="" width="320" height="180" decoding="async" loading="lazy">
+                <span class="cup-plate__no" aria-hidden="true">01</span>
+              </span>
+              <span class="cup-plate__name">Relative brilliance</span>
+            </li>
+            <li class="cup-plate" role="button" tabindex="0" data-open-chart="memories-sacrifice" data-cup-chamber="power" aria-label="Memories Sacrificeのダウンロード画面を開く">
+              <span class="cup-plate__art has-jaket">
+                <img class="cup-plate__jaket" src="../assets/jaket/Memories%20Sacrifice.png" alt="" width="320" height="180" decoding="async" loading="lazy">
+                <span class="cup-plate__no" aria-hidden="true">02</span>
+              </span>
+              <span class="cup-plate__name">Memories Sacrifice</span>
+            </li>
+            <li class="cup-plate" role="button" tabindex="0" data-open-chart="execute" data-cup-chamber="power" aria-label="(execute.)のダウンロード画面を開く">
+              <span class="cup-plate__art has-jaket">
+                <img class="cup-plate__jaket" src="../assets/jaket/%28execute.%29.jpg" alt="" width="320" height="180" decoding="async" loading="lazy">
+                <span class="cup-plate__no" aria-hidden="true">03</span>
+              </span>
+              <span class="cup-plate__name">(execute.)</span>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="cup-stage cup-chamber tone-complex" id="complex" aria-labelledby="complex-title" style="--life: 100">
+      <div class="cup-stage__inner cup-chamber__grid">
+        <div class="cup-mark" data-reveal>
+          <span class="cup-mark__idx" aria-hidden="true">03</span>
+          <svg class="cup-ring" viewBox="0 0 160 160" aria-hidden="true" focusable="false">
+            <circle class="cup-ring__ticks" cx="80" cy="80" r="75" stroke-dasharray="1.2 22.362" transform="rotate(-90 80 80)"/>
+            <circle class="cup-ring__track" cx="80" cy="80" r="64"/>
+            <circle class="cup-ring__fill" cx="80" cy="80" r="64" stroke="url(#cup-grad-complex)" stroke-dasharray="402.12 402.12" transform="rotate(-90 80 80)"/>
+            <use href="#cup-sg-complex" x="46" y="46" width="68" height="68"/>
+          </svg>
+          <p class="cup-mark__life"><span>LIFE</span> <b>100</b></p>
+        </div>
+        <div class="cup-chamber__body" data-reveal>
+          <p class="cup-kicker">CHAMBER 03</p>
+          <h2 id="complex-title" class="cup-chamber__title"><span class="cup-chamber__name">Complex</span><small>-Category</small></h2>
+          <ul class="cup-badges" aria-label="条件">
+            <li class="cup-badge cup-badge--lock">
+              <svg class="cup-ic" aria-hidden="true" focusable="false"><use href="#cup-ic-lock" width="100%" height="100%"/></svg>
+              <span class="visually-hidden">解禁条件:</span>
+              <svg class="cup-ic cup-ic--sg tone-gimmick" aria-hidden="true" focusable="false"><use href="#cup-sg-gimmick" width="100%" height="100%"/></svg>Gimmick
+              <span class="cup-badge__plus">+</span>
+              <svg class="cup-ic cup-ic--sg tone-power" aria-hidden="true" focusable="false"><use href="#cup-sg-power" width="100%" height="100%"/></svg>Power
+            </li>
+            <li class="cup-badge cup-badge--rule"><svg class="cup-ic" aria-hidden="true" focusable="false"><use href="#cup-ic-sigma" width="100%" height="100%"/></svg><span aria-hidden="true">≤ 100</span><span class="visually-hidden">失点合計 100 以内で突破</span></li>
+          </ul>
+          <ol class="cup-plates" aria-label="課題曲">
+            <li class="cup-plate" role="button" tabindex="0" data-open-chart="unraveling-stasis" data-cup-chamber="complex" aria-label="Unraveling Stasisのダウンロード画面を開く">
+              <span class="cup-plate__art has-jaket">
+                <img class="cup-plate__jaket" src="../assets/jaket/Unraveling%20Stasis.jpg" alt="" width="320" height="180" decoding="async" loading="lazy">
+                <span class="cup-plate__no" aria-hidden="true">01</span>
+              </span>
+              <span class="cup-plate__name">Unraveling Stasis</span>
+            </li>
+            <li class="cup-plate" role="button" tabindex="0" data-open-chart="xaleid-scopix" data-cup-chamber="complex" aria-label="Xaleid◆scopiXのダウンロード画面を開く">
+              <span class="cup-plate__art has-jaket">
+                <img class="cup-plate__jaket" src="../assets/jaket/Xaleid%E2%97%86scopiX.jpg" alt="" width="320" height="180" decoding="async" loading="lazy">
+                <span class="cup-plate__no" aria-hidden="true">02</span>
+              </span>
+              <span class="cup-plate__name">Xaleid◆scopiX</span>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="cup-stage cup-chamber tone-invader" id="invader" aria-labelledby="invader-title" style="--life: 75">
+      <div class="cup-stage__inner cup-chamber__grid">
+        <div class="cup-mark" data-reveal>
+          <span class="cup-mark__idx" aria-hidden="true">04</span>
+          <svg class="cup-ring" viewBox="0 0 160 160" aria-hidden="true" focusable="false">
+            <circle class="cup-ring__ticks" cx="80" cy="80" r="75" stroke-dasharray="1.2 22.362" transform="rotate(-90 80 80)"/>
+            <circle class="cup-ring__track" cx="80" cy="80" r="64"/>
+            <circle class="cup-ring__fill" cx="80" cy="80" r="64" stroke="currentColor" stroke-dasharray="402.12 402.12" transform="rotate(-90 80 80)"/>
+            <use href="#cup-sg-invader" x="46" y="46" width="68" height="68"/>
+          </svg>
+          <p class="cup-mark__life"><span>LIFE</span> <b>75</b></p>
+        </div>
+        <div class="cup-chamber__body" data-reveal>
+          <p class="cup-kicker">CHAMBER 04 // FINAL</p>
+          <h2 id="invader-title" class="cup-chamber__title"><span class="cup-chamber__name">Invader</span><small>-Category</small></h2>
+          <ul class="cup-badges" aria-label="条件">
+            <li class="cup-badge cup-badge--lock">
+              <svg class="cup-ic" aria-hidden="true" focusable="false"><use href="#cup-ic-lock" width="100%" height="100%"/></svg>
+              <span class="visually-hidden">解禁条件:</span>
+              <svg class="cup-ic cup-ic--sg tone-complex" aria-hidden="true" focusable="false"><use href="#cup-sg-complex" width="100%" height="100%"/></svg>Complex
+            </li>
+            <li class="cup-badge cup-badge--rule"><svg class="cup-ic" aria-hidden="true" focusable="false"><use href="#cup-ic-sigma" width="100%" height="100%"/></svg><span aria-hidden="true">≤ 75</span><span class="visually-hidden">失点合計 75 以内で突破</span></li>
+          </ul>
+          <ol class="cup-plates cup-plates--solo" aria-label="課題曲">
+            <li class="cup-plate" role="button" tabindex="0" data-open-chart="meteoric-impact" data-cup-chamber="invader" aria-label="Meteoric Impactのダウンロード画面を開く">
+              <span class="cup-plate__art has-jaket">
+                <img class="cup-plate__jaket" src="../assets/jaket/Meteoric%20Impact.png" alt="" width="400" height="225" decoding="async" loading="lazy">
+                <span class="cup-plate__no" aria-hidden="true">01</span>
+              </span>
+              <span class="cup-plate__name">Meteoric Impact</span>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="cup-stage cup-prize tone-prize" id="prize" aria-labelledby="prize-title">
+      <div class="cup-stage__inner cup-prize__grid">
+        <div class="cup-crate" data-reveal aria-hidden="true">
+          <svg class="cup-crate__svg" viewBox="0 0 360 320" focusable="false">
+            <defs>
+              <linearGradient id="cup-beam" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#f0b429" stop-opacity="0"/>
+                <stop offset="0.6" stop-color="#f0b429" stop-opacity="0.18"/>
+                <stop offset="1" stop-color="#f0b429" stop-opacity="0"/>
+              </linearGradient>
+              <pattern id="cup-hazard" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <rect width="7" height="14" fill="#f0b429"/>
+                <rect x="7" width="7" height="14" fill="#140e02"/>
+              </pattern>
+            </defs>
+            <path d="M158 0h44l74 240H84Z" fill="url(#cup-beam)"/>
+            <ellipse class="cup-crate__floor" cx="180" cy="302" rx="156" ry="12"/>
+            <ellipse class="cup-crate__floor cup-crate__floor--in" cx="180" cy="302" rx="104" ry="7"/>
+
+            <path class="cup-crate__ped" d="M84 236h192l-12 20H96Z"/>
+            <path class="cup-crate__ped" d="M104 256h152v28H104Z"/>
+            <path class="cup-crate__ped" d="M70 284h220v14H70Z"/>
+            <path class="cup-crate__trace" d="M114 270h30l6-6h60l6 6h30"/>
+            <circle class="cup-crate__via" cx="114" cy="270" r="2.5"/>
+            <circle class="cup-crate__via" cx="246" cy="270" r="2.5"/>
+
+            <path class="cup-crate__top" d="M112 112l28-22h136l-28 22Z"/>
+            <path class="cup-crate__side" d="M248 112l28-22v124l-28 22Z"/>
+            <rect class="cup-crate__front" x="112" y="112" width="136" height="124"/>
+            <path class="cup-crate__plank" d="M112 112 248 236M248 112 112 236"/>
+            <rect class="cup-crate__frame" x="120" y="120" width="120" height="108"/>
+            <rect class="cup-crate__plate" x="130" y="160" width="100" height="26"/>
+            <text class="cup-crate__label" x="180" y="178" text-anchor="middle">D-BIRTH</text>
+
+            <path class="cup-crate__chain" d="M114 120 180 198 246 120"/>
+            <path class="cup-crate__shackle" d="M170 202v-8a10 10 0 0 1 20 0v8"/>
+            <rect class="cup-crate__lock" x="163" y="201" width="34" height="27" rx="2"/>
+            <circle class="cup-crate__key" cx="180" cy="212" r="3.2"/>
+            <path class="cup-crate__key-line" d="M180 214v7"/>
+
+            <g transform="rotate(-5 180 246)">
+              <rect x="54" y="238" width="252" height="18" fill="url(#cup-hazard)"/>
+              <rect class="cup-crate__tape-plate" x="112" y="239" width="136" height="16"/>
+              <text class="cup-crate__tape" x="180" y="250.5" text-anchor="middle">NO DISTRIBUTION</text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="cup-prize__body" data-reveal>
+          <p class="cup-kicker">REWARD SLOT // 当時の景品</p>
+          <figure class="cup-prize__cover">
+            <img class="cup-prize__jaket" src="../assets/jaket/D-Birth.webp" alt="" width="360" height="360" decoding="async" loading="lazy">
+          </figure>
+          <h2 id="prize-title" class="cup-prize__title">D-Birth</h2>
+          <ul class="cup-badges" aria-label="条件">
+            <li class="cup-badge cup-badge--lock">
+              <svg class="cup-ic" aria-hidden="true" focusable="false"><use href="#cup-ic-lock" width="100%" height="100%"/></svg>
+              <span class="visually-hidden">獲得条件:</span>
+              <svg class="cup-ic cup-ic--sg tone-invader" aria-hidden="true" focusable="false"><use href="#cup-sg-invader" width="100%" height="100%"/></svg>Invader
+            </li>
+          </ul>
+          <ul class="cup-deny" aria-label="アーカイブでの扱い">
+            <li class="cup-deny__item cup-deny__item--stamp">
+              <svg class="cup-ic" aria-hidden="true" focusable="false"><use href="#cup-ic-dl-off" width="100%" height="100%"/></svg>
+              <span class="cup-deny__label">配布なし<small lang="en">NO DISTRIBUTION</small></span>
+            </li>
+          </ul>
+          <p class="cup-endnav">
+            <a class="cup-endnav__link" href="#boot"><svg class="cup-ic" aria-hidden="true" focusable="false"><use href="#cup-ic-up" width="100%" height="100%"/></svg>TOP</a>
+            <a class="cup-endnav__link" href="../home.html"><svg class="cup-ic" aria-hidden="true" focusable="false"><use href="#cup-ic-home" width="100%" height="100%"/></svg>HOME</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__grid">
+        <div>
+          <h2>NANOKURO</h2>
+          <p>プレイヤー制作の譜面・企画を保管する個人アーカイブ。</p>
+        </div>
+        <nav aria-labelledby="foot-sections">
+          <h2 id="foot-sections">SECTIONS</h2>
+          <ul>
+            <li><a href="../home.html">Home</a></li>
+            <li><a href="../vault.html">Vault</a></li>
+            <li><a href="../notice.html">Notice</a></li>
+            <li><a href="../index.html">Gate</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="foot-projects">
+          <h2 id="foot-projects">PROJECTS</h2>
+          <ul>
+            <li><a href="hub.html" aria-current="page">1st Nanokuro Collections</a></li>
+            <li><a href="../trpg-vault.html">TRPG Scenarios</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="disclaimer">
+        本プロジェクトは非公式プレイヤープロジェクトであり、南京鸽游网络有限公司および《Phigros》公式と認可・協力・運営関係はありません。
+      </p>
+    </div>
+  </footer>
+
+  <script src="../js/bgm.js?v=20261120a"></script>
+  <script src="../js/fx-backdrop.js?v=20261120a"></script>
+  <script src="../js/site.js?v=20261122i"></script>
+  <script src="../js/1st-cup.js?v=20261120g"></script>
+</body>
+</html>

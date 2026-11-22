@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#05060c">
-  <title>Notice — NANOKURO Archive</title>
+  <title>注意事項 — NANOKURO Archive</title>
   <meta name="description" content="譜面配布・利用上の注意。鸽游ガイドライン（2026年9月1日版）を踏まえた要点。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Orbitron:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/site.css?v=20261106b">
+  <link rel="stylesheet" href="css/site.css?v=20261122h">
 </head>
-<body class="has-chrome">
+<body class="has-chrome page-notice">
   <a class="skip-link" href="#main">コンテンツへ</a>
 
   <header class="site-header">
@@ -23,94 +23,164 @@
       <button class="nav-toggle" type="button" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
-      <nav class="nav" id="site-nav" aria-label="主要ナビ">
-        <a href="home.html" data-nav="home.html">Home</a>
-        <a href="vault.html" data-nav="vault.html">Vault</a>
-        <a href="notice.html" data-nav="notice.html">Notice</a>
-        <a href="index.html">Gate</a>
+      <nav class="nav" id="site-nav" aria-label="主要">
+        <ul>
+          <li><a href="home.html" data-nav="home.html">Home</a></li>
+          <li><a href="vault.html" data-nav="vault.html">Vault</a></li>
+          <li><a href="notice.html" data-nav="notice.html">Notice</a></li>
+          <li><a href="index.html">Gate</a></li>
+        </ul>
       </nav>
     </div>
   </header>
 
-  <main class="site-main" id="main">
+  <main class="site-main" id="main" tabindex="-1">
     <div class="wrap">
       <header class="page-hero">
         <p class="page-hero__eyebrow">DISTRIBUTION NOTICE</p>
         <h1>譜面配布における注意事項</h1>
-        <p>
-          以下は、南京鸽游网络有限公司が公開した
-          《Phigros》同人作品およびサードパーティプロジェクトに関するガイドライン（2026年9月1日版）
-          を踏まえ、本アーカイブでの配布・閲覧時に押さえるべき要点を日本語で整理したものです。
-          原文の完全な代替ではありません。
-        </p>
+        <p>配布と閲覧の前に、6つの要点を確認してください。</p>
       </header>
 
-      <section class="notice-block notice-callout">
-        <h2>必須の位置づけ（第1条・第7条）</h2>
-        <p>
-          本プロジェクトは非公式プレイヤープロジェクトであり、南京鸽游网络有限公司および《Phigros》公式と
-          認可・協力・運営関係はありません。
-        </p>
-        <p class="notice-block__follow">
-          “官方 / Official / Authorized / Partner” 等、公式と誤認される表現・見せ方は使いません。
-          「Phigros 同人」「非公式」「プレイヤー制作」などの説明的な言い方に留めます。
-        </p>
+      <section class="plate plate--seal">
+        <div class="plate__seal" aria-hidden="true"><img src="assets/seals/unofficial.svg" alt="" width="40" height="40"></div>
+        <div>
+          <p class="plate__kicker">01 · UNOFFICIAL</p>
+          <h2 class="plate__title">非公式</h2>
+          <p class="plate__line">公式・公認・提携の見せ方は使わない。</p>
+          <details class="notice-details">
+            <summary>くわしく<span class="visually-hidden">（非公式）</span></summary>
+            <div class="notice-details__body">
+              <h3>必須の位置づけ（第1条・第7条）</h3>
+              <p>
+                本プロジェクトは非公式プレイヤープロジェクトであり、南京鸽游网络有限公司および《Phigros》公式と
+                認可・協力・運営関係はありません。
+              </p>
+              <p>
+                “官方 / Official / Authorized / Partner” 等、公式と誤認される表現・見せ方は使いません。
+                「Phigros 同人」「非公式」「プレイヤー制作」などの説明的な言い方に留めます。
+              </p>
+            </div>
+          </details>
+        </div>
       </section>
 
-      <section class="notice-block">
-        <h2>権利と素材（第1条・第5条）</h2>
-        <ul>
-          <li>《Phigros》内の楽曲・曲絵・音效など第三者権利物は、ゲーム内公開＝自由利用を意味しません。</li>
-          <li>譜面パッケージに音源・イラスト等を含める場合は、権利者ごとに必要な許諾を確認してください。</li>
-          <li>鸽游のオープンな姿勢や交流は、正式な書面認可の代替にはなりません。</li>
-          <li>本サイトが索引する譜面についても、再配布・改変・商用利用は各権利条件と本注意に従ってください。</li>
-        </ul>
+      <section class="plate plate--seal">
+        <div class="plate__seal" aria-hidden="true"><img src="assets/seals/rights.svg" alt="" width="40" height="40"></div>
+        <div>
+          <p class="plate__kicker">02 · RIGHTS</p>
+          <h2 class="plate__title">権利</h2>
+          <p class="plate__line">ゲーム内の曲・絵は、自由利用ではない。</p>
+          <details class="notice-details">
+            <summary>くわしく<span class="visually-hidden">（権利）</span></summary>
+            <div class="notice-details__body">
+              <h3>権利と素材（第1条・第5条）</h3>
+              <ul>
+                <li>《Phigros》内の楽曲・曲絵・音效など第三者権利物は、ゲーム内公開＝自由利用を意味しません。</li>
+                <li>譜面パッケージに音源・イラスト等を含める場合は、権利者ごとに必要な許諾を確認してください。</li>
+                <li>鸽游のオープンな姿勢や交流は、正式な書面認可の代替にはなりません。</li>
+                <li>本サイトが索引する譜面についても、再配布・改変・商用利用は各権利条件と本注意に従ってください。</li>
+              </ul>
+            </div>
+          </details>
+        </div>
       </section>
 
-      <section class="notice-block">
-        <h2>ツール・シミュレータ・コミュニティ配布（第3条）</h2>
-        <ul>
-          <li>非商業のファンメイド用途を前提とし、課金機能・広告収益化・商業導線を目的としません。</li>
-          <li>公式プログラム／公式リソースの抽出・同梱・再パック・再配布は行いません。</li>
-          <li>公式サーバ・アカウント・ランキング等への無断接続や、チート／成績改ざん機能は扱いません。</li>
-          <li>未許諾の楽曲・曲絵・ゲーム資源を集中ホスト／一括配信する用途に本サイトを使わないでください。</li>
-        </ul>
+      <section class="plate plate--seal">
+        <div class="plate__seal" aria-hidden="true"><img src="assets/seals/noncommercial.svg" alt="" width="40" height="40"></div>
+        <div>
+          <p class="plate__kicker">03 · NON-COMMERCIAL</p>
+          <h2 class="plate__title">非商用</h2>
+          <p class="plate__line">課金・広告・販売の導線は置かない。</p>
+          <details class="notice-details">
+            <summary>くわしく<span class="visually-hidden">（非商用）</span></summary>
+            <div class="notice-details__body">
+              <h3>商業利用の境界（第2条・第4条）</h3>
+              <ul>
+                <li>個人の健全な同人活動（小規模・善意・独立した創作表現）は尊重される一方、商業主体主導の継続的ビジネス化は対象外／禁止域です。</li>
+                <li>本アーカイブは「保管と案内」を目的とし、会員課金・独占配信・買量広告・商業プラットフォーム強制紐付け等を行いません。</li>
+                <li>公式素材の単純複製商品化や、公式商品との混同を招く販売・宣伝は行わないでください。</li>
+              </ul>
+              <h3>ツール・シミュレータ・コミュニティ配布（第3条）</h3>
+              <ul>
+                <li>非商業のファンメイド用途を前提とし、課金機能・広告収益化・商業導線を目的としません。</li>
+              </ul>
+            </div>
+          </details>
+        </div>
       </section>
 
-      <section class="notice-block">
-        <h2>商業利用の境界（第2条・第4条）</h2>
-        <ul>
-          <li>個人の健全な同人活動（小規模・善意・独立した創作表現）は尊重される一方、商業主体主導の継続的ビジネス化は対象外／禁止域です。</li>
-          <li>本アーカイブは「保管と案内」を目的とし、会員課金・独占配信・買量広告・商業プラットフォーム強制紐付け等を行いません。</li>
-          <li>公式素材の単純複製商品化や、公式商品との混同を招く販売・宣伝は行わないでください。</li>
-        </ul>
+      <section class="plate plate--seal">
+        <div class="plate__seal" aria-hidden="true"><img src="assets/seals/extract.svg" alt="" width="40" height="40"></div>
+        <div>
+          <p class="plate__kicker">04 · NO EXTRACTION</p>
+          <h2 class="plate__title">抽出しない</h2>
+          <p class="plate__line">公式プログラムとデータの抜き出し・再配布はしない。</p>
+          <details class="notice-details">
+            <summary>くわしく<span class="visually-hidden">（抽出しない）</span></summary>
+            <div class="notice-details__body">
+              <h3>プログラム・データ・ネットワーク（第6条）</h3>
+              <ul>
+                <li>ゲームプログラム、リソースファイル、非公開データの抽出・公開・転売・第三者提供は禁止です。</li>
+                <li>技術的保護の回避や非公開通信の傍受など、不正取得を目的とした行為は対象にしません。</li>
+              </ul>
+              <h3>ツール・シミュレータ・コミュニティ配布（第3条）</h3>
+              <ul>
+                <li>公式プログラム／公式リソースの抽出・同梱・再パック・再配布は行いません。</li>
+                <li>公式サーバ・アカウント・ランキング等への無断接続や、チート／成績改ざん機能は扱いません。</li>
+                <li>未許諾の楽曲・曲絵・ゲーム資源を集中ホスト／一括配信する用途に本サイトを使わないでください。</li>
+              </ul>
+            </div>
+          </details>
+        </div>
       </section>
 
-      <section class="notice-block">
-        <h2>プログラム・データ・ネットワーク（第6条）</h2>
-        <ul>
-          <li>ゲームプログラム、リソースファイル、非公開データの抽出・公開・転売・第三者提供は禁止です。</li>
-          <li>技術的保護の回避や非公開通信の傍受など、不正取得を目的とした行為は対象にしません。</li>
-        </ul>
+      <section class="plate plate--seal">
+        <div class="plate__seal" aria-hidden="true"><img src="assets/seals/personal.svg" alt="" width="40" height="40"></div>
+        <div>
+          <p class="plate__kicker">05 · PERSONAL USE</p>
+          <h2 class="plate__title">個人で</h2>
+          <p class="plate__line">入手した譜面は、個人のプレイと学習が基本。</p>
+          <details class="notice-details">
+            <summary>くわしく<span class="visually-hidden">（個人で）</span></summary>
+            <div class="notice-details__body">
+              <h3>本サイト利用者へのお願い</h3>
+              <ul>
+                <li>ダウンロードした譜面は、個人のプレイ／学習目的を基本とし、権利者の意向に反する二次配布をしないでください。</li>
+                <li>動画投稿・配信で音源や曲絵を使う場合は、各プラットフォーム規則と権利者条件を別途確認してください。</li>
+                <li>不具合報告・権利に関する申し出がある場合は、サイト運営（Nanokuro）側へ連絡し、該当コンテンツの停止・削除に協力します。</li>
+                <li>ガイドライン原文は鸽游の公式発表に従って更新される場合があります。本ページも必要に応じて改訂します。</li>
+              </ul>
+            </div>
+          </details>
+        </div>
       </section>
 
-      <section class="notice-block">
-        <h2>本サイト利用者へのお願い</h2>
-        <ul>
-          <li>ダウンロードした譜面は、個人のプレイ／学習目的を基本とし、権利者の意向に反する二次配布をしないでください。</li>
-          <li>動画投稿・配信で音源や曲絵を使う場合は、各プラットフォーム規則と権利者条件を別途確認してください。</li>
-          <li>不具合報告・権利に関する申し出がある場合は、サイト運営（Nanokuro）側へ連絡し、該当コンテンツの停止・削除に協力します。</li>
-          <li>ガイドライン原文は鸽游の公式発表に従って更新される場合があります。本ページも必要に応じて改訂します。</li>
-        </ul>
-      </section>
-
-      <section class="notice-block">
-        <h2>参考</h2>
-        <ul>
-          <li>原典: 《Phigros》同人作品およびサードパーティプロジェクトに関するガイドライン（2026年9月1日版）— Bilibili / 鸽游公開資料</li>
-          <li>施行: 2026年9月1日</li>
-          <li>本ページは要約・運用メモであり、法的助言ではありません。</li>
-        </ul>
+      <section class="plate plate--seal">
+        <div class="plate__seal" aria-hidden="true"><img src="assets/seals/source.svg" alt="" width="40" height="40"></div>
+        <div>
+          <p class="plate__kicker">06 · SOURCE</p>
+          <h2 class="plate__title">原典</h2>
+          <p class="plate__line">2026年9月1日版の要約であり、法的助言ではない。</p>
+          <details class="notice-details">
+            <summary>くわしく<span class="visually-hidden">（原典）</span></summary>
+            <div class="notice-details__body">
+              <h3>このページについて</h3>
+              <p>
+                南京鸽游网络有限公司が公開した
+                《Phigros》同人作品およびサードパーティプロジェクトに関するガイドライン（2026年9月1日版）
+                を踏まえ、本アーカイブでの配布・閲覧時に押さえるべき要点を日本語で整理したものです。
+                原文の完全な代替ではありません。
+              </p>
+              <h3>参考</h3>
+              <ul>
+                <li>原典: 《Phigros》同人作品およびサードパーティプロジェクトに関するガイドライン（2026年9月1日版）— Bilibili / 鸽游公開資料</li>
+                <li>施行: 2026年9月1日</li>
+                <li>本ページは要約・運用メモであり、法的助言ではありません。</li>
+              </ul>
+            </div>
+          </details>
+        </div>
       </section>
     </div>
   </main>
@@ -122,20 +192,21 @@
           <h2>NANOKURO</h2>
           <p>プレイヤー制作の譜面・企画を保管する個人アーカイブ。</p>
         </div>
-        <div>
-          <h2>SECTIONS</h2>
+        <nav aria-labelledby="foot-sections">
+          <h2 id="foot-sections">SECTIONS</h2>
           <ul>
             <li><a href="home.html">Home</a></li>
             <li><a href="vault.html">Vault</a></li>
             <li><a href="notice.html">Notice</a></li>
           </ul>
-        </div>
-        <div>
-          <h2>PROJECTS</h2>
+        </nav>
+        <nav aria-labelledby="foot-projects">
+          <h2 id="foot-projects">PROJECTS</h2>
           <ul>
             <li><a href="../2nd Nanokuro Collections/html/map.html" data-second-link>2nd Nanokuro Collections</a></li>
+            <li><a href="trpg-vault.html">TRPG Scenarios</a></li>
           </ul>
-        </div>
+        </nav>
       </div>
       <p class="disclaimer">
         本プロジェクトは非公式プレイヤープロジェクトであり、南京鸽游网络有限公司および《Phigros》公式と認可・協力・運営関係はありません。
@@ -143,7 +214,8 @@
     </div>
   </footer>
 
-  <script src="js/bgm.js?v=20261106b"></script>
-  <script src="js/site.js?v=20261106b"></script>
+  <script src="js/bgm.js?v=20261119i"></script>
+  <script src="js/fx-backdrop.js?v=20261119i"></script>
+  <script src="js/site.js?v=20261122i"></script>
 </body>
 </html>

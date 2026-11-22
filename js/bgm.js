@@ -197,6 +197,65 @@
     for (var i = 0; i < list.length; i++) list[i].parentNode.removeChild(list[i]);
   }
 
+  var SHEET_SELECTOR = 'link[rel~="stylesheet"][href]';
+
+  /* Relative hrefs re-resolve against pushState URLs, so keep the URL each sheet was actually loaded from. */
+  function stampSheets() {
+    var list = document.querySelectorAll(SHEET_SELECTOR);
+    for (var i = 0; i < list.length; i++) {
+      if (!list[i].hasAttribute('data-nk-href')) list[i].setAttribute('data-nk-href', list[i].href);
+    }
+  }
+
+  /* Same-origin sheets match by path so a ?v= bump never loads site.css twice. */
+  function stylesheetKey(href) {
+    try {
+      var u = new URL(href, location.href);
+      return u.origin === location.origin ? u.pathname : u.href;
+    } catch (e) {
+      return href;
+    }
+  }
+
+  /* Soft nav swaps only <body>; sheets that exist only in the next page's <head> are added before the swap. */
+  function adoptStylesheets(doc, baseUrl) {
+    stampSheets();
+    var have = {};
+    var current = document.querySelectorAll(SHEET_SELECTOR);
+    for (var i = 0; i < current.length; i++) {
+      have[stylesheetKey(current[i].getAttribute('data-nk-href'))] = true;
+    }
+
+    var pending = [];
+    var incoming = doc.head ? doc.head.querySelectorAll(SHEET_SELECTOR) : [];
+    for (var j = 0; j < incoming.length; j++) {
+      var abs;
+      try {
+        abs = new URL(incoming[j].getAttribute('href'), baseUrl).href;
+      } catch (e) {
+        continue;
+      }
+      var key = stylesheetKey(abs);
+      if (have[key]) continue;
+      have[key] = true;
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = abs;
+      link.setAttribute('data-nk-href', abs);
+      pending.push(new Promise(function (resolve) {
+        link.addEventListener('load', resolve);
+        link.addEventListener('error', resolve);
+      }));
+      document.head.appendChild(link);
+    }
+
+    if (!pending.length) return Promise.resolve();
+    return Promise.race([
+      Promise.all(pending),
+      new Promise(function (resolve) { setTimeout(resolve, 1500); })
+    ]);
+  }
+
   function softNavigate(url, push) {
     if (softNavBusy) return;
     softNavBusy = true;
@@ -205,10 +264,13 @@
     fetch(url, { credentials: 'same-origin', cache: 'no-cache' })
       .then(function (res) {
         if (!res.ok) throw new Error('nav ' + res.status);
-        return res.text();
+        var finalUrl = res.url || url;
+        return res.text().then(function (html) {
+          var parsed = new DOMParser().parseFromString(html, 'text/html');
+          return adoptStylesheets(parsed, finalUrl).then(function () { return parsed; });
+        });
       })
-      .then(function (html) {
-        var doc = new DOMParser().parseFromString(html, 'text/html');
+      .then(function (doc) {
         stripPageScripts(doc.body);
 
         document.title = doc.title || document.title;
@@ -282,6 +344,7 @@
     bootUi();
   }
 
+  stampSheets();
   seekAndPlay();
 
   window.NanokuroBgm = {

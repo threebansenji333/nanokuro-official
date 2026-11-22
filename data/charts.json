@@ -11,7 +11,7 @@
       "note": "ATは合作。差分3種（Shader有無あり）",
       "tags": ["brilliance"],
       "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
-      "detailHint": "曲名・コンポーザー・譜面制作者・難易度定数などの詳細は、YouTubeチャンネル投稿動画の概要欄を参照してください。",
+      "detailHint": "譜面動画はこちらから",
       "variants": [
         {
           "id": "at-16",
@@ -19,7 +19,7 @@
           "difficulty": "AT",
           "constant": "16.5",
           "shader": true,
-          "charter": "Nanokuro / Wingbat",
+          "charter": "Nanokuro , Wingbat",
           "file": "charts/crystal-brilliance/Crystal-brilliance-AT-Lv16.zip",
           "downloadName": "Crystal brilliance(AT Lv.16).zip"
         },
@@ -48,7 +48,7 @@
     {
       "id": "glacial-brilliance",
       "title": "Glacial brilliance",
-      "composer": "Nanokuro",
+      "composer": "Tak_mfk",
       "charter": "Nanokuro",
       "difficulty": "IN Lv.14.8",
       "keymode": "Phigros",
@@ -56,7 +56,7 @@
       "note": "ソロ制作",
       "tags": ["brilliance"],
       "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
-      "detailHint": "曲名・コンポーザー・譜面制作者・難易度定数などの詳細は、YouTubeチャンネル投稿動画の概要欄を参照してください。",
+      "detailHint": "譜面動画はこちらから",
       "variants": [
         {
           "id": "in-148",
@@ -73,7 +73,7 @@
     {
       "id": "meteoric-impact",
       "title": "Meteoric Impact",
-      "composer": "Nanokuro",
+      "composer": "Kyutatsuki",
       "charter": "Nanokuro",
       "difficulty": "AT Lv.18.5",
       "keymode": "Phigros",
@@ -81,7 +81,7 @@
       "note": "緩和前 / 緩和後の2版",
       "tags": ["power"],
       "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
-      "detailHint": "曲名・コンポーザー・譜面制作者・難易度定数などの詳細は、YouTubeチャンネル投稿動画の概要欄を参照してください。",
+      "detailHint": "譜面動画はこちらから",
       "variants": [
         {
           "id": "at-185-pre",
@@ -110,7 +110,7 @@
     {
       "id": "clock-paradox",
       "title": "Clock Paradox",
-      "composer": "Nanokuro",
+      "composer": "WyvernP",
       "charter": "Nanokuro",
       "difficulty": "AT Lv.15.0",
       "keymode": "Phigros",
@@ -119,7 +119,7 @@
       "note": "Access Denied",
       "tags": [],
       "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
-      "detailHint": "曲名・コンポーザー・譜面制作者・難易度定数などの詳細は、YouTubeチャンネル投稿動画の概要欄を参照してください。",
+      "detailHint": "譜面動画はこちらから",
       "variants": [
         {
           "id": "at-150",
@@ -137,21 +137,21 @@
     {
       "id": "abyss-motion",
       "title": "ABYSS MOTION 192.333",
-      "composer": "Nanokuro",
+      "composer": "ariiol & 奏Sou",
       "charter": "Nanokuro",
       "difficulty": "AT Lv.16.3",
       "keymode": "Phigros",
       "status": "open",
       "tags": [],
       "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
-      "detailHint": "曲名・コンポーザー・譜面制作者・難易度定数などの詳細は、YouTubeチャンネル投稿動画の概要欄を参照してください。",
+      "detailHint": "譜面動画はこちらから",
       "variants": [
         {
           "id": "at-163",
           "label": "AT Lv.16.3",
           "difficulty": "AT",
           "constant": "16.3",
-          "shader": true,
+          "shader": null,
           "charter": "Nanokuro",
           "file": "charts/abyss-motion/ABYSS-MOTION-192.333-AT-Lv16.3.zip",
           "downloadName": "ABYSS MOTION 192.333(AT Lv.16.3).zip"
@@ -161,14 +161,14 @@
     {
       "id": "san-chokusou",
       "title": "SAN値直葬",
-      "composer": "Nanokuro",
+      "composer": "STEAKA",
       "charter": "Nanokuro",
       "difficulty": "AT Lv.15.7",
       "keymode": "Phigros",
       "status": "open",
       "tags": [],
       "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
-      "detailHint": "曲名・コンポーザー・譜面制作者・難易度定数などの詳細は、YouTubeチャンネル投稿動画の概要欄を参照してください。",
+      "detailHint": "譜面動画はこちらから",
       "variants": [
         {
           "id": "at-157",
@@ -185,14 +185,14 @@
     {
       "id": "indoor-trackmaker",
       "title": "インドア系ならトラックメイカー",
-      "composer": "Nanokuro",
+      "composer": "Yunomi & nicamoq",
       "charter": "Nanokuro",
       "difficulty": "IN Lv.14.0",
       "keymode": "Phigros",
       "status": "open",
       "tags": [],
       "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
-      "detailHint": "曲名・コンポーザー・譜面制作者・難易度定数などの詳細は、YouTubeチャンネル投稿動画の概要欄を参照してください。",
+      "detailHint": "譜面動画はこちらから",
       "variants": [
         {
           "id": "in-140",
@@ -209,7 +209,7 @@
     {
       "id": "kakusei",
       "title": "覚醒",
-      "composer": "Nanokuro",
+      "composer": "Tak_mfk",
       "charter": "Nanokuro",
       "difficulty": "IN Lv.14.2",
       "keymode": "Phigros",
@@ -217,7 +217,7 @@
       "note": "1st Collections 収録系",
       "tags": ["gimmick"],
       "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
-      "detailHint": "曲名・コンポーザー・譜面制作者・難易度定数などの詳細は、YouTubeチャンネル投稿動画の概要欄を参照してください。",
+      "detailHint": "譜面動画はこちらから",
       "variants": [
         {
           "id": "in-142",
@@ -236,15 +236,15 @@
     {
       "id": "memories-sacrifice",
       "title": "Memories Sacrifice",
-      "composer": "Nanokuro",
-      "charter": "Fevm1r / Nanokuro",
+      "composer": "OMI",
+      "charter": "Nanokuro , Fevm1r",
       "difficulty": "AT Lv.16.0",
       "keymode": "Phigros",
       "status": "open",
       "note": "合作譜面",
       "tags": ["collab", "power"],
       "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
-      "detailHint": "曲名・コンポーザー・譜面制作者・難易度定数などの詳細は、YouTubeチャンネル投稿動画の概要欄を参照してください。",
+      "detailHint": "譜面動画はこちらから",
       "variants": [
         {
           "id": "at-160",
@@ -252,7 +252,7 @@
           "difficulty": "AT",
           "constant": "16.0",
           "shader": true,
-          "charter": "Fevm1r / Nanokuro",
+          "charter": "Nanokuro , Fevm1r",
           "file": "charts/memories-sacrifice/Memories-Sacrifice-AT-Lv16.0.pez",
           "downloadName": "Memories Sacrifice(AT Lv.16.0).pez"
         }
@@ -261,8 +261,8 @@
     {
       "id": "d-birth",
       "title": "D-Birth",
-      "composer": "—",
-      "charter": "Nanokuro / Wingbat",
+      "composer": "Sakuzyo",
+      "charter": "Nanokuro , Wingbat",
       "difficulty": "SP Lv.15.5",
       "keymode": "Phigros",
       "status": "open",
@@ -278,7 +278,8 @@
           "label": "SP Lv.15.5",
           "difficulty": "SP",
           "constant": "15.5",
-          "charter": "Nanokuro / Wingbat",
+          "shader": true,
+          "charter": "Nanokuro , Wingbat",
           "watchUrl": "https://www.youtube.com/watch?v=pHAmW4jm5qA"
         }
       ]
@@ -286,23 +287,23 @@
     {
       "id": "relative-brilliance",
       "title": "Relative brilliance",
-      "composer": "Nanokuro",
-      "charter": "Nanokuro / fevm1r",
+      "composer": "Tak_mfk",
+      "charter": "Nanokuro , Fevm1r",
       "difficulty": "IN Lv.15.0",
       "keymode": "Phigros",
       "status": "open",
       "note": "合作譜面",
       "tags": ["collab", "brilliance"],
       "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
-      "detailHint": "曲名・コンポーザー・譜面制作者・難易度定数などの詳細は、YouTubeチャンネル投稿動画の概要欄を参照してください。",
+      "detailHint": "譜面動画はこちらから",
       "variants": [
         {
           "id": "in-150",
           "label": "IN Lv.15.0",
           "difficulty": "IN",
           "constant": "15.0",
-          "shader": true,
-          "charter": "Nanokuro / fevm1r",
+          "shader": "ー",
+          "charter": "Nanokuro , Fevm1r",
           "file": "charts/relative-brilliance/Relative-brilliance-IN-Lv15.0.pez",
           "downloadName": "Relative brilliance(IN Lv.15.0).pez"
         }
@@ -311,15 +312,15 @@
     {
       "id": "execute",
       "title": "(execute.)",
-      "composer": "Nanokuro",
-      "charter": "Monokuro / Fevm1r",
+      "composer": "Ardolf",
+      "charter": "Nanokuro , Fevm1r",
       "difficulty": "AT Lv.17.4",
       "keymode": "Phigros",
       "status": "open",
       "note": "合作譜面",
       "tags": ["collab", "power"],
       "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
-      "detailHint": "曲名・コンポーザー・譜面制作者・難易度定数などの詳細は、YouTubeチャンネル投稿動画の概要欄を参照してください。",
+      "detailHint": "譜面動画はこちらから",
       "variants": [
         {
           "id": "at-174",
@@ -327,7 +328,7 @@
           "difficulty": "AT",
           "constant": "17.4",
           "shader": true,
-          "charter": "Monokuro / Fevm1r",
+          "charter": "Nanokuro , Fevm1r",
           "file": "charts/execute/execute-AT-Lv17.4.pez",
           "downloadName": "(execute.) (AT Lv.17.4).pez"
         }
@@ -336,8 +337,8 @@
     {
       "id": "unraveling-stasis",
       "title": "Unraveling Stasis",
-      "composer": "Nanokuro",
-      "charter": "Nanokuro / 山田悠牙",
+      "composer": "l'avenir proche",
+      "charter": "Nanokuro , 山田悠牙",
       "difficulty": "AT Lv.18.5",
       "keymode": "Phigros",
       "status": "open",
@@ -353,7 +354,7 @@
           "label": "AT Lv.18.5",
           "difficulty": "AT",
           "constant": "18.5",
-          "charter": "Nanokuro / 山田悠牙",
+          "charter": "Nanokuro , 山田悠牙",
           "watchUrl": "https://youtu.be/e8y70gU1b2I?si=akDJpWvENkYZceI_"
         }
       ]
@@ -361,8 +362,8 @@
     {
       "id": "xaleid-scopix",
       "title": "Xaleid◆scopiX",
-      "composer": "Nanokuro",
-      "charter": "Fevm1r / Nanokuro / wingbat",
+      "composer": "xi",
+      "charter": "Nanokuro , Fevm1r , wingbat",
       "difficulty": "AT Lv.18.2",
       "keymode": "Phigros",
       "status": "open",
@@ -378,7 +379,7 @@
           "label": "AT Lv.18.2",
           "difficulty": "AT",
           "constant": "18.2",
-          "charter": "Fevm1r / Nanokuro / wingbat",
+          "charter": "Nanokuro , Fevm1r , wingbat",
           "watchUrl": "https://youtu.be/kiOlMmtrIWk?si=CNMCSEGU0iv3RbFZ"
         }
       ]
@@ -386,7 +387,7 @@
     {
       "id": "first-breath",
       "title": "First Breath",
-      "composer": "—",
+      "composer": "Kry.exe",
       "charter": "Detection of Protection",
       "difficulty": "AT Lv.17.5",
       "keymode": "Phigros",
@@ -403,6 +404,7 @@
           "label": "AT Lv.17.5",
           "difficulty": "AT",
           "constant": "17.5",
+          "shader": true,
           "charter": "Detection of Protection",
           "watchUrl": "https://youtu.be/YyLs_sB9PYI?si=5T0264Lf8SajAcIy"
         }
@@ -411,7 +413,7 @@
     {
       "id": "battle-no-1",
       "title": "BATTLE NO.1",
-      "composer": "—",
+      "composer": "TANO*C Sound Team",
       "charter": "PFM Charting Team",
       "difficulty": "IN Lv.16.2 / AT Lv.16.9",
       "keymode": "Phigros",
@@ -443,23 +445,23 @@
     {
       "id": "infinite-hyperdrive",
       "title": "INFINITE HYPERDRIVE",
-      "composer": "—",
-      "charter": "Chaos / Nanokuro",
+      "composer": "Srav3R & Kobaryo",
+      "charter": "Nanokuro , Chaos",
       "difficulty": "IN Lv.14.9",
       "keymode": "Phigros",
       "status": "open",
       "note": "合作譜面",
       "tags": ["collab"],
       "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
-      "detailHint": "曲名・コンポーザー・譜面制作者・難易度定数などの詳細は、YouTubeチャンネル投稿動画の概要欄を参照してください。",
+      "detailHint": "譜面動画はこちらから",
       "variants": [
         {
           "id": "in-149",
           "label": "IN Lv.14.9",
           "difficulty": "IN",
           "constant": "14.9",
-          "shader": true,
-          "charter": "Chaos / Nanokuro",
+          "shader": false,
+          "charter": "Nanokuro , Chaos",
           "file": "charts/infinite-hyperdrive/INFINITE-HYPERDRIVE-IN-Lv14.9.pez",
           "downloadName": "INFINITE HYPERDRIVE(IN Lv.14.9).pez"
         }
@@ -469,7 +471,7 @@
   "keymodes": [
     {
       "title": "KIZUNA Resolution",
-      "composer": "Nanokuro",
+      "composer": "TAG",
       "charter": "Nanokuro",
       "difficulty": "4K Lv.17.2",
       "keymode": "4K",

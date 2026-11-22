@@ -320,3 +320,879 @@ Changed files:
 - vault-keymodes.html
 - notice.html
 ---
+
+---
+Date: 2026-11-17
+Task: HTML製作のAgent SkillとCursor Rulesを作成
+Changed files:
+- .cursor/rules/html-structure.mdc
+- .cursor/rules/html-interaction.mdc
+- .cursor/rules/css-readability.mdc
+---
+
+---
+Date: 2026-11-17
+Task: SkillとRuleに沿って公式サイトHTMLを刷新
+Changed files:
+- css/site.css
+- js/site.js
+- index.html
+- home.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- notice.html
+---
+
+---
+Date: 2026-11-17
+Task: 譜面一覧の全曲にコンポーザーを調査して記載
+Changed files:
+- data/charts.json
+- js/site.js
+- index.html
+- home.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- notice.html
+---
+
+---
+Date: 2026-11-17
+Task: ABYSS MOTIONのコンポーザーをPhigros表記に変更
+Changed files:
+- data/charts.json
+- js/site.js
+- index.html
+- home.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- notice.html
+---
+
+---
+Date: 2026-11-17
+Task: Noticeの中央寄せと、無課金の没入サイト手法の調査
+Changed files:
+- css/site.css
+- notice.html
+- index.html
+- home.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+---
+
+---
+Date: 2026-11-18
+Task: UI刷新ステップ1：共通「欠け板」(plate) CSSシステム追加と既存カード/Notice/譜面行/クッションの互換移行、site.css キャッシュ番号更新
+Changed files:
+- css/site.css
+- index.html
+- home.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- notice.html
+---
+
+---
+Date: 2026-11-18
+Task: Notice ページ圧縮：6項目を印（seal）＋短題＋一行リードの plate--seal に再構成し、法的本文を details/summary（くわしく）へ格納。plate--seal をグリッド化、.notice-details と .visually-hidden を追加、旧 .notice-block/.notice-callout CSS を撤去、site.css キャッシュを ?v=20261118b に更新
+Changed files:
+- notice.html
+- css/site.css
+- index.html
+- home.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+---
+
+---
+Date: 2026-11-18
+Task: Home・Vault ページ高密度化：ヒーロー説明文と特設バナー説明を単文に圧縮し、各ナビ・保管庫・その他アーカイブカードを「見出し＋meta」のみに整理
+Changed files:
+- home.html
+- vault.html
+---
+
+---
+Date: 2026-11-18
+Task: Notice用の印SVG6点を作成
+Changed files:
+- assets/seals/unofficial.svg
+- assets/seals/rights.svg
+- assets/seals/noncommercial.svg
+- assets/seals/extract.svg
+- assets/seals/personal.svg
+- assets/seals/source.svg
+- assets/seals/README.txt
+---
+
+---
+Date: 2026-11-18
+Task: UI刷新1〜4着手（欠け板・Notice圧縮・Home/Vault密度・譜面行/DL板化）
+Changed files:
+- css/site.css
+- notice.html
+- home.html
+- vault.html
+- index.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- assets/seals/unofficial.svg
+- assets/seals/rights.svg
+- assets/seals/noncommercial.svg
+- assets/seals/extract.svg
+- assets/seals/personal.svg
+- assets/seals/source.svg
+- assets/seals/README.txt
+---
+
+---
+Date: 2026-11-19
+Task: 飾り4点（角・非公式印・区切り・取得印）を生成し、角と印だけに配置
+Changed files:
+- assets/ornaments/corner.png
+- assets/ornaments/unofficial.png
+- assets/ornaments/divider.png
+- assets/ornaments/download.png
+- css/site.css
+- js/site.js
+- notice.html
+- home.html
+- index.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+---
+
+---
+Date: 2026-11-19
+Task: ステップ5飾りの監査と修正（角飾りを欠けの対角線に合わせ発光強化・クッション角のずれ修正・印01をSVGへ戻す・区切り線の左余白除去・DL印強化）、ステップ6全画面WebGLシェーダー背景（水晶／回路／保管庫、マウス・スクロール連動、ソフト遷移でも継続、減速設定・非表示時は停止、DPR≤1.5）を追加し、キャッシュ番号を ?v=20261119b に更新
+Changed files:
+- js/fx-backdrop.js
+- css/site.css
+- assets/ornaments/divider.png
+- notice.html
+- index.html
+- home.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+---
+
+---
+Date: 2026-11-19
+Task: 全面シェーダーのマウス・スクロール追従を高速化
+Changed files:
+- js/fx-backdrop.js
+- index.html
+- home.html
+- notice.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+---
+
+---
+Date: 2026-11-19
+Task: 譜面一覧の各譜面コンテナの透明度を約15%下げる
+Changed files:
+- css/site.css
+- index.html
+- home.html
+- notice.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+---
+
+---
+Date: 2026-11-19
+Task: 譜面行クリックでDL表示、詳細ボタン削除、開閉にグリッチ付きフェード
+Changed files:
+- js/site.js
+- css/site.css
+- index.html
+- home.html
+- notice.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+---
+
+---
+Date: 2026-11-19
+Task: DL画面のグリッチ削除（フェードイン・アウトは温存）
+Changed files:
+- js/site.js
+- css/site.css
+- index.html
+- home.html
+- notice.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+---
+
+---
+Date: 2026-11-19
+Task: 譜面一覧に複数選択・一括DL機能を実装
+Changed files:
+- js/site.js
+- css/site.css
+- index.html
+- home.html
+- notice.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+---
+
+---
+Date: 2026-11-19
+Task: 注意事項に譜面一覧／DL戻りショートカットを追加
+Changed files:
+- js/site.js
+- css/site.css
+- index.html
+- home.html
+- notice.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+---
+
+---
+Date: 2026-11-19
+Task: OTHER ARCHIVESにTRPG Scenarios保管庫を追加
+Changed files:
+- home.html
+- notice.html
+- index.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- trpg-vault.html
+- scenarios/kagami-no-saidan.html
+- scenarios/yaminabe.html
+- css/trpg.css
+- css/site.css
+- js/bgm.js
+- js/fx-backdrop.js
+- assets/trpg/stone-wall.svg
+- assets/trpg/brick.svg
+- assets/trpg/wood-grain.svg
+- assets/trpg/wood-grain-v.svg
+- assets/trpg/stone-slab.svg
+---
+
+---
+Date: 2026-11-19
+Task: Gate目次にTRPGシナリオ保管庫を追加
+Changed files:
+- index.html
+---
+
+---
+Date: 2026-11-19
+Task: シナリオ『闇鍋』の草案を作成（HTMLではない）
+Changed files:
+- scenarios/yaminabe-草案.md
+---
+
+---
+Date: 2026-11-19
+Task: 闇鍋草案の望むもの定義修正とルールブック必要情報リスト追加
+Changed files:
+- scenarios/yaminabe-草案.md
+---
+
+---
+Date: 2026-11-19
+Task: プレビュー用ローカルサーバーを終了
+Changed files:
+- （なし）
+---
+
+---
+Date: 2026-11-20
+Task: プレビューサーバ起動と『闇鍋』シナリオHTML作成
+Changed files:
+- scenarios/yaminabe.html
+- css/trpg.css
+- trpg-vault.html
+- scenarios/kagami-no-saidan.html
+- scenarios/yaminabe-草案.md
+---
+
+---
+Date: 2026-11-20
+Task: 闇鍋HTMLを要約化し詳細をパスワード保護
+Changed files:
+- scenarios/yaminabe.html
+- js/site.js
+- css/trpg.css
+- trpg-vault.html
+- scenarios/kagami-no-saidan.html
+- scenarios/yaminabe-草案.md
+---
+
+---
+Date: 2026-11-20
+Task: ホームからCup項目削除、1st保管HTML草案4案作成
+Changed files:
+- home.html
+- 1st-nanokuro/drafts/00-index.md
+- 1st-nanokuro/drafts/01-cup-ladder.md
+- 1st-nanokuro/drafts/02-score-verify.md
+- 1st-nanokuro/drafts/03-static-codex.md
+- 1st-nanokuro/drafts/04-four-chambers.md
+---
+
+---
+Date: 2026-11-20
+Task: 1stは04採用・画像Verify不可で景品配布永久禁止を記録
+Changed files:
+- 1st-nanokuro/drafts/00-index.md
+- 1st-nanokuro/drafts/02-score-verify.md
+- 1st-nanokuro/drafts/04-four-chambers.md
+- 1st-nanokuro/drafts/05-verify-decision.md
+- 1st-nanokuro/references/phigros-result-sample.png
+---
+
+---
+Date: 2026-11-20
+Task: 1st CollectionsハブHTML実装（縦スクロール・サイバー）
+Changed files:
+- 1st-nanokuro/hub.html
+- css/1st-cup.css
+- js/1st-cup.js
+- js/site.js
+- home.html
+- 1st-nanokuro/drafts/04-four-chambers.md
+---
+
+---
+Date: 2026-11-20
+Task: 1stハブを文字削減・ビジュアル主導でブラッシュアップ
+Changed files:
+- 1st-nanokuro/hub.html
+- css/1st-cup.css
+- js/1st-cup.js
+- js/site.js
+- home.html
+- assets/1st/circuit-tile.svg
+- 1st-nanokuro/drafts/04-four-chambers.md
+---
+
+---
+Date: 2026-11-20
+Task: 1st�n�u���A���J�[���擪�֔�ԕs����C��
+Changed files:
+- css/1st-cup.css
+- js/1st-cup.js
+- js/site.js
+- 1st-nanokuro/hub.html
+---
+
+---
+Date: 2026-11-20
+Task: 1st�n�u�ɕ��ʃW���P�G��}��
+Changed files:
+- 1st-nanokuro/hub.html
+- css/1st-cup.css
+---
+
+---
+Date: 2026-11-20
+Task: �W���P�G�I�[�o�[���C�����ECHECK���ƌi�i�����폜
+Changed files:
+- 1st-nanokuro/hub.html
+- css/1st-cup.css
+---
+
+---
+Date: 2026-11-20
+Task: 課題曲プレートからDL画面遷移＋1st由来時のHubショートカット
+Changed files:
+- 1st-nanokuro/hub.html
+- js/site.js
+- js/1st-cup.js
+- css/site.css
+- css/1st-cup.css
+---
+
+---
+Date: 2026-11-20
+Task: DL画面のHUBショートカットボタンを削除
+Changed files:
+- js/site.js
+- js/1st-cup.js
+- css/site.css
+- 1st-nanokuro/hub.html
+---
+
+---
+Date: 2026-11-20
+Task: プレビューサーバを停止
+Changed files:
+- （なし）
+---
+
+---
+Date: 2026-11-21
+Task: プレビューサーバを起動
+Changed files:
+- （なし）
+---
+
+---
+Date: 2026-11-21
+Task: 闇鍋シナリオ推奨技能の説明文を削除
+Changed files:
+- scenarios/yaminabe.html
+---
+
+---
+Date: 2026-11-22
+Task: 闇鍋のKP読み上げ文を一式作成
+Changed files:
+- scenarios/yaminabe-KP読み上げ.md
+- scenarios/yaminabe-草案.md
+- scenarios/yaminabe.html
+---
+
+---
+Date: 2026-11-22
+Task: 闇鍋のKP読み上げ文を盛りのある読み上げ地の文に全文リライト
+Changed files:
+- scenarios/yaminabe-KP読み上げ.md
+---
+
+---
+Date: 2026-11-22
+Task: yaminabe.htmlの説明文を全文リライト
+Changed files:
+- scenarios/yaminabe.html
+---
+
+---
+Date: 2026-11-22
+Task: 闇鍋ページ見出しリードから望むもの一文を削除
+Changed files:
+- scenarios/yaminabe.html
+---
+
+---
+Date: 2026-11-22
+Task: 闇鍋の舞台表記から白い部屋を削除
+Changed files:
+- scenarios/yaminabe.html
+---
+
+---
+Date: 2026-11-22
+Task: 闇鍋概要リードの書き置き部分を短く差し替え
+Changed files:
+- scenarios/yaminabe.html
+---
+
+---
+Date: 2026-11-22
+Task: 闇鍋概要リードから煮えるほどにを削除
+Changed files:
+- scenarios/yaminabe.html
+---
+
+---
+Date: 2026-11-22
+Task: 闇鍋概要の持ち込み箇条書きを短縮
+Changed files:
+- scenarios/yaminabe.html
+---
+
+---
+Date: 2026-11-22
+Task: 闇鍋概要の四つの扉の箇条書きを削除
+Changed files:
+- scenarios/yaminabe.html
+---
+
+---
+Date: 2026-11-22
+Task: 闇鍋概要の正解レシピ箇条書きを削除
+Changed files:
+- scenarios/yaminabe.html
+---
+
+---
+Date: 2026-11-22
+Task: 闇鍋概要の草案メモ注記を削除
+Changed files:
+- scenarios/yaminabe.html
+---
+
+---
+Date: 2026-11-22
+Task: 闇鍋の開錠前説明から細則の列挙を削除
+Changed files:
+- scenarios/yaminabe.html
+---
+
+---
+Date: 2026-11-22
+Task: 闇鍋ページからキーパー向けロックセクションを削除
+Changed files:
+- scenarios/yaminabe.html
+---
+
+---
+Date: 2026-11-22
+Task: 闇鍋の草案メモとページ上のリンクを削除
+Changed files:
+- scenarios/yaminabe.html
+- scenarios/yaminabe-草案.md
+- scenarios/yaminabe-KP読み上げ.md
+---
+
+---
+Date: 2026-11-22
+Task: 闇鍋ページからKP読み上げ文リンクを削除
+Changed files:
+- scenarios/yaminabe.html
+---
+
+---
+Date: 2026-11-22
+Task: (execute.)の譜面制作者表記をNanokuro , Fevm1rに変更
+Changed files:
+- data/charts.json
+---
+
+---
+Date: 2026-11-22
+Task: プレビューサーバを停止
+Changed files:
+- （なし）
+---
+
+---
+Date: 2026-11-22
+Task: プレビューサーバを起動
+Changed files:
+- （なし）
+---
+
+---
+Date: 2026-11-22
+Task: Crystal brilliance ATの譜面制作者表記を変更
+Changed files:
+- data/charts.json
+---
+
+---
+Date: 2026-11-22
+Task: DLパネルのキーモード行を全譜面から削除
+Changed files:
+- js/site.js
+- 1st-nanokuro/hub.html
+- home.html
+- index.html
+- notice.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+---
+
+---
+Date: 2026-11-22
+Task: DLパネルの譜面情報から曲名行を削除
+Changed files:
+- js/site.js
+- 1st-nanokuro/hub.html
+- home.html
+- index.html
+- notice.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+---
+
+---
+Date: 2026-11-22
+Task: DLパネルのコンポーザーを曲名見出しへ移動
+Changed files:
+- js/site.js
+- css/site.css
+- 1st-nanokuro/hub.html
+- home.html
+- index.html
+- notice.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+---
+
+---
+Date: 2026-11-22
+Task: DLパネル見出しのコンポーザーラベルを削除
+Changed files:
+- js/site.js
+- css/site.css
+- 1st-nanokuro/hub.html
+- home.html
+- index.html
+- notice.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+---
+
+---
+Date: 2026-11-22
+Task: DLパネルの概要欄案内を譜面動画はこちらからに変更
+Changed files:
+- data/charts.json
+---
+
+---
+Date: 2026-11-22
+Task: ABYSS MOTIONのシェーダー表示をなしに変更
+Changed files:
+- data/charts.json
+---
+
+---
+Date: 2026-11-22
+Task: ABYSS MOTIONのシェーダー表示をダッシュに変更
+Changed files:
+- data/charts.json
+---
+
+---
+Date: 2026-11-22
+Task: D-Birthのシェーダー表示をありに変更
+Changed files:
+- data/charts.json
+---
+
+---
+Date: 2026-11-22
+Task: D-Birthの譜面制作者表記をNanokuro , Wingbatに変更
+Changed files:
+- data/charts.json
+---
+
+---
+Date: 2026-11-22
+Task: First Breathのシェーダー表示をありに変更
+Changed files:
+- data/charts.json
+---
+
+---
+Date: 2026-11-22
+Task: INFINITE HYPERDRIVEの譜面制作者表記を変更
+Changed files:
+- data/charts.json
+---
+
+---
+Date: 2026-11-22
+Task: INFINITE HYPERDRIVEのシェーダー表示をなしに変更
+Changed files:
+- data/charts.json
+---
+
+---
+Date: 2026-11-22
+Task: Memories Sacrificeの譜面制作者表記を変更
+Changed files:
+- data/charts.json
+---
+
+---
+Date: 2026-11-22
+Task: Relative brillianceの譜面制作者とシェーダー表示を変更
+Changed files:
+- data/charts.json
+- js/site.js
+- 1st-nanokuro/hub.html
+- home.html
+- index.html
+- notice.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+---
+
+---
+Date: 2026-11-22
+Task: Unraveling Stasisの譜面制作者表記を変更
+Changed files:
+- data/charts.json
+---
+
+---
+Date: 2026-11-22
+Task: 譜面一覧と1stハブに横スクロールと中央補正を追加
+Changed files:
+- js/site.js
+- css/site.css
+- css/1st-cup.css
+- 1st-nanokuro/hub.html
+- home.html
+- index.html
+- notice.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+---
+
+---
+Date: 2026-11-22
+Task: プレビューサーバ（ポート8765）を起動
+Changed files:
+- （なし）
+---
+
+---
+Date: 2026-11-22
+Task: Xaleid scopiXの譜面制作者表記を変更
+Changed files:
+- data/charts.json
+---
+
+---
+Date: 2026-11-22
+Task: 横スクロールを一覧から外しDL画面へ移す
+Changed files:
+- js/site.js
+- css/site.css
+- css/1st-cup.css
+- 1st-nanokuro/hub.html
+- home.html
+- index.html
+- notice.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+---
+
+---
+Date: 2026-11-22
+Task: DL画面の譜面切り替えを矢印ボタン長押し加速に変更
+Changed files:
+- js/site.js
+- css/site.css
+- 1st-nanokuro/hub.html
+- home.html
+- index.html
+- notice.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+---
+
+---
+Date: 2026-11-22
+Task: DL画面のDIFF / SHADER / EDITION見出しを削除
+Changed files:
+- js/site.js
+- 1st-nanokuro/hub.html
+- home.html
+- index.html
+- notice.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+---
+
+---
+Date: 2026-11-22
+Task: 公式サイトをGitHub Pagesへデプロイ
+Changed files:
+- （なし）
+---

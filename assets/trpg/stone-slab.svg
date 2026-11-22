@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <defs>
+    <filter id="dark" x="0" y="0" width="256" height="256" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".012" numOctaves="4" seed="5" stitchTiles="stitch"/>
+      <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1.8 0 0 0 -.74"/>
+    </filter>
+    <filter id="light" x="0" y="0" width="256" height="256" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".016" numOctaves="3" seed="9" stitchTiles="stitch"/>
+      <feColorMatrix values="0 0 0 0 1  0 0 0 0 .95  0 0 0 0 .86  0 1.6 0 0 -.8"/>
+    </filter>
+    <filter id="grit" x="0" y="0" width="256" height="256" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="2" stitchTiles="stitch" result="n"/>
+      <feColorMatrix in="n" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.2 0 0 0 -1.2" result="d"/>
+      <feColorMatrix in="n" values="0 0 0 0 1  0 0 0 0 .94  0 0 0 0 .84  0 2.2 0 0 -1.36" result="l"/>
+      <feMerge><feMergeNode in="d"/><feMergeNode in="l"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="256" height="256" filter="url(#dark)" opacity=".5"/>
+  <rect width="256" height="256" filter="url(#light)" opacity=".12"/>
+  <rect width="256" height="256" filter="url(#grit)" opacity=".45"/>
+</svg>
