@@ -2,6 +2,9 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <script src="../js/guard.js?v=20261125d"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#03060a">
   <title>1st Nanokuro Collections — NANOKURO Archive</title>
@@ -9,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Orbitron:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/site.css?v=20261122h">
+  <link rel="stylesheet" href="../css/site.css?v=20261125e">
   <link rel="stylesheet" href="../css/1st-cup.css?v=20261122g">
 </head>
 <body class="has-chrome page-1st fx-off">
@@ -322,21 +325,21 @@
             <li class="cup-badge cup-badge--rule"><svg class="cup-ic" aria-hidden="true" focusable="false"><use href="#cup-ic-sigma" width="100%" height="100%"/></svg><span aria-hidden="true">≤ 50</span><span class="visually-hidden">失点合計 50 以内で突破</span></li>
           </ul>
           <ol class="cup-plates" aria-label="課題曲">
-            <li class="cup-plate" role="button" tabindex="0" data-open-chart="kakusei" data-cup-chamber="gimmick" aria-label="覚醒のダウンロード画面を開く">
+            <li class="cup-plate" role="button" tabindex="0" data-open-chart="kakusei" data-cup-chamber="gimmick" data-pref-edition="1st" aria-label="覚醒のダウンロード画面を開く">
               <span class="cup-plate__art has-jaket">
                 <img class="cup-plate__jaket" src="../assets/jaket/%E8%A6%9A%E9%86%92.png" alt="" width="320" height="180" decoding="async" loading="lazy">
                 <span class="cup-plate__no" aria-hidden="true">01</span>
               </span>
               <span class="cup-plate__name">覚醒</span>
             </li>
-            <li class="cup-plate" role="button" tabindex="0" data-open-chart="glacial-brilliance" data-cup-chamber="gimmick" aria-label="Glacial brillianceのダウンロード画面を開く">
+            <li class="cup-plate" role="button" tabindex="0" data-open-chart="glacial-brilliance" data-cup-chamber="gimmick" data-pref-edition="1st" aria-label="Glacial brillianceのダウンロード画面を開く">
               <span class="cup-plate__art has-jaket">
                 <img class="cup-plate__jaket" src="../assets/jaket/Glacial%20brilliance.png" alt="" width="320" height="180" decoding="async" loading="lazy">
                 <span class="cup-plate__no" aria-hidden="true">02</span>
               </span>
               <span class="cup-plate__name">Glacial brilliance</span>
             </li>
-            <li class="cup-plate" role="button" tabindex="0" data-open-chart="crystal-brilliance" data-cup-chamber="gimmick" data-pref-diff="AT" aria-label="Crystal brilliance_ATのダウンロード画面を開く">
+            <li class="cup-plate" role="button" tabindex="0" data-open-chart="crystal-brilliance" data-cup-chamber="gimmick" data-pref-diff="AT" data-pref-edition="1st" aria-label="Crystal brilliance_ATのダウンロード画面を開く">
               <span class="cup-plate__art has-jaket">
                 <img class="cup-plate__jaket" src="../assets/jaket/Crystal%20brilliance.jpg" alt="" width="320" height="180" decoding="async" loading="lazy">
                 <span class="cup-plate__no" aria-hidden="true">03</span>
@@ -368,7 +371,7 @@
             <li class="cup-badge cup-badge--rule"><svg class="cup-ic" aria-hidden="true" focusable="false"><use href="#cup-ic-sigma" width="100%" height="100%"/></svg><span aria-hidden="true">≤ 50</span><span class="visually-hidden">失点合計 50 以内で突破</span></li>
           </ul>
           <ol class="cup-plates" aria-label="課題曲">
-            <li class="cup-plate" role="button" tabindex="0" data-open-chart="relative-brilliance" data-cup-chamber="power" aria-label="Relative brillianceのダウンロード画面を開く">
+            <li class="cup-plate" role="button" tabindex="0" data-open-chart="relative-brilliance" data-cup-chamber="power" data-pref-edition="1st" aria-label="Relative brillianceのダウンロード画面を開く">
               <span class="cup-plate__art has-jaket">
                 <img class="cup-plate__jaket" src="../assets/jaket/Relative%20brilliance.jpg" alt="" width="320" height="180" decoding="async" loading="lazy">
                 <span class="cup-plate__no" aria-hidden="true">01</span>
@@ -382,7 +385,7 @@
               </span>
               <span class="cup-plate__name">Memories Sacrifice</span>
             </li>
-            <li class="cup-plate" role="button" tabindex="0" data-open-chart="execute" data-cup-chamber="power" aria-label="(execute.)のダウンロード画面を開く">
+            <li class="cup-plate" role="button" tabindex="0" data-open-chart="execute" data-cup-chamber="power" data-pref-edition="1st" aria-label="(execute.)のダウンロード画面を開く">
               <span class="cup-plate__art has-jaket">
                 <img class="cup-plate__jaket" src="../assets/jaket/%28execute.%29.jpg" alt="" width="320" height="180" decoding="async" loading="lazy">
                 <span class="cup-plate__no" aria-hidden="true">03</span>
@@ -420,14 +423,14 @@
             <li class="cup-badge cup-badge--rule"><svg class="cup-ic" aria-hidden="true" focusable="false"><use href="#cup-ic-sigma" width="100%" height="100%"/></svg><span aria-hidden="true">≤ 100</span><span class="visually-hidden">失点合計 100 以内で突破</span></li>
           </ul>
           <ol class="cup-plates" aria-label="課題曲">
-            <li class="cup-plate" role="button" tabindex="0" data-open-chart="unraveling-stasis" data-cup-chamber="complex" aria-label="Unraveling Stasisのダウンロード画面を開く">
+            <li class="cup-plate" role="button" tabindex="0" data-open-chart="unraveling-stasis" data-cup-chamber="complex" data-pref-edition="1st" aria-label="Unraveling Stasisのダウンロード画面を開く">
               <span class="cup-plate__art has-jaket">
                 <img class="cup-plate__jaket" src="../assets/jaket/Unraveling%20Stasis.jpg" alt="" width="320" height="180" decoding="async" loading="lazy">
                 <span class="cup-plate__no" aria-hidden="true">01</span>
               </span>
               <span class="cup-plate__name">Unraveling Stasis</span>
             </li>
-            <li class="cup-plate" role="button" tabindex="0" data-open-chart="xaleid-scopix" data-cup-chamber="complex" aria-label="Xaleid◆scopiXのダウンロード画面を開く">
+            <li class="cup-plate" role="button" tabindex="0" data-open-chart="xaleid-scopix" data-cup-chamber="complex" data-pref-edition="1st" aria-label="Xaleid◆scopiXのダウンロード画面を開く">
               <span class="cup-plate__art has-jaket">
                 <img class="cup-plate__jaket" src="../assets/jaket/Xaleid%E2%97%86scopiX.jpg" alt="" width="320" height="180" decoding="async" loading="lazy">
                 <span class="cup-plate__no" aria-hidden="true">02</span>
@@ -525,9 +528,6 @@
 
         <div class="cup-prize__body" data-reveal>
           <p class="cup-kicker">REWARD SLOT // 当時の景品</p>
-          <figure class="cup-prize__cover">
-            <img class="cup-prize__jaket" src="../assets/jaket/D-Birth.webp" alt="" width="360" height="360" decoding="async" loading="lazy">
-          </figure>
           <h2 id="prize-title" class="cup-prize__title">D-Birth</h2>
           <ul class="cup-badges" aria-label="条件">
             <li class="cup-badge cup-badge--lock">
@@ -536,12 +536,14 @@
               <svg class="cup-ic cup-ic--sg tone-invader" aria-hidden="true" focusable="false"><use href="#cup-sg-invader" width="100%" height="100%"/></svg>Invader
             </li>
           </ul>
-          <ul class="cup-deny" aria-label="アーカイブでの扱い">
-            <li class="cup-deny__item cup-deny__item--stamp">
-              <svg class="cup-ic" aria-hidden="true" focusable="false"><use href="#cup-ic-dl-off" width="100%" height="100%"/></svg>
-              <span class="cup-deny__label">配布なし<small lang="en">NO DISTRIBUTION</small></span>
+          <ol class="cup-plates cup-plates--solo" aria-label="景品譜面">
+            <li class="cup-plate" role="button" tabindex="0" data-open-chart="d-birth" aria-label="D-Birthのダウンロード画面を開く">
+              <span class="cup-plate__art has-jaket">
+                <img class="cup-plate__jaket" src="../assets/jaket/D-Birth.webp" alt="" width="400" height="225" decoding="async" loading="lazy">
+              </span>
+              <span class="cup-plate__name">D-Birth</span>
             </li>
-          </ul>
+          </ol>
           <p class="cup-endnav">
             <a class="cup-endnav__link" href="#boot"><svg class="cup-ic" aria-hidden="true" focusable="false"><use href="#cup-ic-up" width="100%" height="100%"/></svg>TOP</a>
             <a class="cup-endnav__link" href="../home.html"><svg class="cup-ic" aria-hidden="true" focusable="false"><use href="#cup-ic-home" width="100%" height="100%"/></svg>HOME</a>
@@ -571,7 +573,6 @@
           <h2 id="foot-projects">PROJECTS</h2>
           <ul>
             <li><a href="hub.html" aria-current="page">1st Nanokuro Collections</a></li>
-            <li><a href="../trpg-vault.html">TRPG Scenarios</a></li>
           </ul>
         </nav>
       </div>
@@ -583,7 +584,7 @@
 
   <script src="../js/bgm.js?v=20261120a"></script>
   <script src="../js/fx-backdrop.js?v=20261120a"></script>
-  <script src="../js/site.js?v=20261122i"></script>
-  <script src="../js/1st-cup.js?v=20261120g"></script>
+  <script src="../js/site.js?v=20261125e"></script>
+  <script src="../js/1st-cup.js?v=20261124a"></script>
 </body>
 </html>

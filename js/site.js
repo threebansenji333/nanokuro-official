@@ -19,6 +19,7 @@
   };
 
   var vaultCache = null;
+  var VAULT_QUERY_MAX = 64;
   var vaultCategory = null;
   var vaultSourceList = [];
   var vaultShownCharts = [];
@@ -274,6 +275,57 @@
     });
   }
 
+  /* ホームの 2nd バナーは遷移演出を呼ばない。コードは残し、クリックは Access Denied のみ。 */
+  var accessDeniedDocBound = false;
+
+  function hideAccessDenied() {
+    var pop = qs('#access-denied-pop');
+    if (pop) pop.hidden = true;
+  }
+
+  function showAccessDenied() {
+    var pop = qs('#access-denied-pop');
+    if (!pop) {
+      pop = document.createElement('p');
+      pop.id = 'access-denied-pop';
+      pop.className = 'access-denied-pop';
+      pop.setAttribute('role', 'status');
+      pop.setAttribute('aria-live', 'assertive');
+      pop.textContent = 'Access Denied';
+      document.body.appendChild(pop);
+    }
+    pop.hidden = false;
+  }
+
+  function bindAccessDeniedDocument() {
+    if (accessDeniedDocBound) return;
+    accessDeniedDocBound = true;
+    document.addEventListener('click', function (e) {
+      var pop = qs('#access-denied-pop');
+      if (!pop || pop.hidden) return;
+      if (e.target && e.target.closest && e.target.closest('[data-access-denied]')) return;
+      hideAccessDenied();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      var host = qs('#cushion-host');
+      if (host && !host.hidden) return;
+      hideAccessDenied();
+    });
+  }
+
+  function wireAccessDenied() {
+    bindAccessDeniedDocument();
+    qsa('[data-access-denied]').forEach(function (el) {
+      if (el.dataset.deniedBound === '1') return;
+      el.dataset.deniedBound = '1';
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        showAccessDenied();
+      });
+    });
+  }
+
   function statusBadge(status) {
     if (status === 'open') return '<span class="badge open">OPEN</span>';
     if (status === 'archive') return '<span class="badge archive">ARCHIVE</span>';
@@ -344,6 +396,14 @@
       if (out.indexOf(v) === -1) out.push(v);
     });
     return out;
+  }
+
+  function cushionHintHtml(chart, fallback, yt) {
+    if (chart && chart.detailHint === false) return '';
+    return '<p class="cushion-hint">' +
+      escapeHtml((chart && chart.detailHint) || fallback) +
+      ' <a href="' + escapeHtml(yt) + '" target="_blank" rel="noopener noreferrer">YouTube チャンネルを開く</a>' +
+    '</p>';
   }
 
   function shaderDisplay(v) {
@@ -456,7 +516,8 @@
         if (!hit || !hit.chart) return;
         rows.push({
           chart: hit.chart,
-          preferredDifficulty: plate.getAttribute('data-pref-diff') || null
+          preferredDifficulty: plate.getAttribute('data-pref-diff') || null,
+          preferredEdition: plate.getAttribute('data-pref-edition') || null
         });
       });
     } else if (vaultShownCharts && vaultShownCharts.length) {
@@ -581,7 +642,10 @@
       var slideOpts = {
         preferredDifficulty: row.chart.id === chart.id
           ? ((opts && opts.preferredDifficulty) || row.preferredDifficulty)
-          : row.preferredDifficulty
+          : row.preferredDifficulty,
+        preferredEdition: row.chart.id === chart.id
+          ? ((opts && opts.preferredEdition) || row.preferredEdition)
+          : row.preferredEdition
       };
       renderCushionBody(row.chart, slide, slideOpts);
       cushionSlides.push(slide);
@@ -622,23 +686,43 @@
     });
   }
 
-  function ensureCharts(done) {
-    if (vaultCache) {
-      done(vaultCache);
-      return;
+  /* 譜面データの取得は共有する。同時の重複取得を防ぎ、直後の再取得は手元の控えを使う（連打対策） */
+  var chartsInflight = null;
+  var vaultCacheAt = 0;
+  var CHARTS_FRESH_MS = 30000;
+
+  function fetchChartsData() {
+    if (vaultCache && Date.now() - vaultCacheAt < CHARTS_FRESH_MS) {
+      return Promise.resolve(vaultCache);
     }
-    fetch(chartsDataUrl(), { cache: 'no-store' })
+    if (chartsInflight) return chartsInflight;
+    chartsInflight = fetch(chartsDataUrl(), { cache: 'no-store' })
       .then(function (r) {
         if (!r.ok) throw new Error('failed');
         return r.json();
       })
       .then(function (data) {
         vaultCache = data;
-        done(data);
-      })
-      .catch(function () {
-        done(null);
+        vaultCacheAt = Date.now();
+        chartsInflight = null;
+        return data;
+      }, function (err) {
+        chartsInflight = null;
+        throw err;
       });
+    return chartsInflight;
+  }
+
+  function ensureCharts(done) {
+    if (vaultCache) {
+      done(vaultCache);
+      return;
+    }
+    fetchChartsData().then(function (data) {
+      done(data);
+    }, function () {
+      done(null);
+    });
   }
 
   function openFromCupHub(chartId, chamberId, opts) {
@@ -649,7 +733,8 @@
       var hit = findChartById(data, chartId);
       if (!hit || !hit.chart) return;
       openCushion(hit.chart, {
-        preferredDifficulty: opts.preferredDifficulty || null
+        preferredDifficulty: opts.preferredDifficulty || null,
+        preferredEdition: opts.preferredEdition || null
       });
     });
   }
@@ -989,10 +1074,7 @@
             '<dt>譜面制作者</dt><dd>' + escapeHtml(chart.charter || 'Nanokuro') + '</dd>' +
             '<dt>難易度</dt><dd>' + escapeHtml(chart.difficulty || '—') + '</dd>' +
           '</dl>' +
-          '<p class="cushion-hint">' +
-            escapeHtml(chart.detailHint || '詳細は YouTube 概要欄を参照してください。') +
-            ' <a href="' + escapeHtml(yt) + '" target="_blank" rel="noopener noreferrer">YouTube チャンネルを開く</a>' +
-          '</p>' +
+          cushionHintHtml(chart, '詳細は YouTube 概要欄を参照してください。', yt) +
         '</section>' +
         '<section class="cushion-pick">' +
           '<p class="cushion-summary">この譜面のダウンロードファイルはまだ接続されていません。</p>' +
@@ -1008,6 +1090,9 @@
     var picker = createVariantPicker(variants);
     if (opts.preferredDifficulty && picker.difficulties.indexOf(opts.preferredDifficulty) !== -1) {
       picker.state.difficulty = opts.preferredDifficulty;
+    }
+    if (opts.preferredEdition) {
+      picker.state.edition = opts.preferredEdition;
     }
 
     function paint() {
@@ -1043,10 +1128,7 @@
             '<dt>シェーダー</dt><dd>' + escapeHtml(shaderDisplay(v)) + '</dd>' +
             (v && v.edition ? ('<dt>版</dt><dd>' + escapeHtml(v.edition) + '</dd>') : '') +
           '</dl>' +
-          '<p class="cushion-hint">' +
-            escapeHtml(chart.detailHint || '定数や譜面制作者などの詳細は YouTube 概要欄を参照してください。') +
-            ' <a href="' + escapeHtml(yt) + '" target="_blank" rel="noopener noreferrer">YouTube チャンネルを開く</a>' +
-          '</p>' +
+          cushionHintHtml(chart, '定数や譜面制作者などの詳細は YouTube 概要欄を参照してください。', yt) +
         '</section>' +
         '<section class="cushion-pick" aria-label="差分選択">' +
           (pickTitle === 'DIFF / SHADER / EDITION' ? '' : '<h2>' + pickTitle + '</h2>') +
@@ -1387,7 +1469,7 @@
       '<div class="vault-controls__row">' +
         '<label class="vault-field">' +
           '<span>検索</span>' +
-          '<input type="search" id="vault-query" placeholder="曲名 / 制作者 / タグ" value="' +
+          '<input type="search" id="vault-query" maxlength="' + VAULT_QUERY_MAX + '" autocomplete="off" placeholder="曲名 / 制作者 / タグ" value="' +
             escapeHtml(vaultViewState.query) + '">' +
         '</label>' +
         '<label class="vault-field">' +
@@ -1438,11 +1520,20 @@
     qs('#vault-download', box).value = vaultViewState.download;
     if (showCategory) qs('#vault-category', box).value = vaultViewState.category;
 
+    var queryTimer = 0;
+
     function syncFromUI() {
+      clearTimeout(queryTimer);
+      var queryEl = qs('#vault-query', box);
+      var rawQuery = queryEl.value || '';
+      if (rawQuery.length > VAULT_QUERY_MAX) {
+        rawQuery = rawQuery.slice(0, VAULT_QUERY_MAX);
+        queryEl.value = rawQuery;
+      }
       vaultViewState.sort = qs('#vault-sort', box).value;
       vaultViewState.status = qs('#vault-status', box).value;
       vaultViewState.download = qs('#vault-download', box).value;
-      vaultViewState.query = qs('#vault-query', box).value || '';
+      vaultViewState.query = rawQuery;
       if (showCategory) {
         var catSel = qs('#vault-category', box);
         vaultViewState.category = catSel ? catSel.value : 'all';
@@ -1454,6 +1545,11 @@
       box.addEventListener(ev, function (e) {
         var t = e.target;
         if (!t || !t.id) return;
+        if (t.id === 'vault-query' && ev === 'input') {
+          clearTimeout(queryTimer);
+          queryTimer = setTimeout(syncFromUI, 140);
+          return;
+        }
         if (
           t.id === 'vault-sort' ||
           t.id === 'vault-status' ||
@@ -1597,13 +1693,8 @@
     if (!mount) return;
     vaultCategory = category;
     mount.innerHTML = '<div class="empty-state">LOADING...</div>';
-    fetch(chartsDataUrl(), { cache: 'no-store' })
-      .then(function (r) {
-        if (!r.ok) throw new Error('failed');
-        return r.json();
-      })
+    fetchChartsData()
       .then(function (data) {
-        vaultCache = data;
         var list;
         if (category === 'all') {
           list = []
@@ -1747,22 +1838,144 @@
       siteSrc = base && base.src ? base.src : '';
     }
     s.src = siteSrc
-      ? siteSrc.replace(/site\.js[^/]*$/, '1st-cup.js?v=20261120g')
-      : 'js/1st-cup.js?v=20261120g';
+      ? siteSrc.replace(/site\.js[^/]*$/, '1st-cup.js?v=20261124a')
+      : 'js/1st-cup.js?v=20261124a';
     s.setAttribute('data-nk-1st-cup', '1');
     s.addEventListener('load', run);
     s.addEventListener('error', function () { /* ignore */ });
     document.body.appendChild(s);
   }
 
+  var vaultHelpDocBound = false;
+
+  function setVaultHelpOpen(open) {
+    var root = qs('#vault-help');
+    if (!root) return;
+    var panel = qs('#vault-help-panel', root);
+    var btn = qs('.vault-help__btn', root);
+    if (!panel || !btn) return;
+    panel.hidden = !open;
+    root.classList.toggle('is-open', !!open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+
+  function bindVaultHelpDocument() {
+    if (vaultHelpDocBound) return;
+    vaultHelpDocBound = true;
+    document.addEventListener('click', function (e) {
+      var root = qs('#vault-help');
+      if (!root || !root.classList.contains('is-open')) return;
+      if (root.contains(e.target)) return;
+      setVaultHelpOpen(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      var host = qs('#cushion-host');
+      if (host && !host.hidden) return;
+      var root = qs('#vault-help');
+      if (!root || !root.classList.contains('is-open')) return;
+      setVaultHelpOpen(false);
+      var btn = qs('.vault-help__btn', root);
+      if (btn) btn.focus();
+    });
+  }
+
+  function mountVaultHelp() {
+    var existing = qs('#vault-help');
+    if (!document.body.getAttribute('data-vault')) {
+      if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
+      return;
+    }
+    if (existing) return;
+    bindVaultHelpDocument();
+
+    var root = document.createElement('div');
+    root.id = 'vault-help';
+    root.className = 'vault-help';
+    root.innerHTML =
+      '<div class="vault-help__panel" id="vault-help-panel" hidden role="region" aria-labelledby="vault-help-title">' +
+        '<h2 class="vault-help__title" id="vault-help-title">保管庫の使い方</h2>' +
+        '<ol class="vault-help__steps">' +
+          '<li>' +
+            '<svg class="vault-help__art" viewBox="0 0 240 78" aria-hidden="true">' +
+              '<rect class="vh-plate" x="8" y="10" width="146" height="26" rx="2"></rect>' +
+              '<circle class="vh-stroke" cx="24" cy="23" r="5"></circle>' +
+              '<path class="vh-stroke" d="M28 27 L33 32"></path>' +
+              '<rect class="vh-bar" x="40" y="20" width="96" height="6" rx="1"></rect>' +
+              '<rect class="vh-plate" x="162" y="10" width="70" height="26" rx="2"></rect>' +
+              '<rect class="vh-bar" x="172" y="20" width="40" height="6" rx="1"></rect>' +
+              '<path class="vh-stroke" d="M218 18 L224 23 L218 28"></path>' +
+              '<rect class="vh-hot" x="8" y="46" width="52" height="20" rx="2"></rect>' +
+              '<text class="vh-onhot" x="34" y="60" text-anchor="middle">曲名</text>' +
+              '<rect class="vh-plate" x="68" y="46" width="58" height="20" rx="2"></rect>' +
+              '<text class="vh-dim" x="97" y="60" text-anchor="middle">OPEN</text>' +
+              '<rect class="vh-plate" x="134" y="46" width="98" height="20" rx="2"></rect>' +
+              '<text class="vh-dim" x="183" y="60" text-anchor="middle">ファイルDL</text>' +
+            '</svg>' +
+            '<p>上の欄で曲を探す</p>' +
+          '</li>' +
+          '<li>' +
+            '<svg class="vault-help__art" viewBox="0 0 240 78" aria-hidden="true">' +
+              '<rect class="vh-plate vh-plate--hot" x="8" y="16" width="200" height="48" rx="2"></rect>' +
+              '<rect class="vh-hot" x="20" y="28" width="96" height="8" rx="1"></rect>' +
+              '<rect class="vh-bar" x="20" y="44" width="128" height="5" rx="1"></rect>' +
+              '<rect class="vh-plate" x="150" y="28" width="42" height="16" rx="2"></rect>' +
+              '<path class="vh-hot" d="M196 40 L196 62 L204 56 L212 70 L218 67 L210 53 L222 53 Z"></path>' +
+            '</svg>' +
+            '<p>曲名を押して開く</p>' +
+          '</li>' +
+          '<li>' +
+            '<svg class="vault-help__art" viewBox="0 0 240 96" aria-hidden="true">' +
+              '<text class="vh-arrow" x="6" y="20">‹</text>' +
+              '<rect class="vh-bar" x="36" y="10" width="168" height="7" rx="1"></rect>' +
+              '<text class="vh-arrow" x="214" y="20">›</text>' +
+              '<text class="vh-dim" x="8" y="44">難易度</text>' +
+              '<rect class="vh-plate" x="64" y="32" width="40" height="16" rx="2"></rect>' +
+              '<rect class="vh-hot" x="110" y="32" width="40" height="16" rx="2"></rect>' +
+              '<text class="vh-dim" x="8" y="68">シェーダー</text>' +
+              '<rect class="vh-hot" x="74" y="56" width="32" height="16" rx="2"></rect>' +
+              '<rect class="vh-plate" x="114" y="56" width="32" height="16" rx="2"></rect>' +
+              '<text class="vh-dim" x="8" y="92">版</text>' +
+              '<rect class="vh-plate" x="64" y="80" width="40" height="16" rx="2"></rect>' +
+              '<rect class="vh-hot" x="110" y="80" width="40" height="16" rx="2"></rect>' +
+            '</svg>' +
+            '<p>差分を選ぶ。矢印で隣の曲へ</p>' +
+          '</li>' +
+          '<li>' +
+            '<svg class="vault-help__art" viewBox="0 0 240 78" aria-hidden="true">' +
+              '<rect class="vh-hot" x="40" y="10" width="160" height="30" rx="2"></rect>' +
+              '<text class="vh-onhot" x="120" y="30" text-anchor="middle">DOWNLOAD</text>' +
+              '<rect class="vh-plate" x="12" y="52" width="16" height="16" rx="2"></rect>' +
+              '<path class="vh-stroke vh-check" d="M15 60 L19 65 L26 54"></path>' +
+              '<text class="vh-ink" x="36" y="65">複数選択</text>' +
+            '</svg>' +
+            '<p>DOWNLOAD。複数は左下</p>' +
+          '</li>' +
+        '</ol>' +
+      '</div>' +
+      '<button type="button" class="vault-help__btn" aria-expanded="false" aria-controls="vault-help-panel">' +
+        '<span aria-hidden="true">?</span>' +
+        '<span class="visually-hidden">譜面保管庫の使い方</span>' +
+      '</button>';
+
+    var btn = qs('.vault-help__btn', root);
+    btn.addEventListener('click', function () {
+      var panel = qs('#vault-help-panel', root);
+      setVaultHelpOpen(panel.hidden);
+    });
+    document.body.appendChild(root);
+  }
+
   function boot() {
     initNav();
     markCurrentNav();
     wireSecondBanners();
+    wireAccessDenied();
     mountMultiDock();
     mountNoticeDock();
     initTrpgLock();
     ensureFirstCup();
+    mountVaultHelp();
     var cat = document.body.getAttribute('data-vault');
     if (cat) loadVault(cat);
   }

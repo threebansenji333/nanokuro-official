@@ -724,6 +724,15 @@ button { font: inherit; }
 }
 
 /* Featured banner for 2nd Nanokuro Collections */
+button.project-banner {
+  width: 100%;
+  margin: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
 .project-banner {
   position: relative;
   display: block;
@@ -1012,6 +1021,31 @@ body.multi-select-on .chart-item--nodl::after {
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
   pointer-events: none;
+}
+
+.access-denied-pop {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 91;
+  margin: 0;
+  min-height: var(--tap);
+  padding: 10px 16px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(255, 80, 80, 0.55);
+  border-radius: 2px;
+  background: rgba(40, 8, 12, 0.94);
+  color: #ffb0b0;
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  box-shadow: 0 0 12px rgba(255, 60, 60, 0.25);
+  cursor: pointer;
+}
+
+.access-denied-pop[hidden] {
+  display: none;
 }
 
 .multi-dock {
@@ -1627,6 +1661,189 @@ body.cushion-open {
 }
 
 /* Cross-page background BGM toggle */
+.vault-help {
+  position: fixed;
+  right: 16px;
+  bottom: calc(16px + var(--tap) + 8px);
+  z-index: 91;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  max-width: calc(100vw - 24px);
+}
+
+.vault-help__btn {
+  width: var(--tap);
+  height: var(--tap);
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: rgba(8, 10, 18, 0.92);
+  color: var(--cyan);
+  font-family: var(--font-display);
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: 0;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+}
+
+.vault-help__btn:hover,
+.vault-help__btn:focus-visible {
+  border-color: rgba(94, 231, 255, 0.45);
+  background: rgba(14, 22, 36, 0.96);
+}
+
+.vault-help__panel {
+  width: min(280px, calc(100vw - 24px));
+  max-height: calc(100vh - var(--tap) - var(--tap) - 48px);
+  max-height: calc(100dvh - var(--tap) - var(--tap) - 48px);
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 12px 16px;
+  border: 1px solid rgba(94, 231, 255, 0.35);
+  border-radius: 2px;
+  background: rgba(8, 10, 18, 0.96);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+.vault-help__panel[hidden] {
+  display: none;
+}
+
+.vault-help__title {
+  margin: 0 0 8px;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+}
+
+.vault-help__steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: vault-help;
+}
+
+.vault-help__steps li {
+  display: grid;
+  grid-template-columns: 1.25rem 1fr;
+  column-gap: 8px;
+  row-gap: 6px;
+  align-items: start;
+}
+
+.vault-help__steps li::before {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+
+.vault-help__art {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.vault-help__steps p {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.vault-help__steps li + li {
+  margin-top: 12px;
+}
+
+.vault-help__steps li::before {
+  content: counter(vault-help);
+  counter-increment: vault-help;
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.vault-help__steps p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.vault-help__art {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: rgba(5, 6, 12, 0.72);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+}
+
+.vault-help__art .vh-plate {
+  fill: rgba(16, 22, 40, 0.95);
+  stroke: rgba(94, 231, 255, 0.45);
+  stroke-width: 1.25;
+}
+
+.vault-help__art .vh-plate--hot {
+  stroke: #5ee7ff;
+}
+
+.vault-help__art .vh-stroke {
+  fill: none;
+  stroke: #b7c3d6;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.vault-help__art .vh-check {
+  stroke: #5ee7ff;
+  stroke-width: 2;
+}
+
+.vault-help__art .vh-bar {
+  fill: #8b97ab;
+}
+
+.vault-help__art .vh-hot {
+  fill: #5ee7ff;
+}
+
+.vault-help__art .vh-ink,
+.vault-help__art .vh-dim,
+.vault-help__art .vh-onhot,
+.vault-help__art .vh-arrow {
+  font-size: 11px;
+}
+
+.vault-help__art .vh-ink {
+  fill: #eef3fb;
+  font-family: var(--font-body);
+}
+
+.vault-help__art .vh-dim {
+  fill: #b7c3d6;
+  font-family: var(--font-body);
+}
+
+.vault-help__art .vh-onhot {
+  fill: #05060c;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+.vault-help__art .vh-arrow {
+  fill: #5ee7ff;
+  font-family: var(--font-display);
+  font-size: 18px;
+}
+
 .bgm-toggle {
   position: fixed;
   right: 16px;
@@ -1751,7 +1968,15 @@ body.cushion-open {
     right: 12px;
     bottom: 12px;
   }
+  .vault-help {
+    right: 12px;
+    bottom: calc(12px + var(--tap) + 8px);
+  }
   .multi-dock {
+    left: 12px;
+    bottom: 12px;
+  }
+  .access-denied-pop {
     left: 12px;
     bottom: 12px;
   }

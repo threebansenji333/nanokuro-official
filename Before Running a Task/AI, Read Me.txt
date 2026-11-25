@@ -1196,3 +1196,333 @@ Task: 公式サイトをGitHub Pagesへデプロイ
 Changed files:
 - （なし）
 ---
+
+---
+Date: 2026-11-22
+Task: 削除した闇鍋草案を復元
+Changed files:
+- scenarios/yaminabe-草案.md
+---
+
+---
+Date: 2026-11-22
+Task: 闇鍋のルールブック転記資料をR01〜R21と照合
+Changed files:
+- （なし）
+---
+
+---
+Date: 2026-11-24
+Task: プレビューサーバを起動
+Changed files:
+- （なし）
+---
+
+---
+Date: 2026-11-24
+Task: (execute.)を通常版と1st版のzipに差し替え
+Changed files:
+- data/charts.json
+- charts/execute/(execute.) (AT Lv.17.4).zip
+- charts/execute/(execute.) (AT Lv.17.4)(NC).zip
+- charts/execute/execute-AT-Lv17.4.pez
+- js/site.js
+- js/1st-cup.js
+- 1st-nanokuro/hub.html
+- home.html
+- index.html
+- notice.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+---
+
+---
+Date: 2026-11-24
+Task: Clock Paradoxのzip確認（同一のため差し替えなし、Access Denied継続）
+Changed files:
+- （なし）
+---
+
+---
+Date: 2026-11-24
+Task: Crystal brillianceのATを通常・No shader・1stの3種に差し替え
+Changed files:
+- data/charts.json
+- charts/crystal-brilliance/Crystal brilliance(AT Lv.16.5).zip
+- charts/crystal-brilliance/Crystal brilliance(AT Lv.16.5)(No shader).zip
+- charts/crystal-brilliance/Crystal brilliance(AT Lv.16.5)(NC).zip
+- charts/crystal-brilliance/Crystal-brilliance-AT-Lv16.zip
+- 1st-nanokuro/hub.html
+---
+
+---
+Date: 2026-11-24
+Task: First Breathに通常とNo shaderのzipを挿入
+Changed files:
+- data/charts.json
+- charts/first-breath/First Breath(AT Lv.17.5).zip
+- charts/first-breath/First Breath(AT Lv.17.5)(No shader).zip
+---
+
+---
+Date: 2026-11-24
+Task: Glacial brillianceを通常版と1st版のzipに差し替え
+Changed files:
+- data/charts.json
+- charts/glacial-brilliance/Glacial brilliance(IN Lv.14.8).zip
+- charts/glacial-brilliance/Glacial brilliance(IN Lv.14.8)(NC).zip
+- charts/glacial-brilliance/Glacial-brilliance-IN-Lv14.8.zip
+- 1st-nanokuro/hub.html
+---
+
+---
+Date: 2026-11-24
+Task: (execute.)を通常・No shader・1stのzipに差し替え
+Changed files:
+- data/charts.json
+- charts/execute/(execute.) (AT Lv.17.4).zip
+- charts/execute/(execute.) (AT Lv.17.4)(No shader).zip
+- charts/execute/(execute.) (AT Lv.17.4)(NC).zip
+---
+
+---
+Date: 2026-11-24
+Task: ABYSS MOTION 192.333の譜面zipを差し替え
+Changed files:
+- data/charts.json
+- charts/abyss-motion/ABYSS MOTION 192.333(AT Lv.16.3).zip
+- charts/abyss-motion/ABYSS-MOTION-192.333-AT-Lv16.3.zip
+---
+
+---
+Date: 2026-11-24
+Task: Crystal brillianceのAT3種zipを差し替え
+Changed files:
+- charts/crystal-brilliance/Crystal brilliance(AT Lv.16.5).zip
+- charts/crystal-brilliance/Crystal brilliance(AT Lv.16.5)(No shader).zip
+- charts/crystal-brilliance/Crystal brilliance(AT Lv.16.5)(NC).zip
+---
+
+---
+Date: 2026-11-24
+Task: プレビューサーバを起動
+Changed files:
+- （なし）
+---
+
+---
+Date: 2026-11-24
+Task: Memories Sacrificeを通常とNo shaderのzipに差し替え
+Changed files:
+- data/charts.json
+- charts/memories-sacrifice/Memories Sacrifice(AT16.0).zip
+- charts/memories-sacrifice/Memories Sacrifice(AT16.0)(No shader).zip
+- charts/memories-sacrifice/Memories-Sacrifice-AT-Lv16.0.pez
+---
+
+---
+Date: 2026-11-24
+Task: 1stハブのD-Birthを課題曲プレート形式のジャケ絵に変更
+Changed files:
+- 1st-nanokuro/hub.html
+---
+
+---
+Date: 2026-11-24
+Task: Meteoric Impactを緩和前18.7と緩和後18.5の各Shader有無に差し替え
+Changed files:
+- data/charts.json
+- charts/meteoric-impact/Meteoric Impact(AT Lv.18.7).zip
+- charts/meteoric-impact/Meteoric Impact(AT Lv.18.7)(No shader).zip
+- charts/meteoric-impact/Meteoric Impact(AT Lv.18.5)(Fixed).zip
+- charts/meteoric-impact/Meteoric Impact(AT Lv.18.5)(Fixed)(No shader).zip
+- charts/meteoric-impact/Meteoric-Impact-AT-Lv18.5.zip
+- charts/meteoric-impact/Meteoric-Impact-AT-Lv18.5-Fixed.zip
+---
+
+---
+Date: 2026-11-25
+Task: Relative brillianceを通常版かつ1st版の同一zipに差し替え
+Changed files:
+- data/charts.json
+- charts/relative-brilliance/Relative brilliance(IN Lv.15.0).zip
+- charts/relative-brilliance/Relative-brilliance-IN-Lv15.0.pez
+- 1st-nanokuro/hub.html
+---
+
+---
+Date: 2026-11-25
+Task: SAN値直葬の譜面zipを差し替え
+Changed files:
+- data/charts.json
+- charts/san-chokusou/SAN値直葬(AT Lv.15.7).zip
+- charts/san-chokusou/SAN-chokusou-AT-Lv15.7.zip
+---
+
+---
+Date: 2026-11-25
+Task: Unraveling Stasisを通常18.5と1st18.4の各Shader有無に差し替え、Charter名義を変更
+Changed files:
+- data/charts.json
+- charts/unraveling-stasis/Unraveling Stasis(AT Lv.18.5).zip
+- charts/unraveling-stasis/Unraveling Stasis(AT Lv.18.5)(No shader).zip
+- charts/unraveling-stasis/Unraveling Stasis(AT Lv.18.4)(NC).zip
+- charts/unraveling-stasis/Unraveling Stasis(AT Lv.18.4)(NC)(No shader).zip
+- 1st-nanokuro/hub.html
+---
+
+---
+Date: 2026-11-25
+Task: Xaleid scopiXをAT Lv.18.5の5差分に差し替え
+Changed files:
+- data/charts.json
+- charts/xaleid-scopix/Xaleid◆scopiX(AT Lv.18.5).zip
+- charts/xaleid-scopix/Xaleid◆scopiX(AT Lv.18.5)(No shader).zip
+- charts/xaleid-scopix/Xaleid◆scopiX(AT Lv.18.5)(NC).zip
+- charts/xaleid-scopix/Xaleid◆scopiX(AT Lv.18.5)(No timer).zip
+- charts/xaleid-scopix/Xaleid◆scopiX(AT Lv.18.5)(No timer)(No timer).zip
+- 1st-nanokuro/hub.html
+---
+
+---
+Date: 2026-11-25
+Task: インドア系ならトラックメイカーの譜面zipを差し替え
+Changed files:
+- data/charts.json
+- charts/indoor-trackmaker/インドア系ならトラックメイカー(IN Lv.14.0).zip
+- charts/indoor-trackmaker/Indoor-trackmaker-IN-Lv14.0.zip
+---
+
+---
+Date: 2026-11-25
+Task: 覚醒を通常と1stの各Shader有無4譜面に差し替え
+Changed files:
+- data/charts.json
+- charts/kakusei/覚醒(IN Lv.14.2).zip
+- charts/kakusei/覚醒(IN Lv.14.2)(No shader).zip
+- charts/kakusei/覚醒(IN Lv.14.2)(NC).zip
+- charts/kakusei/覚醒(IN Lv.14.2)(NC)(No shader).zip
+- charts/kakusei/Kakusei-IN-Lv14.2.zip
+- 1st-nanokuro/hub.html
+---
+
+---
+Date: 2026-11-25
+Task: KIZUNA ResolutionをOPENにし4K Lv.17.2のzipを追加
+Changed files:
+- data/charts.json
+- charts/kizuna-resolution/KIZUNA Rrsolution(4K Lv.17.2).zip
+---
+
+---
+Date: 2026-11-25
+Task: KIZUNA ResolutionのDL画面から譜面動画案内を削除
+Changed files:
+- data/charts.json
+- js/site.js
+- 1st-nanokuro/hub.html
+- home.html
+- index.html
+- notice.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+---
+
+---
+Date: 2026-11-25
+Task: 譜面一覧に絵中心の使い方（？）を追加
+Changed files:
+- js/site.js
+- css/site.css
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- vault.html
+- home.html
+- index.html
+- notice.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+- 1st-nanokuro/hub.html
+---
+---
+Date: 2026-11-25
+Task: 田代砲系（連続アクセス・埋め込み連打）への軽量対策を追加
+Changed files:
+- js/guard.js
+- js/site.js
+- index.html
+- home.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- notice.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+- 1st-nanokuro/hub.html
+---
+---
+Date: 2026-11-25
+Task: Cloudflare Workers 前段プロキシの実装（リポジトリ外・未デプロイ）
+Changed files:
+- E:\Cursor\雑用\zatu\nanokuro-edge\src\index.js
+- E:\Cursor\雑用\zatu\nanokuro-edge\wrangler.toml
+---
+---
+Date: 2026-11-25
+Task: Workers 前段プロキシの実装を中止し、作成済みコードを破棄
+Changed files:
+- E:\Cursor\雑用\zatu\nanokuro-edge\src\index.js（破棄。実行時点で既に存在せず）
+- E:\Cursor\雑用\zatu\nanokuro-edge\wrangler.toml（破棄。実行時点で既に存在せず）
+---
+---
+Date: 2026-11-25
+Task: ホームの2ndバナー説明を公開準備中に変更
+Changed files:
+- home.html
+---
+---
+Date: 2026-11-25
+Task: サイト内からTRPG Scenariosへの導線を削除（HTMLは残す）
+Changed files:
+- home.html
+- index.html
+- notice.html
+- 1st-nanokuro/hub.html
+---
+---
+Date: 2026-11-25
+Task: ホームの2ndバナーから遷移演出を封じ、Access Deniedを表示
+Changed files:
+- home.html
+- js/site.js
+- css/site.css
+- index.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- notice.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+- 1st-nanokuro/hub.html
+---

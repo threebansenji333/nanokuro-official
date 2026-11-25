@@ -118,9 +118,11 @@
     var chartId = plate.getAttribute('data-open-chart');
     if (!chartId) return;
     var prefDiff = plate.getAttribute('data-pref-diff') || '';
+    var prefEdition = plate.getAttribute('data-pref-edition') || '';
     if (window.NanokuroSite && typeof window.NanokuroSite.openFromCupHub === 'function') {
       window.NanokuroSite.openFromCupHub(chartId, null, {
-        preferredDifficulty: prefDiff || null
+        preferredDifficulty: prefDiff || null,
+        preferredEdition: prefEdition || null
       });
     }
   }

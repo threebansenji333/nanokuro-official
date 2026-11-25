@@ -8,20 +8,42 @@
       "difficulty": "IN Lv.16.0 / AT Lv.16.5",
       "keymode": "Phigros",
       "status": "open",
-      "note": "ATは合作。差分3種（Shader有無あり）",
+      "note": "ATは合作。通常 / Shaderなし / 1st の3種。INはShader有無",
       "tags": ["brilliance"],
       "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
       "detailHint": "譜面動画はこちらから",
       "variants": [
         {
-          "id": "at-16",
+          "id": "at-165",
           "label": "AT Lv.16.5",
           "difficulty": "AT",
           "constant": "16.5",
           "shader": true,
+          "edition": "通常",
           "charter": "Nanokuro , Wingbat",
-          "file": "charts/crystal-brilliance/Crystal-brilliance-AT-Lv16.zip",
-          "downloadName": "Crystal brilliance(AT Lv.16).zip"
+          "file": "charts/crystal-brilliance/Crystal brilliance(AT Lv.16.5).zip",
+          "downloadName": "Crystal brilliance(AT Lv.16.5).zip"
+        },
+        {
+          "id": "at-165-noshader",
+          "label": "AT Lv.16.5（No Shader）",
+          "difficulty": "AT",
+          "constant": "16.5",
+          "shader": false,
+          "charter": "Nanokuro , Wingbat",
+          "file": "charts/crystal-brilliance/Crystal brilliance(AT Lv.16.5)(No shader).zip",
+          "downloadName": "Crystal brilliance(AT Lv.16.5)(No shader).zip"
+        },
+        {
+          "id": "at-165-nc",
+          "label": "AT Lv.16.5（1st）",
+          "difficulty": "AT",
+          "constant": "16.5",
+          "shader": true,
+          "edition": "1st",
+          "charter": "Nanokuro , Wingbat",
+          "file": "charts/crystal-brilliance/Crystal brilliance(AT Lv.16.5)(NC).zip",
+          "downloadName": "Crystal brilliance(AT Lv.16.5)(NC).zip"
         },
         {
           "id": "in-16",
@@ -53,7 +75,7 @@
       "difficulty": "IN Lv.14.8",
       "keymode": "Phigros",
       "status": "open",
-      "note": "ソロ制作",
+      "note": "ソロ制作。通常版と 1st Nanokuro Collections 版",
       "tags": ["brilliance"],
       "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
       "detailHint": "譜面動画はこちらから",
@@ -64,9 +86,21 @@
           "difficulty": "IN",
           "constant": "14.8",
           "shader": true,
+          "edition": "通常",
           "charter": "Nanokuro",
-          "file": "charts/glacial-brilliance/Glacial-brilliance-IN-Lv14.8.zip",
+          "file": "charts/glacial-brilliance/Glacial brilliance(IN Lv.14.8).zip",
           "downloadName": "Glacial brilliance(IN Lv.14.8).zip"
+        },
+        {
+          "id": "in-148-nc",
+          "label": "IN Lv.14.8（1st）",
+          "difficulty": "IN",
+          "constant": "14.8",
+          "shader": true,
+          "edition": "1st",
+          "charter": "Nanokuro",
+          "file": "charts/glacial-brilliance/Glacial brilliance(IN Lv.14.8)(NC).zip",
+          "downloadName": "Glacial brilliance(IN Lv.14.8)(NC).zip"
         }
       ]
     },
@@ -75,24 +109,35 @@
       "title": "Meteoric Impact",
       "composer": "Kyutatsuki",
       "charter": "Nanokuro",
-      "difficulty": "AT Lv.18.5",
+      "difficulty": "緩和前 AT Lv.18.7 / 緩和後 AT Lv.18.5",
       "keymode": "Phigros",
       "status": "open",
-      "note": "緩和前 / 緩和後の2版",
+      "note": "緩和前 Lv.18.7 / 緩和後 Lv.18.5。各Shader有無",
       "tags": ["power"],
       "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
       "detailHint": "譜面動画はこちらから",
       "variants": [
         {
-          "id": "at-185-pre",
-          "label": "AT Lv.18.5（緩和前）",
+          "id": "at-187-pre",
+          "label": "AT Lv.18.7（緩和前）",
           "difficulty": "AT",
-          "constant": "18.5",
+          "constant": "18.7",
           "shader": true,
           "edition": "緩和前",
           "charter": "Nanokuro",
-          "file": "charts/meteoric-impact/Meteoric-Impact-AT-Lv18.5.zip",
-          "downloadName": "Meteoric Impact(AT Lv.18.5).zip"
+          "file": "charts/meteoric-impact/Meteoric Impact(AT Lv.18.7).zip",
+          "downloadName": "Meteoric Impact(AT Lv.18.7).zip"
+        },
+        {
+          "id": "at-187-pre-noshader",
+          "label": "AT Lv.18.7（緩和前・No Shader）",
+          "difficulty": "AT",
+          "constant": "18.7",
+          "shader": false,
+          "edition": "緩和前",
+          "charter": "Nanokuro",
+          "file": "charts/meteoric-impact/Meteoric Impact(AT Lv.18.7)(No shader).zip",
+          "downloadName": "Meteoric Impact(AT Lv.18.7)(No shader).zip"
         },
         {
           "id": "at-185-fixed",
@@ -102,8 +147,19 @@
           "shader": true,
           "edition": "緩和後",
           "charter": "Nanokuro",
-          "file": "charts/meteoric-impact/Meteoric-Impact-AT-Lv18.5-Fixed.zip",
+          "file": "charts/meteoric-impact/Meteoric Impact(AT Lv.18.5)(Fixed).zip",
           "downloadName": "Meteoric Impact(AT Lv.18.5)(Fixed).zip"
+        },
+        {
+          "id": "at-185-fixed-noshader",
+          "label": "AT Lv.18.5（緩和後・No Shader）",
+          "difficulty": "AT",
+          "constant": "18.5",
+          "shader": false,
+          "edition": "緩和後",
+          "charter": "Nanokuro",
+          "file": "charts/meteoric-impact/Meteoric Impact(AT Lv.18.5)(Fixed)(No shader).zip",
+          "downloadName": "Meteoric Impact(AT Lv.18.5)(Fixed)(No shader).zip"
         }
       ]
     },
@@ -153,7 +209,7 @@
           "constant": "16.3",
           "shader": null,
           "charter": "Nanokuro",
-          "file": "charts/abyss-motion/ABYSS-MOTION-192.333-AT-Lv16.3.zip",
+          "file": "charts/abyss-motion/ABYSS MOTION 192.333(AT Lv.16.3).zip",
           "downloadName": "ABYSS MOTION 192.333(AT Lv.16.3).zip"
         }
       ]
@@ -177,7 +233,7 @@
           "constant": "15.7",
           "shader": true,
           "charter": "Nanokuro",
-          "file": "charts/san-chokusou/SAN-chokusou-AT-Lv15.7.zip",
+          "file": "charts/san-chokusou/SAN値直葬(AT Lv.15.7).zip",
           "downloadName": "SAN値直葬(AT Lv.15.7).zip"
         }
       ]
@@ -201,7 +257,7 @@
           "constant": "14.0",
           "shader": true,
           "charter": "Nanokuro",
-          "file": "charts/indoor-trackmaker/Indoor-trackmaker-IN-Lv14.0.zip",
+          "file": "charts/indoor-trackmaker/インドア系ならトラックメイカー(IN Lv.14.0).zip",
           "downloadName": "インドア系ならトラックメイカー(IN Lv.14.0).zip"
         }
       ]
@@ -214,7 +270,7 @@
       "difficulty": "IN Lv.14.2",
       "keymode": "Phigros",
       "status": "open",
-      "note": "1st Collections 収録系",
+      "note": "通常 / Shaderなし / 1st。定数は IN Lv.14.2",
       "tags": ["gimmick"],
       "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
       "detailHint": "譜面動画はこちらから",
@@ -225,9 +281,43 @@
           "difficulty": "IN",
           "constant": "14.2",
           "shader": true,
+          "edition": "通常",
           "charter": "Nanokuro",
-          "file": "charts/kakusei/Kakusei-IN-Lv14.2.zip",
+          "file": "charts/kakusei/覚醒(IN Lv.14.2).zip",
           "downloadName": "覚醒(IN Lv.14.2).zip"
+        },
+        {
+          "id": "in-142-noshader",
+          "label": "IN Lv.14.2（No Shader）",
+          "difficulty": "IN",
+          "constant": "14.2",
+          "shader": false,
+          "edition": "通常",
+          "charter": "Nanokuro",
+          "file": "charts/kakusei/覚醒(IN Lv.14.2)(No shader).zip",
+          "downloadName": "覚醒(IN Lv.14.2)(No shader).zip"
+        },
+        {
+          "id": "in-142-nc",
+          "label": "IN Lv.14.2（1st）",
+          "difficulty": "IN",
+          "constant": "14.2",
+          "shader": true,
+          "edition": "1st",
+          "charter": "Nanokuro",
+          "file": "charts/kakusei/覚醒(IN Lv.14.2)(NC).zip",
+          "downloadName": "覚醒(IN Lv.14.2)(NC).zip"
+        },
+        {
+          "id": "in-142-nc-noshader",
+          "label": "IN Lv.14.2（1st・No Shader）",
+          "difficulty": "IN",
+          "constant": "14.2",
+          "shader": false,
+          "edition": "1st",
+          "charter": "Nanokuro",
+          "file": "charts/kakusei/覚醒(IN Lv.14.2)(NC)(No shader).zip",
+          "downloadName": "覚醒(IN Lv.14.2)(NC)(No shader).zip"
         }
       ]
     }
@@ -241,7 +331,7 @@
       "difficulty": "AT Lv.16.0",
       "keymode": "Phigros",
       "status": "open",
-      "note": "合作譜面",
+      "note": "合作譜面。Shader有無",
       "tags": ["collab", "power"],
       "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
       "detailHint": "譜面動画はこちらから",
@@ -253,8 +343,18 @@
           "constant": "16.0",
           "shader": true,
           "charter": "Nanokuro , Fevm1r",
-          "file": "charts/memories-sacrifice/Memories-Sacrifice-AT-Lv16.0.pez",
-          "downloadName": "Memories Sacrifice(AT Lv.16.0).pez"
+          "file": "charts/memories-sacrifice/Memories Sacrifice(AT16.0).zip",
+          "downloadName": "Memories Sacrifice(AT16.0).zip"
+        },
+        {
+          "id": "at-160-noshader",
+          "label": "AT Lv.16.0（No Shader）",
+          "difficulty": "AT",
+          "constant": "16.0",
+          "shader": false,
+          "charter": "Nanokuro , Fevm1r",
+          "file": "charts/memories-sacrifice/Memories Sacrifice(AT16.0)(No shader).zip",
+          "downloadName": "Memories Sacrifice(AT16.0)(No shader).zip"
         }
       ]
     },
@@ -292,7 +392,7 @@
       "difficulty": "IN Lv.15.0",
       "keymode": "Phigros",
       "status": "open",
-      "note": "合作譜面",
+      "note": "合作譜面。通常版であり 1st Nanokuro Collections 版でもある",
       "tags": ["collab", "brilliance"],
       "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
       "detailHint": "譜面動画はこちらから",
@@ -303,9 +403,21 @@
           "difficulty": "IN",
           "constant": "15.0",
           "shader": "ー",
+          "edition": "通常",
           "charter": "Nanokuro , Fevm1r",
-          "file": "charts/relative-brilliance/Relative-brilliance-IN-Lv15.0.pez",
-          "downloadName": "Relative brilliance(IN Lv.15.0).pez"
+          "file": "charts/relative-brilliance/Relative brilliance(IN Lv.15.0).zip",
+          "downloadName": "Relative brilliance(IN Lv.15.0).zip"
+        },
+        {
+          "id": "in-150-nc",
+          "label": "IN Lv.15.0（1st）",
+          "difficulty": "IN",
+          "constant": "15.0",
+          "shader": "ー",
+          "edition": "1st",
+          "charter": "Nanokuro , Fevm1r",
+          "file": "charts/relative-brilliance/Relative brilliance(IN Lv.15.0).zip",
+          "downloadName": "Relative brilliance(IN Lv.15.0).zip"
         }
       ]
     },
@@ -317,7 +429,7 @@
       "difficulty": "AT Lv.17.4",
       "keymode": "Phigros",
       "status": "open",
-      "note": "合作譜面",
+      "note": "合作譜面。通常 / Shaderなし / 1st の3種",
       "tags": ["collab", "power"],
       "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
       "detailHint": "譜面動画はこちらから",
@@ -328,9 +440,31 @@
           "difficulty": "AT",
           "constant": "17.4",
           "shader": true,
+          "edition": "通常",
           "charter": "Nanokuro , Fevm1r",
-          "file": "charts/execute/execute-AT-Lv17.4.pez",
-          "downloadName": "(execute.) (AT Lv.17.4).pez"
+          "file": "charts/execute/(execute.) (AT Lv.17.4).zip",
+          "downloadName": "(execute.) (AT Lv.17.4).zip"
+        },
+        {
+          "id": "at-174-noshader",
+          "label": "AT Lv.17.4（No Shader）",
+          "difficulty": "AT",
+          "constant": "17.4",
+          "shader": false,
+          "charter": "Nanokuro , Fevm1r",
+          "file": "charts/execute/(execute.) (AT Lv.17.4)(No shader).zip",
+          "downloadName": "(execute.) (AT Lv.17.4)(No shader).zip"
+        },
+        {
+          "id": "at-174-nc",
+          "label": "AT Lv.17.4（1st）",
+          "difficulty": "AT",
+          "constant": "17.4",
+          "shader": true,
+          "edition": "1st",
+          "charter": "Nanokuro , Fevm1r",
+          "file": "charts/execute/(execute.) (AT Lv.17.4)(NC).zip",
+          "downloadName": "(execute.) (AT Lv.17.4)(NC).zip"
         }
       ]
     },
@@ -338,24 +472,58 @@
       "id": "unraveling-stasis",
       "title": "Unraveling Stasis",
       "composer": "l'avenir proche",
-      "charter": "Nanokuro , 山田悠牙",
-      "difficulty": "AT Lv.18.5",
+      "charter": "Threads of Noχious (Nanokuro and 山田悠牙)",
+      "difficulty": "通常 AT Lv.18.5 / 1st AT Lv.18.4",
       "keymode": "Phigros",
       "status": "open",
-      "note": "合作譜面 / 配布なし（動画誘導）",
+      "note": "合作譜面。通常 AT Lv.18.5 / 1st AT Lv.18.4。各Shader有無",
       "tags": ["collab", "complex"],
-      "distribution": "youtube",
-      "watchUrl": "https://youtu.be/e8y70gU1b2I?si=akDJpWvENkYZceI_",
       "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
-      "detailHint": "この譜面はファイル配布を行いません。視聴用リンクから動画へ移動してください。",
+      "detailHint": "譜面動画はこちらから",
       "variants": [
         {
           "id": "at-185",
           "label": "AT Lv.18.5",
           "difficulty": "AT",
           "constant": "18.5",
-          "charter": "Nanokuro , 山田悠牙",
-          "watchUrl": "https://youtu.be/e8y70gU1b2I?si=akDJpWvENkYZceI_"
+          "shader": true,
+          "edition": "通常",
+          "charter": "Threads of Noχious (Nanokuro and 山田悠牙)",
+          "file": "charts/unraveling-stasis/Unraveling Stasis(AT Lv.18.5).zip",
+          "downloadName": "Unraveling Stasis(AT Lv.18.5).zip"
+        },
+        {
+          "id": "at-185-noshader",
+          "label": "AT Lv.18.5（No Shader）",
+          "difficulty": "AT",
+          "constant": "18.5",
+          "shader": false,
+          "edition": "通常",
+          "charter": "Threads of Noχious (Nanokuro and 山田悠牙)",
+          "file": "charts/unraveling-stasis/Unraveling Stasis(AT Lv.18.5)(No shader).zip",
+          "downloadName": "Unraveling Stasis(AT Lv.18.5)(No shader).zip"
+        },
+        {
+          "id": "at-184-nc",
+          "label": "AT Lv.18.4（1st）",
+          "difficulty": "AT",
+          "constant": "18.4",
+          "shader": true,
+          "edition": "1st",
+          "charter": "Threads of Noχious (Nanokuro and 山田悠牙)",
+          "file": "charts/unraveling-stasis/Unraveling Stasis(AT Lv.18.4)(NC).zip",
+          "downloadName": "Unraveling Stasis(AT Lv.18.4)(NC).zip"
+        },
+        {
+          "id": "at-184-nc-noshader",
+          "label": "AT Lv.18.4（1st・No Shader）",
+          "difficulty": "AT",
+          "constant": "18.4",
+          "shader": false,
+          "edition": "1st",
+          "charter": "Threads of Noχious (Nanokuro and 山田悠牙)",
+          "file": "charts/unraveling-stasis/Unraveling Stasis(AT Lv.18.4)(NC)(No shader).zip",
+          "downloadName": "Unraveling Stasis(AT Lv.18.4)(NC)(No shader).zip"
         }
       ]
     },
@@ -364,23 +532,68 @@
       "title": "Xaleid◆scopiX",
       "composer": "xi",
       "charter": "Nanokuro , Fevm1r , wingbat",
-      "difficulty": "AT Lv.18.2",
+      "difficulty": "AT Lv.18.5",
       "keymode": "Phigros",
       "status": "open",
-      "note": "合作譜面 / 配布なし（動画誘導）",
+      "note": "合作譜面。定数 AT Lv.18.5。通常 / Shaderなし / 1st / No timer",
       "tags": ["collab", "complex"],
-      "distribution": "youtube",
-      "watchUrl": "https://youtu.be/kiOlMmtrIWk?si=CNMCSEGU0iv3RbFZ",
       "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
-      "detailHint": "この譜面はファイル配布を行いません。視聴用リンクから動画へ移動してください。",
+      "detailHint": "譜面動画はこちらから",
       "variants": [
         {
-          "id": "at-182",
-          "label": "AT Lv.18.2",
+          "id": "at-185",
+          "label": "AT Lv.18.5",
           "difficulty": "AT",
-          "constant": "18.2",
+          "constant": "18.5",
+          "shader": true,
+          "edition": "通常",
           "charter": "Nanokuro , Fevm1r , wingbat",
-          "watchUrl": "https://youtu.be/kiOlMmtrIWk?si=CNMCSEGU0iv3RbFZ"
+          "file": "charts/xaleid-scopix/Xaleid◆scopiX(AT Lv.18.5).zip",
+          "downloadName": "Xaleid◆scopiX(AT Lv.18.5).zip"
+        },
+        {
+          "id": "at-185-noshader",
+          "label": "AT Lv.18.5（No Shader）",
+          "difficulty": "AT",
+          "constant": "18.5",
+          "shader": false,
+          "edition": "通常",
+          "charter": "Nanokuro , Fevm1r , wingbat",
+          "file": "charts/xaleid-scopix/Xaleid◆scopiX(AT Lv.18.5)(No shader).zip",
+          "downloadName": "Xaleid◆scopiX(AT Lv.18.5)(No shader).zip"
+        },
+        {
+          "id": "at-185-nc",
+          "label": "AT Lv.18.5（1st）",
+          "difficulty": "AT",
+          "constant": "18.5",
+          "shader": true,
+          "edition": "1st",
+          "charter": "Nanokuro , Fevm1r , wingbat",
+          "file": "charts/xaleid-scopix/Xaleid◆scopiX(AT Lv.18.5)(NC).zip",
+          "downloadName": "Xaleid◆scopiX(AT Lv.18.5)(NC).zip"
+        },
+        {
+          "id": "at-185-notimer",
+          "label": "AT Lv.18.5（No timer）",
+          "difficulty": "AT",
+          "constant": "18.5",
+          "shader": true,
+          "edition": "No timer",
+          "charter": "Nanokuro , Fevm1r , wingbat",
+          "file": "charts/xaleid-scopix/Xaleid◆scopiX(AT Lv.18.5)(No timer).zip",
+          "downloadName": "Xaleid◆scopiX(AT Lv.18.5)(No timer).zip"
+        },
+        {
+          "id": "at-185-notimer-noshader",
+          "label": "AT Lv.18.5（No timer）",
+          "difficulty": "AT",
+          "constant": "18.5",
+          "shader": false,
+          "edition": "No timer",
+          "charter": "Nanokuro , Fevm1r , wingbat",
+          "file": "charts/xaleid-scopix/Xaleid◆scopiX(AT Lv.18.5)(No timer)(No timer).zip",
+          "downloadName": "Xaleid◆scopiX(AT Lv.18.5)(No timer)(No timer).zip"
         }
       ]
     },
@@ -392,12 +605,10 @@
       "difficulty": "AT Lv.17.5",
       "keymode": "Phigros",
       "status": "open",
-      "note": "合作譜面 / 配布なし（動画誘導）",
+      "note": "合作譜面。Shader有無",
       "tags": ["collab"],
-      "distribution": "youtube",
-      "watchUrl": "https://youtu.be/YyLs_sB9PYI?si=5T0264Lf8SajAcIy",
       "youtubeChannel": "https://www.youtube.com/channel/UCu5CRiALcXxvmwDIqtr_cNw",
-      "detailHint": "この譜面はファイル配布を行いません。視聴用リンクから動画へ移動してください。",
+      "detailHint": "譜面動画はこちらから",
       "variants": [
         {
           "id": "at-175",
@@ -406,7 +617,18 @@
           "constant": "17.5",
           "shader": true,
           "charter": "Detection of Protection",
-          "watchUrl": "https://youtu.be/YyLs_sB9PYI?si=5T0264Lf8SajAcIy"
+          "file": "charts/first-breath/First Breath(AT Lv.17.5).zip",
+          "downloadName": "First Breath(AT Lv.17.5).zip"
+        },
+        {
+          "id": "at-175-noshader",
+          "label": "AT Lv.17.5（No Shader）",
+          "difficulty": "AT",
+          "constant": "17.5",
+          "shader": false,
+          "charter": "Detection of Protection",
+          "file": "charts/first-breath/First Breath(AT Lv.17.5)(No shader).zip",
+          "downloadName": "First Breath(AT Lv.17.5)(No shader).zip"
         }
       ]
     },
@@ -470,14 +692,28 @@
   ],
   "keymodes": [
     {
+      "id": "kizuna-resolution",
       "title": "KIZUNA Resolution",
       "composer": "TAG",
       "charter": "Nanokuro",
       "difficulty": "4K Lv.17.2",
       "keymode": "4K",
-      "status": "archive",
+      "status": "open",
       "note": "その他 / 4K",
-      "tags": ["others", "4k"]
+      "tags": ["others", "4k"],
+      "detailHint": false,
+      "variants": [
+        {
+          "id": "4k-172",
+          "label": "4K Lv.17.2",
+          "difficulty": "4K",
+          "constant": "17.2",
+          "shader": true,
+          "charter": "Nanokuro",
+          "file": "charts/kizuna-resolution/KIZUNA Rrsolution(4K Lv.17.2).zip",
+          "downloadName": "KIZUNA Rrsolution(4K Lv.17.2).zip"
+        }
+      ]
     }
   ]
 }
