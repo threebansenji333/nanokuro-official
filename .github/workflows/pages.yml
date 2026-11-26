@@ -47,6 +47,7 @@ jobs:
               return
             }
             const started = Date.now()
+            let seenAt = 0
             while (Date.now() - started < 180000) {
               const listed = await github.request('GET /repos/{owner}/{repo}/actions/runs/{run_id}/artifacts', {
                 owner: context.repo.owner,
@@ -55,11 +56,15 @@ jobs:
                 per_page: 100
               })
               const found = (listed.data.artifacts || []).some(artifact => String(artifact.id) === artifactId)
-              if (found) {
-                core.info(`Artifact ${artifactId} is listed`)
+              if (found && !seenAt) {
+                seenAt = Date.now()
+                core.info(`Artifact ${artifactId} is listed. Waiting for the publisher list to catch up.`)
+              }
+              if (seenAt && Date.now() - seenAt >= 45000) {
+                core.info(`Artifact ${artifactId} has been listed for 45 seconds`)
                 return
               }
-              core.info(`Artifact ${artifactId} is not listed yet`)
+              if (!found) core.info(`Artifact ${artifactId} is not listed yet`)
               await new Promise(resolve => setTimeout(resolve, 5000))
             }
             core.setFailed(`Artifact ${artifactId} was not listed within 3 minutes`)
