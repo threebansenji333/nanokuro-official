@@ -23,12 +23,78 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Upload artifact
+        id: upload
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
-      - name: Deploy to GitHub Pages
+
+      # deploy-pages looks the artifact up by name and fails when that list is briefly empty.
+      # The upload step already returned artifact_id, so publish that id directly.
+      - name: Deploy uploaded artifact
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/github-script@v7
+        env:
+          ARTIFACT_ID: ${{ steps.upload.outputs.artifact_id }}
+        with:
+          script: |
+            const artifactId = Number(process.env.ARTIFACT_ID)
+            if (!artifactId) {
+              core.setFailed('upload-pages-artifact did not return artifact_id')
+              return
+            }
+
+            const idToken = await core.getIDToken()
+            const buildVersion = `${process.env.GITHUB_SHA}-${process.env.GITHUB_RUN_ID}-${process.env.GITHUB_RUN_ATTEMPT}`
+            core.info(`Creating Pages deployment for artifact ${artifactId}`)
+
+            const created = await github.request('POST /repos/{owner}/{repo}/pages/deployments', {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              artifact_id: artifactId,
+              pages_build_version: buildVersion,
+              oidc_token: idToken
+            })
+
+            const deployment = created.data
+            let deploymentId = deployment.id || String(deployment.status_url || '').split('/').pop()
+            let pageUrl = deployment.page_url || ''
+            if (!deploymentId) {
+              core.setFailed('Pages deployment was created without an id')
+              return
+            }
+            core.info(`Created deployment ${deploymentId}`)
+
+            const finalErrors = {
+              deployment_failed: 'Deployment failed, try again later.',
+              deployment_perms_error: 'Deployment failed. Please ensure that the file permissions are correct.',
+              deployment_content_failed: 'Artifact could not be deployed. Check file permissions, links, and size.',
+              deployment_cancelled: 'Deployment cancelled.',
+              deployment_lost: 'Deployment failed to report final status.'
+            }
+            const started = Date.now()
+            while (Date.now() - started < 600000) {
+              await new Promise(resolve => setTimeout(resolve, 5000))
+              const statusResponse = await github.request('GET /repos/{owner}/{repo}/pages/deployments/{deployment_id}', {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                deployment_id: deploymentId
+              })
+              const status = statusResponse.data
+              if (status.page_url) pageUrl = status.page_url
+              if (status.status === 'succeed') {
+                core.info('Reported success!')
+                core.setOutput('page_url', pageUrl)
+                return
+              }
+              if (finalErrors[status.status]) {
+                core.setFailed(finalErrors[status.status])
+                return
+              }
+              core.info('Current status: ' + status.status)
+            }
+            core.setFailed('Timeout reached, aborting!')
