@@ -50,13 +50,21 @@ jobs:
 
             const idToken = await core.getIDToken()
             const buildVersion = `${process.env.GITHUB_SHA}-${process.env.GITHUB_RUN_ID}-${process.env.GITHUB_RUN_ATTEMPT}`
+            const pagesRequest = (route, parameters) => github.request(route, {
+              ...parameters,
+              headers: {
+                accept: 'application/vnd.github+json',
+                'X-GitHub-Api-Version': '2022-11-28'
+              }
+            })
+
             core.info(`Creating Pages deployment for artifact ${artifactId}`)
 
             const started = Date.now()
             let created
             while (Date.now() - started < 180000) {
               try {
-                created = await github.request('POST /repos/{owner}/{repo}/pages/deployments', {
+                created = await pagesRequest('POST /repos/{owner}/{repo}/pages/deployments', {
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   artifact_id: artifactId,
@@ -95,7 +103,7 @@ jobs:
             const statusStarted = Date.now()
             while (Date.now() - statusStarted < 600000) {
               await new Promise(resolve => setTimeout(resolve, 5000))
-              const statusResponse = await github.request('GET /repos/{owner}/{repo}/pages/deployments/{pages_deployment_id}', {
+              const statusResponse = await pagesRequest('GET /repos/{owner}/{repo}/pages/deployments/{pages_deployment_id}', {
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 pages_deployment_id: deploymentId
