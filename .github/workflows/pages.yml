@@ -33,92 +33,37 @@ jobs:
         with:
           path: .
 
-      # deploy-pages looks the artifact up by name and fails when that list is briefly empty.
-      # The upload step already returned artifact_id, so publish that id directly.
-      - name: Deploy uploaded artifact
-        id: deployment
+      # deploy-pages lists artifacts once. Wait until the ID from this upload
+      # is actually in that list, then let the official publisher use it.
+      - name: Wait for the uploaded artifact
         uses: actions/github-script@v7
         env:
           ARTIFACT_ID: ${{ steps.upload.outputs.artifact_id }}
         with:
           script: |
-            const artifactId = Number(process.env.ARTIFACT_ID)
+            const artifactId = String(process.env.ARTIFACT_ID || '')
             if (!artifactId) {
               core.setFailed('upload-pages-artifact did not return artifact_id')
               return
             }
-
-            const idToken = await core.getIDToken()
-            const buildVersion = `${process.env.GITHUB_SHA}-${process.env.GITHUB_RUN_ID}-${process.env.GITHUB_RUN_ATTEMPT}`
-            const pagesRequest = (route, parameters) => github.request(route, {
-              ...parameters,
-              headers: {
-                accept: 'application/vnd.github+json',
-                'X-GitHub-Api-Version': '2022-11-28'
-              }
-            })
-
-            core.info(`Creating Pages deployment for artifact ${artifactId}`)
-
             const started = Date.now()
-            let created
             while (Date.now() - started < 180000) {
-              try {
-                created = await pagesRequest('POST /repos/{owner}/{repo}/pages/deployments', {
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  artifact_id: artifactId,
-                  environment: 'github-pages',
-                  pages_build_version: buildVersion,
-                  oidc_token: idToken
-                })
-                break
-              } catch (error) {
-                if (error.status !== 404) throw error
-                core.info(`Pages does not see artifact ${artifactId} yet. Retrying the same ID.`)
-                await new Promise(resolve => setTimeout(resolve, 5000))
-              }
-            }
-            if (!created) {
-              core.setFailed(`Pages did not accept artifact ${artifactId}`)
-              return
-            }
-
-            const deployment = created.data
-            let deploymentId = deployment.id || String(deployment.status_url || '').split('/').pop()
-            let pageUrl = deployment.page_url || ''
-            if (!deploymentId) {
-              core.setFailed('Pages deployment was created without an id')
-              return
-            }
-            core.info(`Created deployment ${deploymentId}`)
-
-            const finalErrors = {
-              deployment_failed: 'Deployment failed, try again later.',
-              deployment_perms_error: 'Deployment failed. Please ensure that the file permissions are correct.',
-              deployment_content_failed: 'Artifact could not be deployed. Check file permissions, links, and size.',
-              deployment_cancelled: 'Deployment cancelled.',
-              deployment_lost: 'Deployment failed to report final status.'
-            }
-            const statusStarted = Date.now()
-            while (Date.now() - statusStarted < 600000) {
-              await new Promise(resolve => setTimeout(resolve, 5000))
-              const statusResponse = await pagesRequest('GET /repos/{owner}/{repo}/pages/deployments/{pages_deployment_id}', {
+              const listed = await github.request('GET /repos/{owner}/{repo}/actions/runs/{run_id}/artifacts', {
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                pages_deployment_id: deploymentId
+                run_id: context.runId,
+                per_page: 100
               })
-              const status = statusResponse.data
-              if (status.page_url) pageUrl = status.page_url
-              if (status.status === 'succeed') {
-                core.info('Reported success!')
-                core.setOutput('page_url', pageUrl)
+              const found = (listed.data.artifacts || []).some(artifact => String(artifact.id) === artifactId)
+              if (found) {
+                core.info(`Artifact ${artifactId} is listed`)
                 return
               }
-              if (finalErrors[status.status]) {
-                core.setFailed(finalErrors[status.status])
-                return
-              }
-              core.info('Current status: ' + status.status)
+              core.info(`Artifact ${artifactId} is not listed yet`)
+              await new Promise(resolve => setTimeout(resolve, 5000))
             }
-            core.setFailed('Timeout reached, aborting!')
+            core.setFailed(`Artifact ${artifactId} was not listed within 3 minutes`)
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
