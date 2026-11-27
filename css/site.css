@@ -315,13 +315,18 @@ button { font: inherit; }
 }
 .site-footer a:hover { color: var(--cyan); }
 .disclaimer {
+  order: -1;
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.04em;
   color: var(--ink-mute);
-  border-top: 1px solid rgba(255,255,255,0.06);
-  padding-top: 14px;
+  margin: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 14px;
   line-height: 1.7;
+}
+body[data-vault] .site-footer {
+  padding-bottom: calc(16px + var(--tap) + 8px + var(--tap) + 24px);
 }
 
 /* ---------- Title / Door ---------- */
@@ -537,7 +542,7 @@ button { font: inherit; }
 .card,
 .cushion-panel {
   --plate-cut: calc(var(--plate-notch) * 0.7071);
-  /* corner.png's chamfer lands on the notch diagonal only at 3.5x the notch */
+  /* The corner ornament is 3.5x the notch so the new L stays in the corner. */
   --plate-orn: calc(var(--plate-notch) * 3.5);
   position: relative;
   padding: var(--plate-pad);
@@ -566,14 +571,12 @@ button { font: inherit; }
 .card--lead {
   --plate-notch: var(--plate-notch-lead);
   --plate-pad: var(--plate-pad-lead);
-  --plate-tick: var(--plate-tick-on);
   --plate-tick-len: 28px;
 }
 :is(.plate, .card):has(.card-link):hover,
 :is(.plate, .card):has(.card-link):focus-within {
   --plate-fill: var(--plate-fill-hover);
   --plate-line: var(--plate-line-strong);
-  --plate-tick: var(--plate-tick-on);
 }
 
 .plate--quiet,
@@ -591,9 +594,12 @@ button { font: inherit; }
 }
 :is(.plate--quiet, .chart-item):hover,
 :is(.plate--quiet, .chart-item):focus-within {
-  --plate-tick: var(--plate-tick-on);
   --plate-fill-quiet: rgba(12, 16, 28, 0.28);
   --plate-rule: rgba(94, 231, 255, 0.24);
+}
+.plate--quiet:hover,
+.plate--quiet:focus-within {
+  --plate-tick: var(--plate-tick-on);
 }
 
 .plate:not(.plate--seal, .plate--quiet)::after,
@@ -605,9 +611,17 @@ button { font: inherit; }
   left: 0;
   width: var(--plate-orn);
   height: var(--plate-orn);
-  background: url("../assets/ornaments/corner.png") left top / contain no-repeat;
-  mix-blend-mode: screen;
-  filter: brightness(1.6) drop-shadow(0 0 2px rgba(94, 231, 255, 0.55));
+  transform: translate(calc(100% * -28 / 992), calc(100% * -11 / 992));
+  background: #5ee7ff;
+  -webkit-mask-image: url("../assets/ornaments/corner-mask.png?v=20261127c");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-position: left top;
+  mask-image: url("../assets/ornaments/corner-mask.png?v=20261127c");
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+  mask-position: left top;
+  filter: drop-shadow(0 0 2px rgba(94, 231, 255, 0.45));
   opacity: 0.85;
   pointer-events: none;
   z-index: 1;
@@ -616,7 +630,7 @@ button { font: inherit; }
 :is(.plate, .card):has(.card-link):hover::after,
 :is(.plate, .card):has(.card-link):focus-within::after {
   opacity: 1;
-  filter: brightness(2) drop-shadow(0 0 3px rgba(94, 231, 255, 0.8));
+  filter: drop-shadow(0 0 3px rgba(94, 231, 255, 0.75));
 }
 
 .plate--seal {
@@ -899,9 +913,18 @@ button.project-banner {
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.03);
   color: var(--ink);
+  color-scheme: dark;
   padding: 8px 10px;
   font: inherit;
   font-size: 13px;
+}
+.vault-field select option {
+  background-color: #121826;
+  color: #eef3fb;
+}
+.vault-field select option:checked {
+  background-color: #1c3148;
+  color: #eef3fb;
 }
 .vault-field input:focus-visible,
 .vault-field select:focus-visible {
@@ -927,9 +950,16 @@ button.project-banner {
 .chart-item {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 12px 20px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "title actions"
+    "meta actions";
+  column-gap: 20px;
+  row-gap: 6px;
   align-items: center;
+}
+.chart-item > div:first-child {
+  display: contents;
 }
 .chart-item--openable {
   cursor: pointer;
@@ -938,19 +968,63 @@ button.project-banner {
   outline: 2px solid var(--focus);
   outline-offset: 2px;
 }
+/* Row corner. Joint (28, 11) of the 992px drawing sits on the row corner.
+   The vertical stroke is 967px and is sized to about 88% of the row's left edge.
+   IN red, AT gray, SP white. IN+AT splits at the underside of the top bar. */
+.chart-item--corner::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  height: calc(100% * 0.88 * 992 / 967);
+  aspect-ratio: 1;
+  transform: translate(calc(100% * -28 / 992), calc(100% * -11 / 992));
+  background: #8a929c;
+  -webkit-mask-image: url("../assets/ornaments/corner-mask.png?v=20261127c");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-position: left top;
+  mask-image: url("../assets/ornaments/corner-mask.png?v=20261127c");
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+  mask-position: left top;
+}
+.chart-item--corner-in::before { background: #ff3b3b; }
+.chart-item--corner-sp::before { background: #ffffff; }
+.chart-item--corner-plain::before { background: #5ee7ff; }
+.chart-item--corner-split::before {
+  background: linear-gradient(#ff3b3b 0 13.1%, #8a929c 13.1% 100%);
+}
+.chart-item--corner > *,
+.chart-item--corner .chart-item__title,
+.chart-item--corner .chart-item__meta,
+.chart-item--corner .chart-item__actions {
+  position: relative;
+  z-index: 1;
+}
 .chart-item__title {
+  grid-area: title;
   margin: 0;
   font-size: 15px;
   letter-spacing: 0.04em;
+  min-width: 0;
 }
 .chart-item__meta {
-  margin: 6px 0 0;
+  grid-area: meta;
+  justify-self: start;
+  margin: 0;
+  max-width: 100%;
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.1em;
+  line-height: 1.5;
+  text-align: left;
   color: var(--ink-mute);
 }
 .chart-item__actions {
+  grid-area: actions;
   display: flex;
   gap: 8px;
   align-items: center;
@@ -960,8 +1034,13 @@ button.project-banner {
 .chart-item__marks {
   display: inline-flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 6.75px;
   align-items: center;
+  max-width: 100%;
+}
+.chart-item__marks .badge {
+  padding: 3.375px 9px;
+  font-size: 10.125px;
 }
 
 /* ---------- Multi-select (vault lists) ---------- */
@@ -1018,6 +1097,7 @@ body.multi-select-on .chart-item--nodl:focus-within {
 body.multi-select-on .chart-item--nodl::after {
   content: "";
   position: absolute;
+  z-index: 2;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
   pointer-events: none;
@@ -1041,7 +1121,12 @@ body.multi-select-on .chart-item--nodl::after {
   font-size: 12px;
   letter-spacing: 0.18em;
   box-shadow: 0 0 12px rgba(255, 60, 60, 0.25);
-  cursor: pointer;
+  cursor: default;
+  transform: translateX(calc(-100% - 32px));
+  transition: transform 0.28s var(--ease);
+}
+.access-denied-pop.is-in {
+  transform: translateX(0);
 }
 
 .access-denied-pop[hidden] {
@@ -1655,9 +1740,32 @@ body.cushion-open {
   }
   .site-header.is-open .nav { display: block; }
   .chart-item {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 10px;
+    row-gap: 6px;
   }
-  .chart-item__actions { justify-content: flex-start; }
+  .chart-item__title {
+    order: 1;
+    flex: 0 1 auto;
+    max-width: 100%;
+    min-width: min(100%, max-content);
+  }
+  .chart-item__actions {
+    order: 2;
+    flex: 0 1 auto;
+    max-width: 100%;
+    margin-left: auto;
+    justify-content: flex-end;
+  }
+  .chart-item__meta {
+    order: 3;
+    flex: 1 0 100%;
+    margin-left: 0;
+    max-width: 100%;
+    text-align: right;
+  }
 }
 
 /* Cross-page background BGM toggle */

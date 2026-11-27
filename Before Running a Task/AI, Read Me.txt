@@ -1526,3 +1526,528 @@ Changed files:
 - scenarios/kagami-no-saidan.html
 - 1st-nanokuro/hub.html
 ---
+---
+Date: 2026-11-25
+Task: GitHub Pagesへ公開（commit 7346fb0）
+Changed files:
+- （なし）
+---
+---
+Date: 2026-11-25
+Task: 保管庫トップの2ndバナーを削除（デプロイはユーザー側）
+Changed files:
+- vault.html
+---
+---
+Date: 2026-11-25
+Task: GitHub Pagesデプロイ手順をskill化（再ラン禁止）
+Changed files:
+- C:\Users\amura\.cursor\skills\nanokuro-official-deploy\SKILL.md
+- C:\Users\amura\.cursor\skills\nanokuro-build\SKILL.md
+---
+---
+Date: 2026-11-25
+Task: 譜面一覧のINを赤、ATを濃い灰色にして目立たせる
+Changed files:
+- js/site.js
+- css/site.css
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- home.html
+- index.html
+- notice.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+- 1st-nanokuro/hub.html
+---
+---
+Date: 2026-11-25
+Task: 難易度の文字色を戻し、譜面行の左上グラデーションに変更
+Changed files:
+- js/site.js
+- css/site.css
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- home.html
+- index.html
+- notice.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+- 1st-nanokuro/hub.html
+---
+---
+Date: 2026-11-25
+Task: ATとSPのグラデーション明度差を広げる
+Changed files:
+- css/site.css
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- home.html
+- index.html
+- notice.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+- 1st-nanokuro/hub.html
+---
+---
+Date: 2026-11-25
+Task: 難易度色を追加装飾にする曲名保護案を4つ再検討
+Changed files:
+- （なし）
+---
+---
+Date: 2026-11-25
+Task: 行グラデーションを消し、Crystalの難易度バッジに色点の雛形を追加
+Changed files:
+- js/site.js
+- css/site.css
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- home.html
+- index.html
+- notice.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+- 1st-nanokuro/hub.html
+---
+---
+Date: 2026-11-25
+Task: DL画面の左上コーナー装飾を行へ流用できるか検討
+Changed files:
+- （なし）
+---
+---
+Date: 2026-11-25
+Task: corner.png改良用のPixAIプロンプトを作成
+Changed files:
+- （なし）
+---
+---
+Date: 2026-11-26
+Task: PixAI生成のコーナー画像をcorner.pngとして納品
+Changed files:
+- assets/ornaments/corner.png
+- css/site.css
+- home.html
+- index.html
+- notice.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+- 1st-nanokuro/hub.html
+---
+---
+Date: 2026-11-26
+Task: corner.pngをシアンへ色調補正
+Changed files:
+- assets/ornaments/corner.png
+- css/site.css
+- home.html
+- index.html
+- notice.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+- 1st-nanokuro/hub.html
+---
+---
+Date: 2026-11-26
+Task: Crystal brillianceの行左上に難易度色のコーナーを配置
+Changed files:
+- js/site.js
+- css/site.css
+- assets/ornaments/corner-row.png
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- vault.html
+- home.html
+- index.html
+- notice.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+- 1st-nanokuro/hub.html
+---
+---
+Date: 2026-11-26
+Task: バナー削除デプロイ失敗の原因を再確認
+Changed files:
+- （なし）
+---
+---
+Date: 2026-11-26
+Task: デプロイの箱一覧の隙間が生まれた理由を確認
+Changed files:
+- （なし）
+---
+---
+Date: 2026-11-26
+Task: デプロイがartifact IDを使わない理由を確認
+Changed files:
+- （なし）
+---
+---
+Date: 2026-11-26
+Task: デプロイ失敗の最適解決策を推論
+Changed files:
+- （なし）
+---
+---
+Date: 2026-11-26
+Task: ID受け渡しとサイズ待ちの比較を説明
+Changed files:
+- （なし）
+---
+---
+Date: 2026-11-26
+Task: アップロードしたartifact IDを確認してからPagesを公開する
+Changed files:
+- .github/workflows/pages.yml
+- C:\Users\amura\.cursor\skills\nanokuro-official-deploy\SKILL.md
+---
+---
+Date: 2026-11-26
+Task: Crystalのコーナーを行内に全体が入る大きさへ縮小
+Changed files:
+- css/site.css
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- vault.html
+- home.html
+- index.html
+- notice.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+- 1st-nanokuro/hub.html
+---
+---
+Date: 2026-11-27
+Task: プレビューサーバを起動
+Changed files:
+- （なし）
+---
+---
+Date: 2026-11-27
+Task: 行背景用PixAIプロンプトから音楽アプリ表現を削除
+Changed files:
+- （なし）
+---
+---
+Date: 2026-11-27
+Task: 譜面一覧のメタをコンポーザーとチャーターだけにする
+Changed files:
+- js/site.js
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- vault.html
+- home.html
+- index.html
+- notice.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+- 1st-nanokuro/hub.html
+---
+---
+Date: 2026-11-27
+Task: Crystal brillianceのコーナーを差し替え、行ホバーの左端アニメーションを削除
+Changed files:
+- assets/ornaments/corner-crystal.png
+- css/site.css
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- vault.html
+- home.html
+- index.html
+- notice.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+- 1st-nanokuro/hub.html
+---
+---
+Date: 2026-11-27
+Task: 譜面一覧の全曲に難易度色のコーナーを付ける
+Changed files:
+- assets/ornaments/corner-mask.png
+- css/site.css
+- js/site.js
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- vault.html
+- home.html
+- index.html
+- notice.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+- 1st-nanokuro/hub.html
+---
+---
+Date: 2026-11-27
+Task: 譜面一覧のマークを拡大し、スマホでは曲名横・メタと位置交代
+Changed files:
+- css/site.css
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- vault.html
+- home.html
+- index.html
+- notice.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+- 1st-nanokuro/hub.html
+---
+---
+Date: 2026-11-27
+Task: 譜面一覧のマークを現在サイズから25%縮小
+Changed files:
+- css/site.css
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- vault.html
+- home.html
+- index.html
+- notice.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+- 1st-nanokuro/hub.html
+---
+---
+Date: 2026-11-27
+Task: PC版の譜面マークを交換前の右端へ戻す
+Changed files:
+- css/site.css
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- vault.html
+- home.html
+- index.html
+- notice.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+- 1st-nanokuro/hub.html
+---
+---
+Date: 2026-11-27
+Task: 譜面の状態表示と状態による絞り込みを削除
+Changed files:
+- js/site.js
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- vault.html
+- home.html
+- index.html
+- notice.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+- 1st-nanokuro/hub.html
+---
+---
+Date: 2026-11-27
+Task: 譜面一覧のセレクト選択肢を暗い背景にする
+Changed files:
+- css/site.css
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- vault.html
+- home.html
+- index.html
+- notice.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+- 1st-nanokuro/hub.html
+---
+---
+Date: 2026-11-27
+Task: 免責文をフッター上部へ移し固定ボタンと重ならないようにする
+Changed files:
+- css/site.css
+- css/trpg.css
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- vault.html
+- home.html
+- index.html
+- notice.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+- 1st-nanokuro/hub.html
+---
+---
+Date: 2026-11-27
+Task: スマホ版の譜面マークを右詰めにする
+Changed files:
+- css/site.css
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- vault.html
+- home.html
+- index.html
+- notice.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+- 1st-nanokuro/hub.html
+---
+---
+Date: 2026-11-27
+Task: 難易度マーク内の旧色付けを削除
+Changed files:
+- js/site.js
+- css/site.css
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- vault.html
+- home.html
+- index.html
+- notice.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+- 1st-nanokuro/hub.html
+---
+---
+Date: 2026-11-27
+Task: Contextリセット用の状況要約ノートと参照ルールを追加
+Changed files:
+- Before Running a Task/状況要約.md
+- .cursor/rules/context-recovery.mdc
+---
+---
+Date: 2026-11-27
+Task: カードとDL画面のコーナーを現行の色付きコーナーに統一
+Changed files:
+- css/site.css
+- Before Running a Task/状況要約.md
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- home.html
+- index.html
+- notice.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+- 1st-nanokuro/hub.html
+---
+---
+Date: 2026-11-27
+Task: コーナー付きカードの左端の線アニメーションを削除
+Changed files:
+- css/site.css
+- Before Running a Task/状況要約.md
+- home.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- index.html
+- notice.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+- 1st-nanokuro/hub.html
+---
+---
+Date: 2026-11-27
+Task: Access Deniedにスライドイン・アウトを追加
+Changed files:
+- css/site.css
+- js/site.js
+- Before Running a Task/状況要約.md
+- home.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- index.html
+- notice.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+- 1st-nanokuro/hub.html
+---
+---
+Date: 2026-11-27
+Task: Access Deniedの退出を時間経過にし、アニメーション中は再実行しない
+Changed files:
+- js/site.js
+- css/site.css
+- Before Running a Task/状況要約.md
+- home.html
+- vault.html
+- vault-all.html
+- vault-standard.html
+- vault-collab.html
+- vault-keymodes.html
+- index.html
+- notice.html
+- trpg-vault.html
+- scenarios/yaminabe.html
+- scenarios/kagami-no-saidan.html
+- 1st-nanokuro/hub.html
+---

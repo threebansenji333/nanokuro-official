@@ -25,7 +25,6 @@
   var vaultShownCharts = [];
   var vaultViewState = {
     sort: 'title-asc',
-    status: 'all',
     download: 'all',
     category: 'all',
     query: ''
@@ -276,46 +275,96 @@
   }
 
   /* ホームの 2nd バナーは遷移演出を呼ばない。コードは残し、クリックは Access Denied のみ。 */
-  var accessDeniedDocBound = false;
+  var accessDeniedPhase = 'idle';
+  var accessDeniedToken = 0;
+  var ACCESS_DENIED_HOLD_MS = 2500;
+  var ACCESS_DENIED_SLIDE_MS = 320;
 
-  function hideAccessDenied() {
+  function ensureAccessDeniedPop() {
     var pop = qs('#access-denied-pop');
-    if (pop) pop.hidden = true;
+    if (pop) return pop;
+    pop = document.createElement('p');
+    pop.id = 'access-denied-pop';
+    pop.className = 'access-denied-pop';
+    pop.setAttribute('role', 'status');
+    pop.setAttribute('aria-live', 'assertive');
+    pop.textContent = 'Access Denied';
+    document.body.appendChild(pop);
+    return pop;
+  }
+
+  function motionReduced() {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+
+  function finishAccessDeniedEnter(token) {
+    if (token !== accessDeniedToken || accessDeniedPhase !== 'entering') return;
+    accessDeniedPhase = 'shown';
+    window.setTimeout(function () {
+      if (token !== accessDeniedToken || accessDeniedPhase !== 'shown') return;
+      leaveAccessDenied(token);
+    }, ACCESS_DENIED_HOLD_MS);
+  }
+
+  function leaveAccessDenied(token) {
+    if (token !== accessDeniedToken || accessDeniedPhase !== 'shown') return;
+    var pop = qs('#access-denied-pop');
+    if (!pop) {
+      accessDeniedPhase = 'idle';
+      return;
+    }
+    accessDeniedPhase = 'leaving';
+    if (motionReduced()) {
+      pop.classList.remove('is-in');
+      pop.hidden = true;
+      accessDeniedPhase = 'idle';
+      return;
+    }
+    pop.classList.remove('is-in');
+    var done = function (e) {
+      if (e && e.propertyName && e.propertyName !== 'transform') return;
+      pop.removeEventListener('transitionend', done);
+      if (token !== accessDeniedToken || accessDeniedPhase !== 'leaving') return;
+      pop.hidden = true;
+      accessDeniedPhase = 'idle';
+    };
+    pop.addEventListener('transitionend', done);
+    window.setTimeout(function () {
+      if (token !== accessDeniedToken || accessDeniedPhase !== 'leaving') return;
+      pop.removeEventListener('transitionend', done);
+      pop.hidden = true;
+      accessDeniedPhase = 'idle';
+    }, ACCESS_DENIED_SLIDE_MS);
   }
 
   function showAccessDenied() {
-    var pop = qs('#access-denied-pop');
-    if (!pop) {
-      pop = document.createElement('p');
-      pop.id = 'access-denied-pop';
-      pop.className = 'access-denied-pop';
-      pop.setAttribute('role', 'status');
-      pop.setAttribute('aria-live', 'assertive');
-      pop.textContent = 'Access Denied';
-      document.body.appendChild(pop);
-    }
+    if (accessDeniedPhase !== 'idle') return;
+    var pop = ensureAccessDeniedPop();
+    var token = ++accessDeniedToken;
+    accessDeniedPhase = 'entering';
     pop.hidden = false;
-  }
-
-  function bindAccessDeniedDocument() {
-    if (accessDeniedDocBound) return;
-    accessDeniedDocBound = true;
-    document.addEventListener('click', function (e) {
-      var pop = qs('#access-denied-pop');
-      if (!pop || pop.hidden) return;
-      if (e.target && e.target.closest && e.target.closest('[data-access-denied]')) return;
-      hideAccessDenied();
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key !== 'Escape') return;
-      var host = qs('#cushion-host');
-      if (host && !host.hidden) return;
-      hideAccessDenied();
-    });
+    if (motionReduced()) {
+      pop.classList.add('is-in');
+      finishAccessDeniedEnter(token);
+      return;
+    }
+    pop.classList.remove('is-in');
+    void pop.offsetWidth;
+    pop.classList.add('is-in');
+    var done = function (e) {
+      if (e && e.propertyName && e.propertyName !== 'transform') return;
+      pop.removeEventListener('transitionend', done);
+      finishAccessDeniedEnter(token);
+    };
+    pop.addEventListener('transitionend', done);
+    window.setTimeout(function () {
+      if (token !== accessDeniedToken || accessDeniedPhase !== 'entering') return;
+      pop.removeEventListener('transitionend', done);
+      finishAccessDeniedEnter(token);
+    }, ACCESS_DENIED_SLIDE_MS);
   }
 
   function wireAccessDenied() {
-    bindAccessDeniedDocument();
     qsa('[data-access-denied]').forEach(function (el) {
       if (el.dataset.deniedBound === '1') return;
       el.dataset.deniedBound = '1';
@@ -324,12 +373,6 @@
         showAccessDenied();
       });
     });
-  }
-
-  function statusBadge(status) {
-    if (status === 'open') return '<span class="badge open">OPEN</span>';
-    if (status === 'archive') return '<span class="badge archive">ARCHIVE</span>';
-    return '<span class="badge soon">準備中</span>';
   }
 
   /** Extract max numeric constant from strings like "AT Lv.18.5" / "IN Lv.16 / AT Lv.16". */
@@ -1479,16 +1522,6 @@
             '<option value="title-desc">曲名 降順</option>' +
             '<option value="const-desc">定数 高い順</option>' +
             '<option value="const-asc">定数 低い順</option>' +
-            '<option value="status">状態</option>' +
-          '</select>' +
-        '</label>' +
-        '<label class="vault-field">' +
-          '<span>状態</span>' +
-          '<select id="vault-status">' +
-            '<option value="all">すべて</option>' +
-            '<option value="open">OPEN</option>' +
-            '<option value="archive">ARCHIVE</option>' +
-            '<option value="soon">準備中</option>' +
           '</select>' +
         '</label>' +
         '<label class="vault-field">' +
@@ -1516,7 +1549,6 @@
       '<p class="vault-controls__hint" id="vault-result-hint"></p>';
 
     qs('#vault-sort', box).value = vaultViewState.sort;
-    qs('#vault-status', box).value = vaultViewState.status;
     qs('#vault-download', box).value = vaultViewState.download;
     if (showCategory) qs('#vault-category', box).value = vaultViewState.category;
 
@@ -1531,7 +1563,6 @@
         queryEl.value = rawQuery;
       }
       vaultViewState.sort = qs('#vault-sort', box).value;
-      vaultViewState.status = qs('#vault-status', box).value;
       vaultViewState.download = qs('#vault-download', box).value;
       vaultViewState.query = rawQuery;
       if (showCategory) {
@@ -1552,7 +1583,6 @@
         }
         if (
           t.id === 'vault-sort' ||
-          t.id === 'vault-status' ||
           t.id === 'vault-download' ||
           t.id === 'vault-category' ||
           t.id === 'vault-query'
@@ -1582,7 +1612,6 @@
 
   function sortCharts(list, mode) {
     var arr = list.slice();
-    var statusRank = { open: 0, archive: 1, soon: 2 };
     arr.sort(function (a, b) {
       if (mode === 'title-asc' || mode === 'title-desc') {
         var cmp = String(a.title || '').localeCompare(String(b.title || ''), 'ja');
@@ -1596,12 +1625,6 @@
         if (cb == null) return -1;
         return mode === 'const-desc' ? (cb - ca) : (ca - cb);
       }
-      if (mode === 'status') {
-        var ra = statusRank[a.status || 'soon'];
-        var rb = statusRank[b.status || 'soon'];
-        if (ra !== rb) return ra - rb;
-        return String(a.title || '').localeCompare(String(b.title || ''), 'ja');
-      }
       return 0;
     });
     return arr;
@@ -1612,7 +1635,6 @@
     if (!mount) return;
     var q = String(vaultViewState.query || '').trim().toLowerCase();
     var filtered = vaultSourceList.filter(function (c) {
-      if (vaultViewState.status !== 'all' && (c.status || 'soon') !== vaultViewState.status) return false;
       if (!matchesDownloadFilter(c, vaultViewState.download)) return false;
       if (
         vaultCategory === 'all' &&
@@ -1640,6 +1662,59 @@
     }
   }
 
+  function listMetaText(chart) {
+    var variants = (chart && chart.variants) || [];
+    var byDiff = {};
+    var order = [];
+    variants.forEach(function (v) {
+      var diff = String(v.difficulty || '').trim();
+      var charter = String(v.charter || '').trim();
+      if (!charter || byDiff[diff]) return;
+      byDiff[diff] = charter;
+      order.push(diff);
+    });
+    var rank = { IN: 0, AT: 1, SP: 2, '4K': 3 };
+    order.sort(function (a, b) {
+      var ra = rank.hasOwnProperty(a) ? rank[a] : 9;
+      var rb = rank.hasOwnProperty(b) ? rank[b] : 9;
+      return ra - rb;
+    });
+    var unique = [];
+    order.forEach(function (diff) {
+      if (unique.indexOf(byDiff[diff]) === -1) unique.push(byDiff[diff]);
+    });
+    var charterText = '';
+    if (unique.length > 1) {
+      charterText = order.map(function (diff) {
+        return (diff ? diff + ': ' : '') + byDiff[diff];
+      }).join(' / ');
+    } else if (unique.length === 1) {
+      charterText = unique[0];
+    } else {
+      charterText = String((chart && chart.charter) || '').trim();
+    }
+    return [chart && chart.composer, charterText ? ('Charter: ' + charterText) : '']
+      .filter(Boolean)
+      .join(' · ');
+  }
+
+  function cornerClass(chart) {
+    var variants = (chart && chart.variants) || [];
+    var seen = {};
+    var keys = [];
+    variants.forEach(function (v) {
+      var diff = String(v.difficulty || '').trim();
+      if (diff !== 'IN' && diff !== 'AT' && diff !== 'SP') return;
+      if (seen[diff]) return;
+      seen[diff] = true;
+      keys.push(diff);
+    });
+    var tone = 'plain';
+    if (keys.length > 1) tone = 'split';
+    else if (keys.length === 1) tone = keys[0].toLowerCase();
+    return ' chart-item--corner chart-item--corner-' + tone;
+  }
+
   function renderChartList(container, charts) {
     if (!container) return;
     if (!charts || !charts.length) {
@@ -1648,12 +1723,11 @@
     }
     var html = '<ul class="chart-list">';
     charts.forEach(function (c) {
-      var meta = [c.keymode || 'Phigros', c.composer || '', c.charter ? ('Chart: ' + c.charter) : '']
-        .filter(Boolean)
-        .join(' · ');
+      var meta = listMetaText(c);
       var openable = !!c.id;
+      var corner = cornerClass(c);
       var rowAttrs = ' class="chart-item' + (openable ? ' chart-item--openable' : '') +
-          (hasFileDownload(c) ? '' : ' chart-item--nodl') + '"' +
+          (hasFileDownload(c) ? '' : ' chart-item--nodl') + corner + '"' +
         ' data-tags="' + (c.tags || []).join(' ') + '"';
       if (openable) {
         rowAttrs +=
@@ -1666,16 +1740,10 @@
         '<li' + rowAttrs + '>' +
           '<div>' +
             '<p class="chart-item__title">' + escapeHtml(c.title) + '</p>' +
-            '<p class="chart-item__meta">' +
-              (c.listCategory
-                ? '<span class="badge cat-badge">' + escapeHtml(c.listCategory) + '</span> '
-                : '') +
-              escapeHtml(meta) + (c.note ? ' · ' + escapeHtml(c.note) : '') +
-            '</p>' +
+            '<p class="chart-item__meta">' + escapeHtml(meta) + '</p>' +
           '</div>' +
           '<div class="chart-item__actions">' +
             '<div class="chart-item__marks">' +
-              statusBadge(c.status || 'soon') +
               difficultyBadge(c.difficulty) +
             '</div>' +
             '<span class="chart-item__pick" aria-hidden="true"></span>' +
@@ -1713,7 +1781,6 @@
         vaultSourceList = list.slice();
         vaultViewState = {
           sort: 'title-asc',
-          status: 'all',
           download: 'all',
           category: 'all',
           query: ''
@@ -1908,7 +1975,7 @@
               '<rect class="vh-hot" x="8" y="46" width="52" height="20" rx="2"></rect>' +
               '<text class="vh-onhot" x="34" y="60" text-anchor="middle">曲名</text>' +
               '<rect class="vh-plate" x="68" y="46" width="58" height="20" rx="2"></rect>' +
-              '<text class="vh-dim" x="97" y="60" text-anchor="middle">OPEN</text>' +
+              '<text class="vh-dim" x="97" y="60" text-anchor="middle">配布</text>' +
               '<rect class="vh-plate" x="134" y="46" width="98" height="20" rx="2"></rect>' +
               '<text class="vh-dim" x="183" y="60" text-anchor="middle">ファイルDL</text>' +
             '</svg>' +

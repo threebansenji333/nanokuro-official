@@ -973,7 +973,7 @@ body.page-trpg .site-footer a:focus-visible {
   text-underline-offset: 0.2em;
 }
 body.page-trpg .disclaimer {
-  border-top-color: rgba(201, 165, 92, 0.2);
+  border-bottom-color: rgba(201, 165, 92, 0.2);
   font-family: var(--font-body);
   font-size: 0.6875rem;
 }
